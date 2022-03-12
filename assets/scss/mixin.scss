@@ -75,6 +75,83 @@
   border-#{$position}: $wid solid $color;
 }
 
+//font
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+
+
+// pc 기본폰트 : 16px //모바일 :14px
+$size-h1: calc(1rem + 16px); //32
+$size-h2: calc(1rem + 12px); //26
+$size-h3: calc(1rem + 10px); //24
+$size-h4: calc(1rem + 6px); //20
+$size-h5: calc(1rem + 4px); //18
+$size-h6: calc(1rem + 2px); //16
+$size-normal: calc(1rem); //14
+$size-small: calc(1rem - 2px); //12
+
+$leng-8: 8px;
+$leng-10: 10px;
+$leng-12: 12px;
+$leng-20: 20px;
+$leng-40: 40px;
+
+//color
+//brand-color
+$brand-color: #009688;
+$alram-color: #ff3120;
+
+$colors: (
+  light: (
+    //font-color
+    font-color1: #191919,
+    font-color2: #767676,
+    font-color3: #999999,
+    //line-color
+    line-color1: #dbdbdb,
+    line-color2: #ededed,
+    //bg-color
+    bg-color1: #fff,
+    bg-color2: #f1f1f5,
+    bg-color3: #f8f8fa,
+  ),
+  dark: (
+    //font-color
+    font-color1: #e1e1e1,
+    font-color2: #a2a2a2,
+    font-color3: #9e9e9e,
+    //line-color
+    line-color1: #2c2c2c,
+    line-color2: #282828,
+    //bg-color
+    bg-color1: #121212,
+    bg-color2: #1d1d1d,
+    bg-color3: #2d2d2d,
+  ),
+);
+
+@function get-color($key, $type: "light") {
+  @each $name, $color in map-get($colors, $type) {
+    @if ($key == $name) {
+      @return $color;
+    }
+  }
+}
+
+@mixin get-color($property, $color) {
+  #{$property}: get-color($color);
+  @at-root body[data-theme="dark"] {
+    #{$property}: get-color($color, dark);
+  }
+  @at-root body[data-theme="dark"] & {
+    #{$property}: get-color($color, dark);
+  }
+}
+
+@mixin logo-font {
+  font-family: "Gugi", cursive;
+}
+
 //mediaquery
 @media (max-width: 992px) {
   .spanblock {
@@ -82,11 +159,24 @@
   }
 }
 
+$breakpoint-pc: 1280;
 $breakpoint-tablet: 992px;
 $breakpoint-mobile: 768px;
 
+@mixin pc-size-only {
+  @media (min-width:#{$breakpoint-pc}) {
+    @content;
+  }
+}
+
+@mixin mobile-size-only {
+  @media (max-width:#{$breakpoint-pc}) {
+    @content;
+  }
+}
+
 @mixin pc-size {
-  @media (min-width:#{$breakpoint-mobile}) {
+  @media (min-width:#{$breakpoint-tablet}) {
     @content;
   }
 }
