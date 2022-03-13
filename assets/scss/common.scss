@@ -1,7 +1,235 @@
-﻿@import "./reset.scss";
+@import "./reset.scss";
 @import "./mixin.scss";
-@import "./layout.scss";
+
+//@include get-color(color, text-color);
+//@include get-color(background-color, bg-color);
+
+//layout
+html,
+body {
+  width: 100%;
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
 body {
-  background-color: #fff;
+  width: 100%;
+  font-weight: 400;
+  line-height: 1.71;
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.05em;
+  margin-bottom: 0px;
+  @include get-color(background-color, bg-color1);
+  @include get-color(color, font-color1);
+}
+.containerBox {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.slide-wrap {
+  // webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: auto !important;
+  @include containerBox2;
+  //pointer-events: none;
+}
+
+.slide-wrap::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-style: solid;
+  @include get-color(border-color, line-color1);
+
+  .containerBox {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-logo {
+    color: $brand-color;
+    font-size: $size-h2;
+    transform: skewX(-10deg) rotateZ(-5deg);
+    @include logo-font;
+  }
+}
+
+.lnb {
+  position: relative;
+  box-shadow: $box-shadow1;
+
+  &-list {
+    display: flex;
+    position: relative;
+    height: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    a {
+      display: block;
+      padding: 10px;
+      font-size: $size-h6;
+      text-align: center;
+      min-width: 45px;
+      &.active {
+        color: $brand-color;
+        font-weight: bold;
+      }
+    }
+    &::after {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 45px;
+      height: 2px;
+      content: "";
+      transition: all 0.3s 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      background-color: $brand-color;
+    }
+  }
+}
+
+.gnb {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 16px);
+  height: 60px;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: $leng-10;
+  @include get-color(background-color, bg-color1);
+  /* @include get-color(background-color, bg-color4);
+  @include backdrop-filter;
+  transition: bottom 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); */
+  box-shadow: $box-shadow2;
+
+  &-list {
+    display: flex;
+    width: 100%;
+
+    li {
+      position: relative;
+      width: 20%;
+      height: 100%;
+
+      a {
+        display: flex;
+        position: relative;
+        width: 100%;
+        font-weight: 500;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        @include get-color(color, font-color3);
+        // &:hover .gnb-list-icon,
+        // &:focus .gnb-list-icon,
+        &.active .gnb-list-icon {
+          //transform: translateY(-30px);
+          .material-icons-outlined {
+            color: #fff;
+          }
+        }
+
+        // &:hover .gnb-list-text,
+        // &:focus .gnb-list-text,
+        &.active .gnb-list-text {
+          transform: translateY(10px);
+          opacity: 0;
+        }
+      }
+    }
+
+    &-icon {
+      display: block;
+      position: relative;
+      text-align: center;
+      transition: all 0.3s;
+      z-index: 1;
+      span {
+        font-size: 2rem;
+        line-height: 1;
+        vertical-align: -6px;
+      }
+    }
+
+    &-text {
+      font-size: $size-small;
+      transition: all 0.3s;
+      opacity: 1;
+      @include get-color(color, font-color4);
+    }
+  }
+
+  &-indicator {
+    position: absolute;
+    bottom: 6px;
+    width: 65px;
+    height: 65px;
+    box-shadow: $box-shadow2;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &::after {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -50%;
+      margin-top: -50%;
+      @include brand-color2;
+      animation: 8s linear ani-indicator  infinite;
+    }
+  }
+}
+
+// .elipsis-wrap-text {
+//   @include txt-line(2);
+// }
+
+.contents {
+  flex: 1;
+}
+
+.footer {
+  background-color: red;
+  ul {
+    display: none;
+  }
+}
+
+@keyframes ani-indicator {
+  100% {
+    transform: rotateZ(360deg);
+  }
 }

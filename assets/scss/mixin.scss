@@ -1,11 +1,19 @@
 /*mixin*/
-
+//font
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Meow+Script&display=swap");
 //꺽쇠
 @import url("https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap");
 
+@mixin logo-font {
+  // font-family: "League Script", cursive;
+  font-family: "Meow Script", cursive;
+}
 @mixin gt {
   font-family: "Nanum Myeongjo", serif;
 }
+
 //inline-box 요소박스
 @mixin inbox {
   font-size: 0px;
@@ -19,6 +27,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.hidden {
+  overflow: hidden;
+  position: absolute;
+  top: -9999%;
+  left: -9999%;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
 }
 //숨기기
 @mixin hidden {
@@ -62,11 +80,20 @@
   background-repeat: no-repeat;
 }
 //한줄 넘어갈때 말줄임표
-@mixin txt-line {
+@mixin txt-line($line) {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  @if $line==none {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
+  }
 }
+
 //border
 @mixin border($wid, $color) {
   border: $wid solid $color;
@@ -75,10 +102,16 @@
   border-#{$position}: $wid solid $color;
 }
 
-//font
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+//박스셰도우
+$box-shadow1: 5px 5px 10px -2px rgba(0, 0, 0, 0.1);
+$box-shadow2: -1px 1px 10px 1px rgba(0, 0, 0, 0.1);
 
+//불투명 필터
+@mixin backdrop-filter {
+  backdrop-filter: saturate(180%) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  -moz-backdrop-filter: saturate(180%) blur(15px);
+}
 
 // pc 기본폰트 : 16px //모바일 :14px
 $size-h1: calc(1rem + 16px); //32
@@ -99,27 +132,35 @@ $leng-40: 40px;
 //color
 //brand-color
 $brand-color: #009688;
+@mixin brand-color2 {
+  background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #009688 74%);
+}
+
 $alram-color: #ff3120;
 
 $colors: (
   light: (
     //font-color
     font-color1: #191919,
-    font-color2: #767676,
-    font-color3: #999999,
+    font-color2: #4a4a4a,
+    font-color3: #767676,
+    font-color4: #999999,
     //line-color
-    line-color1: #dbdbdb,
-    line-color2: #ededed,
+    line-color1: #ededed,
+    line-color2: #dbdbdb,
     //bg-color
     bg-color1: #fff,
     bg-color2: #f1f1f5,
     bg-color3: #f8f8fa,
+    bg-color4: rgba(0, 0, 0, 0.1),
   ),
   dark: (
     //font-color
     font-color1: #e1e1e1,
-    font-color2: #a2a2a2,
-    font-color3: #9e9e9e,
+    font-color2: #bbbbbb,
+    font-color3: #a2a2a2,
+    font-color4: #9e9e9e,
     //line-color
     line-color1: #2c2c2c,
     line-color2: #282828,
@@ -127,6 +168,7 @@ $colors: (
     bg-color1: #121212,
     bg-color2: #1d1d1d,
     bg-color3: #2d2d2d,
+    bg-color4: rgba(18, 18, 18, 0.1),
   ),
 );
 
@@ -148,10 +190,6 @@ $colors: (
   }
 }
 
-@mixin logo-font {
-  font-family: "Gugi", cursive;
-}
-
 //mediaquery
 @media (max-width: 992px) {
   .spanblock {
@@ -170,7 +208,7 @@ $breakpoint-mobile: 768px;
 }
 
 @mixin mobile-size-only {
-  @media (max-width:#{$breakpoint-pc}) {
+  @media (max-width:#{$breakpoint-pc - 1px}) {
     @content;
   }
 }
@@ -190,5 +228,32 @@ $breakpoint-mobile: 768px;
 @mixin mobile-size {
   @media (max-width:#{$breakpoint-mobile - 1px}) {
     @content;
+  }
+}
+
+//사이즈
+@mixin containerBox {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+  @include mobile-size-only {
+    padding: 0 $leng-20;
+  }
+}
+
+@mixin containerBox2 {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+  overflow: hidden;
+  @include mobile-size-only {
+    padding-left: $leng-12;
+  }
+}
+
+@mixin slide-padding-left {
+  padding: 0;
+  @include mobile-size-only {
+    padding-left: $leng-12;
   }
 }
