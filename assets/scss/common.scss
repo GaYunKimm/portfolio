@@ -20,6 +20,7 @@ body {
   line-height: 1.71;
   font-family: "Noto Sans KR", sans-serif;
   letter-spacing: -0.05em;
+  word-spacing: -0.1em;
   margin-bottom: 0px;
   @include get-color(background-color, bg-color1);
   @include get-color(color, font-color1);
@@ -38,10 +39,10 @@ body {
   overflow-x: auto !important;
   @include containerBox2;
   //pointer-events: none;
-}
 
-.slide-wrap::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 }
 
 .wrapper {
@@ -73,7 +74,6 @@ body {
   &-logo {
     color: $brand-color;
     font-size: $size-h2;
-    transform: skewX(-10deg) rotateZ(-5deg);
     @include logo-font;
   }
 }
@@ -83,11 +83,8 @@ body {
   box-shadow: $box-shadow1;
 
   &-list {
-    display: flex;
-    position: relative;
-    height: 100%;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    @include flex--slide;
+
     a {
       display: block;
       padding: 10px;
@@ -124,11 +121,11 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: $leng-10;
-  @include get-color(background-color, bg-color1);
   /* @include get-color(background-color, bg-color4);
   @include backdrop-filter;
   transition: bottom 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); */
   box-shadow: $box-shadow2;
+  @include get-color(background-color, bg-color1);
 
   &-list {
     display: flex;
@@ -170,9 +167,9 @@ body {
     &-icon {
       display: block;
       position: relative;
+      z-index: 1;
       text-align: center;
       transition: all 0.3s;
-      z-index: 1;
       span {
         font-size: 2rem;
         line-height: 1;
@@ -199,16 +196,16 @@ body {
 
     &::after {
       display: block;
-      content: "";
-      width: 100%;
-      height: 100%;
       position: absolute;
       top: 50%;
       left: 50%;
+      width: 100%;
+      height: 100%;
+      content: "";
+      animation: 8s linear ani-indicator infinite;
       margin-left: -50%;
       margin-top: -50%;
       @include brand-color2;
-      animation: 8s linear ani-indicator  infinite;
     }
   }
 }
@@ -219,17 +216,228 @@ body {
 
 .contents {
   flex: 1;
+
+  section {
+    padding-bottom: $leng-60;
+  }
+
+  .slide-wrap {
+    padding-top: $leng-20;
+    padding-bottom: $leng-40;
+  }
 }
 
 .footer {
-  background-color: red;
-  ul {
-    display: none;
+  padding-bottom: $leng-100;
+  @include get-color(background-color, bg-color2);
+  @include get-color(color, font-color2);
+  &-cont {
+    display: flex;
+    padding: $leng-20 0;
+    align-items: center;
+  }
+
+  &-logo {
+    font-size: $size-h3;
+    margin-right: auto;
+    @include get-color(color, font-color2);
+    @include logo-font;
+  }
+}
+
+.contents-title {
+  @include containerBox;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+  span {
+    &:nth-child(1) {
+      font-weight: bold;
+      font-size: $size-h4;
+      margin-right: auto;
+    }
+    &:nth-child(2) {
+      @include get-color(color, font-color3);
+    }
+  }
+}
+
+.card-full {
+  @include flex--slide;
+  li {
+    padding-right: $leng-12;
+
+    a {
+      display: block;
+      position: relative;
+      width: 240px;
+      height: 360px;
+      box-shadow: $box-shadow2;
+      border-radius: $leng-10;
+      overflow: hidden;
+    }
+  }
+  &-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    //visibility: hidden;
+    object-fit: cover;
+  }
+
+  &-cover {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    @include bg-cover();
+  }
+  //라이브
+  &-view {
+    display: flex;
+    position: absolute;
+    top: $leng-10;
+    left: $leng-8;
+    z-index: 1;
+    font-size: $size-small;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 25px;
+    align-items: center;
+    &-logo {
+      display: flex;
+      width: 50px;
+      background-color: $alram-color;
+      border-radius: $leng-10;
+      align-items: center;
+      justify-content: center;
+      &-text {
+        position: relative;
+        color: transparent;
+        font-weight: 500;
+        letter-spacing: 0.7px;
+        &::after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0%;
+          width: 0%;
+          height: 100%;
+
+          content: "LIVE";
+          animation: ani-live 2s 1s infinite;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+    &-text {
+      padding: 0 10px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .elipsis-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: rgba(0, 0, 0, 0.7);
+    //transition: bottom 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 10px 10px 0 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: $box-shadow4;
+    @include blur-filter2;
+    p {
+      color: #4a4a4a;
+    }
+  }
+}
+
+.thum-grid {
+  @include flex--slide;
+  li {
+    padding-right: $leng-12;
+    a {
+      display: block;
+      position: relative;
+      width: 100px;
+    }
+  }
+  &-cover {
+    @include bgs-cover(100px, 100px, 10px);
+  }
+  &-cont {
+    padding-top: $leng-8;
+    p {
+      @include txt-line(none);
+    }
+    &-view {
+      font-size: $size-small;
+      @include get-color(color, font-color3);
+    }
+  }
+}
+
+.elipsis-wrap {
+  width: 100%;
+  padding: $leng-12 $leng-20 $leng-16;
+
+  p {
+    @include txt-line(none);
+  }
+  &-title {
+    font-weight: bold;
+    font-size: $size-h5;
+  }
+  &-text {
+  }
+}
+
+.sns-list {
+  display: flex;
+  li {
+    margin-left: 6px;
+    a:hover img,
+    a:focus img {
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+    }
+    img {
+      width: 28px;
+      transition: all 0.5s;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+    }
   }
 }
 
 @keyframes ani-indicator {
   100% {
     transform: rotateZ(360deg);
+  }
+}
+@keyframes ani-live {
+  0% {
+    background: liner-gradient(
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 55%,
+      rgba(0, 0, 0, 0) 75%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  60% {
+    width: 100%;
+  }
+  75% {
+    width: 400%;
+    background: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }

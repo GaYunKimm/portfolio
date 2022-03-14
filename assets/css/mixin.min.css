@@ -6,3 +6,7 @@
 .hidden { overflow: hidden; position: absolute; top: -9999%; left: -9999%; width: 1px; height: 1px; font-size: 0; line-height: 0; }
 
 @media (max-width: 992px) { .spanblock { display: inline; } }
+
+.containerBox { width: 100%; margin: 0 auto; max-width: 1280px; padding: 0 12px; }
+
+@media (max-width: 1279px) { .containerBox { padding: 0 16px; } }

@@ -9,6 +9,7 @@
 @mixin logo-font {
   // font-family: "League Script", cursive;
   font-family: "Meow Script", cursive;
+  transform: skewX(-10deg) rotateZ(-5deg);
 }
 @mixin gt {
   font-family: "Nanum Myeongjo", serif;
@@ -22,12 +23,21 @@
   display: inline-block;
   font-size: 14px;
 }
-
+//플렉스 요소
 @mixin flex--center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+@mixin flex--slide {
+  display: flex;
+  position: relative;
+  height: 100%;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
 .hidden {
   overflow: hidden;
   position: absolute;
@@ -105,12 +115,20 @@
 //박스셰도우
 $box-shadow1: 5px 5px 10px -2px rgba(0, 0, 0, 0.1);
 $box-shadow2: -1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+$box-shadow3: 0px 5px 20px -4px rgba(0, 0, 0, 0.1);
+$box-shadow4: 0px 5px 30px -5px rgba(0, 0, 0, 0.2);
 
 //불투명 필터
-@mixin backdrop-filter {
+@mixin blur-filter {
   backdrop-filter: saturate(180%) blur(15px);
   -webkit-backdrop-filter: saturate(180%) blur(15px);
   -moz-backdrop-filter: saturate(180%) blur(15px);
+}
+
+@mixin blur-filter2 {
+  backdrop-filter: saturate(180%) blur(5px);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  -moz-backdrop-filter: saturate(180%) blur(5px);
 }
 
 // pc 기본폰트 : 16px //모바일 :14px
@@ -126,8 +144,12 @@ $size-small: calc(1rem - 2px); //12
 $leng-8: 8px;
 $leng-10: 10px;
 $leng-12: 12px;
+$leng-16: 16px;
 $leng-20: 20px;
 $leng-40: 40px;
+$leng-60: 60px;
+$leng-80: 80px;
+$leng-100: 100px;
 
 //color
 //brand-color
@@ -151,8 +173,8 @@ $colors: (
     line-color2: #dbdbdb,
     //bg-color
     bg-color1: #fff,
-    bg-color2: #f1f1f5,
-    bg-color3: #f8f8fa,
+    bg-color2: #e0e0e0,
+    bg-color3: #cecece,
     bg-color4: rgba(0, 0, 0, 0.1),
   ),
   dark: (
@@ -232,12 +254,24 @@ $breakpoint-mobile: 768px;
 }
 
 //사이즈
+.containerBox {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 $leng-12;
+
+  @include mobile-size-only {
+    padding: 0 $leng-16;
+  }
+}
+
 @mixin containerBox {
   width: 100%;
   margin: 0 auto;
   max-width: 1280px;
+  padding: 0 $leng-12;
   @include mobile-size-only {
-    padding: 0 $leng-20;
+    padding: 0 $leng-16;
   }
 }
 
@@ -246,14 +280,16 @@ $breakpoint-mobile: 768px;
   margin: 0 auto;
   max-width: 1280px;
   overflow: hidden;
+  padding-left: $leng-12;
+
   @include mobile-size-only {
-    padding-left: $leng-12;
+    padding-left: $leng-16;
   }
 }
 
 @mixin slide-padding-left {
-  padding: 0;
+  padding-left: $leng-12;
   @include mobile-size-only {
-    padding-left: $leng-12;
+    padding-left: $leng-16;
   }
 }
