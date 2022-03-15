@@ -1,0 +1,85 @@
+@import "./reset.scss";
+@import "./mixin.scss";
+@import "./layout.scss";
+@import "./common.scss";
+
+//@include get-color(color, text-color);
+//@include get-color(background-color, bg-color);
+
+.lnb {
+  position: relative;
+  z-index: 50;
+  box-shadow: $box-shadow1;
+  &-list {
+    @include flex--slide;
+
+    a {
+      display: block;
+      padding: 10px;
+      font-size: $size-h6;
+      text-align: center;
+      min-width: 45px;
+      &.active {
+        color: $brand-color;
+        font-weight: bold;
+      }
+    }
+    &::after {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 45px;
+      height: 2px;
+      content: "";
+      transition: all 0.3s 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      background-color: $brand-color;
+    }
+  }
+}
+.contents {
+  section {
+    padding-bottom: $leng-60;
+  }
+
+  .slide-wrap {
+    padding-top: $leng-20;
+    padding-bottom: $leng-40;
+  }
+
+  &-soon {
+    .card-full {
+      li:last-child {
+        padding-right: 0;
+      }
+    }
+    .arrow-btn {
+      top: 50%;
+      transform: translateY(-50%);
+      @include get-color(color, font-color2);
+      &-prev {
+        @include mobile-size-only {
+          left: -20px;
+        }
+      }
+      &-next {
+        @include mobile-size-only {
+          right: -20px;
+        }
+      }
+    }
+  }
+}
+
+.today-event {
+  &.card a {
+    width: 320px;
+
+    .elipsis-wrap {
+      &-text,
+      &-title {
+        @include txt-line(2);
+      }
+    }
+  }
+}

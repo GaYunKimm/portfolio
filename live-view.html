@@ -23,70 +23,101 @@
   <meta property="og:image:height" content="817" />
 
   <!--CSS-->
-  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/common.min.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/live.min.css">
 
 </head>
 
-<body>
+<body class="video-detail-active">
   <div class="wrapper">
-    <div class="content-video">
+    <div class="contents">
+      <div class="content-video">
+        <video src="/assets/video/live.mp4"  type="video/mp4" muted autoplay="false" controls="false">
+        </video>
 
 
-      <video src="/assets/video/live.mp4" muted controls="false"></video>
+        <header class="video-header">
+          <h1 class="video-logo">Kayoons</h1>
+          <ul class="video-utill">
+            <li><a href="#">
+                <span class="hiddeh">음소거</span>
+                <span class="material-icons">
+                  volume_up
+                  <!-- volume_off -->
+                </span>
+              </a></li>
 
+            <li><a href="#">
+                <span class="hiddeh">알람추가</span>
+                <span class="material-icons">
+                  notifications
+                </span>
 
-      <header class="video-header">
-        <h1>Kayoons</h1>
-        <ul>
-          <li><a href="#">
-              <span class="hiddeh">음소거</span>
-            </a></li>
+              </a></li>
 
-          <li><a href="#">
-              <span class="hiddeh">알람추가</span>
-            </a></li>
-
-          <li><a href="#">
-              <span class="hiddeh">음소거</span>
-            </a></li>
-          <li><a href="#">
-              <span class="hiddeh">환경설정</span>
-            </a></li>
-          <li><a href="#">
-              <span class="hiddeh">닫기</span>
-            </a></li>
-        </ul>
-      </header>
-
-
-      <div class="video-chat">
-        <div class="video-chat-wrap">
-          <ul class="video-chat-list">
-            <li>
-              <span class="video-chat-list-user"></span>
-              <span></span>
-            </li>
           </ul>
+          <!--util END-->
+          <a href="#">
+            <span class="material-icons">
+              close
+            </span> </a>
+          <!--close-->
+        </header>
+        <!--video header END-->
 
-          <div class="video-chat-input input-box">
-            <input type="text">
-            <button type="button">
-              <span class="material-icons-outlined">
-                send
-              </span>
-            </button>
+        <div class="video-cont">
+          <a href="#" title="바로가기" class="video-cont-cover"
+            style="background-image: url(/assets/images/profile/profile15.jpg);">
+            <span class="hidden">프로필 이미지</span>
+          </a>
+          <div class="video-cont-desc">
+            <div class="video-cont-desc-title">별빛이 내린다 </div>
+            <div class="video-cont-desc-text">
+              <span>가윤스토어</span>
+              <div class="video-cont-desc-text-view">
+                <span class="material-icons-outlined">
+                  visibility
+                </span>
+
+                2.3만
+              </div>
+            </div>
           </div>
         </div>
+
+
+        <div class="video-chat">
+          <div class="video-chat-wrap">
+            <ul class="video-chat-list">
+              <li>
+                <span class="video-chat-list-user"></span>
+                <span></span>
+              </li>
+            </ul>
+
+
+          </div>
+        </div>
+        <!--END-->
+
+        <div class="video-chat-input input-box">
+          <input type="text">
+          <button type="button">
+            <span class="material-icons-outlined">
+              send
+            </span>
+          </button>
+        </div>
+
+
+        <a href="#" class="video-chat-like-btn">
+          <span class="material-icons-outlined">
+            favorite_border
+          </span>
+        </a>
       </div>
-      <!--END-->
-
-
-      <a href="#" class="video-chat-like-btn">
-        <span class="material-icons-outlined">
-          favorite_border
-        </span>
-      </a>
     </div>
   </div>
   <!--//wrapper END-->
