@@ -174,7 +174,8 @@ body {
           &.active .gnb-list-icon {
             //transform: translateY(-30px);
             span {
-              color: #fff;
+              color: rgba(255, 255, 255, 0.9);
+              mix-blend-mode: overlay;
             }
           }
           &.active .gnb-list-text {
@@ -263,6 +264,29 @@ body {
     padding-top: $leng-20;
     padding-bottom: $leng-40;
   }
+
+  &-soon {
+    .card-full {
+      li:last-child {
+        padding-right: 0;
+      }
+    }
+    .arrow-btn {
+      top: 50%;
+      transform: translateY(-50%);
+      @include get-color(color, font-color2);
+      &-prev {
+        @include mobile-size-only {
+          left: -20px;
+        }
+      }
+      &-next {
+        @include mobile-size-only {
+          right: -20px;
+        }
+      }
+    }
+  }
 }
 
 .today-event {
@@ -277,7 +301,7 @@ body {
     }
   }
 }
-.soon {
+.center-slide {
   padding-top: $leng-40;
   padding-bottom: $leng-40;
   .card-full {
@@ -285,12 +309,26 @@ body {
     justify-content: center;
     align-items: baseline;
     a {
+      position: relative;
       width: 120px;
       height: 180px;
+      opacity: 0.8;
+      ::after {
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background-color: rgba(0, 0, 0, 0.3);
+      }
     }
+
     .active a {
       width: 150px;
       height: 230px;
+      opacity: 1;
+      ::after {
+        content: none;
+      }
     }
 
     &-cover {
@@ -298,6 +336,7 @@ body {
     }
     &-cont {
       text-align: center;
+      position: relative;
     }
   }
   .elipsis-wrap {
@@ -327,6 +366,17 @@ body {
 }
 
 .bannels {
+  .bannel {
+    position: relative;
+  }
+  .pager {
+    position: absolute;
+    bottom: $leng-24;
+    left: calc(50% - 600px);
+    @include mobile-size-only {
+      left: 40px;
+    }
+  }
 }
 
 .bannel {
@@ -347,15 +397,16 @@ body {
     position: relative;
     width: 100%;
     height: 400px;
-    @include containerBox;
+    margin: 0 auto;
+    max-width: 1200px;
     @include mobile-size-only {
+      width: calc(100% - 80px);
       height: 300px;
     }
 
     &-cont {
       p {
         //mix-blend-mode: overlay;
-        color: #4a4a4a;
         line-height: 1.3;
         transform: translateY(-50px);
         transition: all 0.5s;
@@ -364,9 +415,11 @@ body {
       }
       &-title1 {
         width: 30%;
+        color: $font-black2;
         font-weight: bold;
         font-size: 3vw;
         min-width: 300px;
+        // padding-left: $leng-12;
         padding-top: 50px;
 
         @at-root .bannel-inner.active & {
@@ -379,15 +432,18 @@ body {
       }
 
       &-title2 {
-        font-size: 2vw;
+        color: $font-black3;
+        font-size: 1.5vw;
         padding-top: 20px;
         transition-delay: 0.3s;
+        //padding-left: $leng-12;
+
         @at-root .bannel-inner.active & {
           transform: translateY(0px);
           opacity: 1;
         }
         @include mobile-size-only {
-          font-size: $size-h3;
+          font-size: $size-h6;
         }
       }
     }
@@ -403,8 +459,7 @@ body {
   opacity: 0;
 
   @include mobile-size-only {
-    right: 50px;
-    bottom: -30px;
+    right: 40px;
     width: 180px;
   }
 
@@ -472,6 +527,44 @@ body {
         background-color: #000;
         border-radius: 50%;
       }
+    }
+  }
+}
+
+.pager {
+  padding: 4px 20px;
+  border: 1px solid $font-black2;
+  //background-color: rgba(255, 255, 255, 0.4);
+  color: $font-black2;
+  border-radius: 25px;
+  @include font-number;
+}
+
+.arrow-btn {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: $leng-20;
+  text-align: center;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  &-prev {
+    left: calc(50% - 600px - 40px);
+
+    @include mobile-size-only {
+      left: 0;
+    }
+  }
+  &-next {
+    right: calc(50% - 600px - 40px);
+
+    @include mobile-size-only {
+      right: 0;
     }
   }
 }
@@ -606,7 +699,7 @@ body {
     box-shadow: $box-shadow4;
     @include blur-filter2;
     p {
-      color: #4a4a4a;
+      color: $font-black2;
     }
   }
 }
