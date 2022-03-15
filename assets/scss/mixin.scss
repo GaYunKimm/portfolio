@@ -148,8 +148,11 @@ $leng-10: 10px;
 $leng-12: 12px;
 $leng-16: 16px;
 $leng-20: 20px;
+$leng-24: 24px;
 $leng-40: 40px;
 $leng-60: 60px;
+$leng-65: 65px;
+$leng-60: 70px;
 $leng-80: 80px;
 $leng-100: 100px;
 
@@ -160,7 +163,7 @@ $brand-color: #009688;
   background-color: #abe9cd;
   background-image: linear-gradient(315deg, #abe9cd 0%, #009688 74%);
 }
-$brand-color3: #deebdd;
+$brand-color3: #eff8ef; //#deebdd;
 
 $alram-color: #ff3120;
 
@@ -222,7 +225,7 @@ $colors: (
   }
 }
 
-$breakpoint-pc: 1280;
+$breakpoint-pc: (1280px - 65px);
 $breakpoint-tablet: 992px;
 $breakpoint-mobile: 768px;
 
@@ -234,6 +237,11 @@ $breakpoint-mobile: 768px;
 
 @mixin mobile-size-only {
   @media (max-width:#{$breakpoint-pc - 1px}) {
+    @content;
+  }
+}
+@mixin pc-tablet-size {
+  @media (min-width: #{$breakpoint-tablet}) {
     @content;
   }
 }
@@ -259,22 +267,22 @@ $breakpoint-mobile: 768px;
 //사이즈
 .containerBox {
   width: 100%;
-  padding: 0 $leng-12;
+  padding: 0 #{$leng-12/2};
   margin: 0 auto;
   max-width: 1280px;
 
   @include mobile-size-only {
-    padding: 0 $leng-16;
+    padding: 0 $leng-24;
   }
 }
 
 @mixin containerBox {
   width: 100%;
-  padding: 0 $leng-12;
+  padding: #{$leng-12 / 2};
   margin: 0 auto;
   max-width: 1280px;
   @include mobile-size-only {
-    padding: 0 $leng-16;
+    padding: 0 $leng-24;
   }
 }
 
@@ -284,15 +292,16 @@ $breakpoint-mobile: 768px;
   max-width: 1280px;
   overflow: hidden;
   padding-left: $leng-12;
-
+  transform: translateX(#{-$leng-12 / 2});
   @include mobile-size-only {
-    padding-left: $leng-16;
+    padding-left: $leng-24;
+    transform: translateX(0);
   }
 }
 
 @mixin slide-padding-left {
-  padding-left: $leng-12;
+  //padding-left: $leng-12;
   @include mobile-size-only {
-    padding-left: $leng-16;
+    padding-left: $leng-24;
   }
 }

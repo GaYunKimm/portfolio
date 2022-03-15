@@ -7,6 +7,6 @@
 
 @media (max-width: 992px) { .spanblock { display: inline; } }
 
-.containerBox { width: 100%; padding: 0 12px; margin: 0 auto; max-width: 1280px; }
+.containerBox { width: 100%; padding: 0 6px; margin: 0 auto; max-width: 1280px; }
 
-@media (max-width: 1279px) { .containerBox { padding: 0 16px; } }
+@media (max-width: 1214px) { .containerBox { padding: 0 24px; } }
