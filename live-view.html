@@ -34,15 +34,15 @@
   <div class="wrapper">
     <div class="contents">
       <div class="content-video">
-        <video src="/assets/video/live.mp4"  type="video/mp4" muted autoplay="false" controls="false">
+        <video id="live" src="/assets/video/live.mp4" type="video/mp4">
         </video>
 
 
         <header class="video-header">
-          <h1 class="video-logo">Kayoons</h1>
-          <ul class="video-utill">
+          <h1 class="video-header-logo">Kayoons</h1>
+          <ul class="video-header-utill">
             <li><a href="#">
-                <span class="hiddeh">음소거</span>
+                <span class="hidden">음소거</span>
                 <span class="material-icons">
                   volume_up
                   <!-- volume_off -->
@@ -50,7 +50,7 @@
               </a></li>
 
             <li><a href="#">
-                <span class="hiddeh">알람추가</span>
+                <span class="hidden">알람추가</span>
                 <span class="material-icons">
                   notifications
                 </span>
@@ -59,10 +59,11 @@
 
           </ul>
           <!--util END-->
-          <a href="#">
+          <a href="#" title="닫기">
             <span class="material-icons">
               close
-            </span> </a>
+            </span>
+          </a>
           <!--close-->
         </header>
         <!--video header END-->
