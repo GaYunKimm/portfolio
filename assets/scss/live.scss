@@ -175,31 +175,78 @@ body {
 }
 
 //좋아요
-.video-chat-like-btn {
-  display: flex;
+.chat-like {
   position: fixed;
   right: $leng-12;
   bottom: $leng-12;
   z-index: 2;
   width: 45px;
   height: 45px;
+  visibility: hidden;
+
+  &-btn {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #626261;
+    z-index: 2;
+    .icon {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: $leng-30;
+    }
+  }
+
+  &-effect {
+    position: absolute;
+    width: 60px;
+    height: 140px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+
+    &-heart {
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+
+      &:nth-child(1) {
+        animation: ani-like-move1 1s linear 1;
+      }
+      &:nth-child(2) {
+        animation: ani-like-move2 1s linear 1;
+      }
+      &:nth-child(3) {
+        animation: ani-like-move3 1s linear 1;
+      }
+      &:nth-child(4) {
+        animation: ani-like-move4 1s linear 1;
+      }
+
+      span {
+        z-index: 0;
+        display: block;
+        background: url("/assets/images/effect/like.png") no-repeat;
+        background-position: left;
+        background-size: 2900%;
+        height: 50px;
+        width: 50px;
+        animation: ani-like 1s steps(28) 1;
+        background-position: right;
+      }
+    }
+  }
+
   // &:hover .icon,
   // &:focus .icon,
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  visibility: hidden;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.3);
+
   &:active .icon,
   &:hover .icon,
   &.active .icon {
     transform: scale(0.8);
-  }
-
-  .icon {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: $leng-30;
   }
 }
 //채팅
@@ -286,6 +333,7 @@ body {
   }
 }
 
+//컨트롤러
 .video-control {
   display: flex;
   position: fixed;
@@ -337,7 +385,7 @@ body {
   }
 }
 
-//포커스 효과
+//토글
 .video-detail-active {
   .video-header {
     &-utill {
@@ -345,7 +393,7 @@ body {
     }
   }
   .input-box,
-  .video-chat-like-btn,
+  .chat-like,
   .video-chat,
   .good-circle-list {
     visibility: visible;
@@ -353,5 +401,72 @@ body {
 
   .video-control {
     visibility: hidden;
+  }
+}
+
+@keyframes ani-like-move1 {
+  0% {
+    left: 10%;
+  }
+  50% {
+    left: 40%;
+  }
+  100% {
+    left: 30%;
+    bottom: 100%;
+  }
+}
+
+@keyframes ani-like-move2 {
+  0% {
+    left: 30%;
+  }
+  50% {
+    left: 20%;
+  }
+  100% {
+    left: 0%;
+    bottom: 80%;
+  }
+}
+
+@keyframes ani-like-move3 {
+  0% {
+    left: 30%;
+  }
+  50% {
+    left: 20%;
+  }
+  100% {
+    left: 0%;
+    bottom: 60%;
+  }
+}
+
+@keyframes ani-like-move4 {
+  0% {
+    left: 0%;
+  }
+  50% {
+    
+    right: 30%;
+  }
+  100% {
+    left: -10%;
+    bottom: 140%;
+  }
+}
+
+
+@keyframes ani-like {
+  0% {
+    background-position: left;
+  }
+  90% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+    background-position: right;
   }
 }

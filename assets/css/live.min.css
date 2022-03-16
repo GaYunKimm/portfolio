@@ -155,11 +155,27 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .good-circle-list .elipsis-wrap-text .icon { padding: 0 8px; font-size: calc(1rem); }
 
-.video-chat-like-btn { display: -webkit-box; display: -ms-flexbox; display: flex; position: fixed; right: 12px; bottom: 12px; z-index: 2; width: 45px; height: 45px; -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); visibility: hidden; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; border-radius: 50%; background-color: rgba(0, 0, 0, 0.3); }
+.chat-like { position: fixed; right: 12px; bottom: 12px; z-index: 2; width: 45px; height: 45px; visibility: hidden; }
 
-.video-chat-like-btn:active .icon, .video-chat-like-btn:hover .icon, .video-chat-like-btn.active .icon { -webkit-transform: scale(0.8); transform: scale(0.8); }
+.chat-like-btn { display: -webkit-box; display: -ms-flexbox; display: flex; width: 45px; height: 45px; -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; border-radius: 50%; background-color: #626261; z-index: 2; }
 
-.video-chat-like-btn .icon { color: rgba(255, 255, 255, 0.7); font-size: 30px; }
+.chat-like-btn .icon { color: rgba(255, 255, 255, 0.7); font-size: 30px; }
+
+.chat-like-effect { position: absolute; width: 60px; height: 140px; top: 0; left: 50%; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); }
+
+.chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; }
+
+.chat-like-effect-heart:nth-child(1) { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
+
+.chat-like-effect-heart:nth-child(2) { -webkit-animation: ani-like-move2 1s linear 1; animation: ani-like-move2 1s linear 1; }
+
+.chat-like-effect-heart:nth-child(3) { -webkit-animation: ani-like-move3 1s linear 1; animation: ani-like-move3 1s linear 1; }
+
+.chat-like-effect-heart:nth-child(4) { -webkit-animation: ani-like-move4 1s linear 1; animation: ani-like-move4 1s linear 1; }
+
+.chat-like-effect-heart span { z-index: 0; display: block; background: url("/assets/images/effect/like.png") no-repeat; background-position: left; background-size: 2900%; height: 50px; width: 50px; -webkit-animation: ani-like 1s steps(28) 1; animation: ani-like 1s steps(28) 1; background-position: right; }
+
+.chat-like:active .icon, .chat-like:hover .icon, .chat-like.active .icon { -webkit-transform: scale(0.8); transform: scale(0.8); }
 
 .video-chat { position: fixed; bottom: 60px; left: 12px; z-index: 2; width: calc(100% - 45px - 12px - 24px); height: 30vh; padding: 10px 10px 0; visibility: hidden; -webkit-mask-image: linear-gradient(transparent, #fff 30px); mask-image: linear-gradient(transparent, #fff 30px); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ }
 
@@ -199,6 +215,56 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .video-detail-active .video-header-utill { visibility: visible; }
 
-.video-detail-active .input-box, .video-detail-active .video-chat-like-btn, .video-detail-active .video-chat, .video-detail-active .good-circle-list { visibility: visible; }
+.video-detail-active .input-box, .video-detail-active .chat-like, .video-detail-active .video-chat, .video-detail-active .good-circle-list { visibility: visible; }
 
 .video-detail-active .video-control { visibility: hidden; }
+
+@-webkit-keyframes ani-like-move1 { 0% { left: 10%; }
+  50% { left: 40%; }
+  100% { left: 30%;
+    bottom: 100%; } }
+
+@keyframes ani-like-move1 { 0% { left: 10%; }
+  50% { left: 40%; }
+  100% { left: 30%;
+    bottom: 100%; } }
+
+@-webkit-keyframes ani-like-move2 { 0% { left: 30%; }
+  50% { left: 20%; }
+  100% { left: 0%;
+    bottom: 80%; } }
+
+@keyframes ani-like-move2 { 0% { left: 30%; }
+  50% { left: 20%; }
+  100% { left: 0%;
+    bottom: 80%; } }
+
+@-webkit-keyframes ani-like-move3 { 0% { left: 30%; }
+  50% { left: 20%; }
+  100% { left: 0%;
+    bottom: 60%; } }
+
+@keyframes ani-like-move3 { 0% { left: 30%; }
+  50% { left: 20%; }
+  100% { left: 0%;
+    bottom: 60%; } }
+
+@-webkit-keyframes ani-like-move4 { 0% { left: 0%; }
+  50% { right: 30%; }
+  100% { left: -10%;
+    bottom: 140%; } }
+
+@keyframes ani-like-move4 { 0% { left: 0%; }
+  50% { right: 30%; }
+  100% { left: -10%;
+    bottom: 140%; } }
+
+@-webkit-keyframes ani-like { 0% { background-position: left; }
+  90% { -webkit-transform: scale(1); transform: scale(1); }
+  100% { -webkit-transform: scale(0); transform: scale(0);
+    background-position: right; } }
+
+@keyframes ani-like { 0% { background-position: left; }
+  90% { -webkit-transform: scale(1); transform: scale(1); }
+  100% { -webkit-transform: scale(0); transform: scale(0);
+    background-position: right; } }
