@@ -212,6 +212,7 @@ body {
       position: absolute;
       bottom: -20px;
       left: 0;
+      animation: ani-like-move1 1s linear 1;
 
       &:nth-child(1) {
         animation: ani-like-move1 1s linear 1;
@@ -448,7 +449,6 @@ body {
     left: 0%;
   }
   50% {
-    
     right: 30%;
   }
   100% {
@@ -456,7 +456,6 @@ body {
     bottom: 140%;
   }
 }
-
 
 @keyframes ani-like {
   0% {

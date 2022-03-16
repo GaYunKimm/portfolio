@@ -163,7 +163,7 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .chat-like-effect { position: absolute; width: 60px; height: 140px; top: 0; left: 50%; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); }
 
-.chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; }
+.chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 
 .chat-like-effect-heart:nth-child(1) { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 
