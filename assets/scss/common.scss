@@ -131,7 +131,7 @@
 
 //wrap
 .slide-wrap {
-  // webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
   scroll-snap-type: none;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -569,6 +569,79 @@
     }
   }
 }
+.good-circle-list {
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &-cover {
+    display: block;
+    @include bgs-cover(45px, 45px, 50%);
+    margin-right: $leng-8;
+  }
+  &--view {
+    display: flex;
+    align-items: center;
+    padding-left: $leng-8;
+  }
+  .elipsis-wrap {
+    &-title {
+      font-size: $size-h5;
+      padding-bottom: ($leng-8/2);
+    }
+    &-text {
+      display: flex;
+      align-items: center;
+      opacity: 0.8;
+      font-size: $size-small;
+      line-height: 1;
+      .icon {
+        font-size: $size-normal;
+        padding: 0 8px;
+      }
+    }
+  }
+}
+.input-box {
+  position: relative;
+  bottom: $leng-12;
+  left: $leng-12;
+  z-index: 2;
+  //width: calc(100% - 45px - 12px - 24px);
+  &-inp {
+    width: 100%;
+    height: 45px;
+    padding: 0 $leng-12;
+    border: 0 none;
+    background-color: transparent;
+    &:focus ~ .input-box-focus::after,
+    //&:not([value=""]) ~ .input-box-focus::after,
+    &.active ~ .input-box-focus::after {
+      width: 100%;
+    }
+  }
+  &-focus {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    &::after {
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      content: "";
+      display: block;
+      width: 0%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $brand-color;
+    }
+  }
+}
+
 
 //animation
 @keyframes ani-indicator {

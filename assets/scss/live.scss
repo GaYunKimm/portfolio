@@ -8,66 +8,350 @@ body {
   overflow: hidden;
 }
 
-.video-header {
-  display: flex;
-  align-items: center;
-  height: $leng-65;
-  padding: 0 $leng-12;
-  &-logo {
-    @include logo-font;
-    color: $brand-color;
-    font-size: $leng-24;
-    margin-right: auto;
+.conetents {
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  @include mobile-size {
+    position: static;
+    width: 100%;
+    min-height: none;
+    max-height: none;
   }
 }
-
 .content-video {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  width: calc(100vh * 0.5);
+  transform: translate(-50%, -50%);
   min-height: 100vh;
+  max-height: 100vh;
+  //width: 100%;
   @include mobile-size {
-    position: fixed;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: auto;
+    transform: translate(0%, 0%);
+    overflow: hidden;
   }
-
   &::before {
-    content: "";
     display: block;
-    width: 100%;
-    height: 250px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent 75%);
     position: absolute;
-    z-index: 1;
     top: 0;
     left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 75%);
+    content: "";
   }
 
   &::after {
-    content: "";
     display: block;
-    width: 100%;
-    height: 250px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), transparent 75%);
     position: absolute;
-    z-index: 1;
     bottom: 0;
     left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), transparent 75%);
+    content: "";
+  }
+}
+
+.video-header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 50;
+  width: 100%;
+  height: $leng-65;
+  padding: 0 $leng-12;
+  align-items: center;
+  &-logo {
+    color: $bg-white1;
+    font-size: $leng-30;
+    margin-right: auto;
+    @include logo-font;
+    span {
+      color: $brand-color;
+    }
+  }
+
+  &-utill {
+    display: flex;
+    visibility: hidden;
   }
 }
 
 #live {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   z-index: -1;
-  transform: translate(-50%, -50%);
-  //width: 100%;
+  width: 100%;
   max-height: 100vh;
   min-height: 100vh;
   @include mobile-size {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
     width: 100%;
+    transform: translate(-50%, -50%);
+    //width: 100%;
+    max-height: 100vh;
+    min-height: 100vh;
     object-fit: cover;
     max-height: none;
+  }
+}
+
+.video-btn {
+  display: block;
+  width: 40px;
+  font-size: $size-h5;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.video-cont {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+//상품
+.good-circle-list {
+  padding: 0 12px;
+  visibility: hidden;
+  li {
+    /* display: flex;
+    align-items: center;
+    justify-content: flex-start; */
+    font-size: 0;
+  }
+  &--view {
+    display: flex;
+    align-items: center;
+    padding-left: $leng-8;
+  }
+  &-cover {
+    display: inline-block;
+    margin-right: $leng-8;
+    @include bgs-cover(45px, 45px, 50%);
+  }
+
+  .elipsis-wrap {
+    display: inline-block;
+    width: calc(100% - 45px - 8px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    vertical-align: 5px;
+    &-title {
+      font-weight: 500;
+      font-size: $size-h6;
+      padding-bottom: ($leng-8/2);
+      opacity: 0.9;
+      @include txt-line(none);
+    }
+    &-text {
+      display: flex;
+      font-size: $size-small;
+      line-height: 1;
+      align-items: center;
+      opacity: 0.8;
+      .icon {
+        padding: 0 8px;
+        font-size: $size-normal;
+      }
+    }
+  }
+}
+
+//좋아요
+.video-chat-like-btn {
+  display: flex;
+  position: fixed;
+  right: $leng-12;
+  bottom: $leng-12;
+  z-index: 2;
+  width: 45px;
+  height: 45px;
+  // &:hover .icon,
+  // &:focus .icon,
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  &:active .icon,
+  &:hover .icon,
+  &.active .icon {
+    transform: scale(0.8);
+  }
+
+  .icon {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: $leng-30;
+  }
+}
+//채팅
+.video-chat {
+  position: fixed;
+  bottom: 60px;
+  left: $leng-12;
+  z-index: 2;
+  width: calc(100% - 45px - 12px - 24px);
+  height: 30vh;
+  padding: 10px 10px 0;
+  visibility: hidden;
+  -webkit-mask-image: linear-gradient(transparent, #fff 30px);
+  mask-image: linear-gradient(transparent, #fff 30px);
+  //overflow: hidden;
+  @include scoll-wrap;
+  &-wrap {
+  }
+  &-list {
+    li {
+      display: flex;
+      padding-bottom: $leng-8;
+    }
+    span {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.2;
+      &.video-chat-list-user {
+        display: inline-flex;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: $size-small;
+        padding-right: $leng-8;
+      }
+    }
+  }
+}
+
+//인풋 채팅입력
+.input-box {
+  position: fixed;
+  bottom: $leng-12;
+  left: $leng-12;
+  z-index: 2;
+  width: calc(100% - 45px - 12px - 24px);
+  visibility: hidden;
+
+  &-inp {
+    width: 100%;
+    height: 45px;
+    padding: 0 $leng-12;
+    border: 0 none;
+    color: $bg-white1;
+    background-color: transparent;
+    &:focus ~ .input-box-focus::after,
+    //&:not([value=""]) ~ .input-box-focus::after,
+    &.active ~ .input-box-focus::after {
+      width: 100%;
+    }
+  }
+  &-focus {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    &::after {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 100%;
+      content: "";
+      transform: translateX(-50%);
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      background-color: $brand-color;
+    }
+  }
+  .video-msg-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 45px;
+    height: 45px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.video-control {
+  display: flex;
+  position: fixed;
+  bottom: $leng-12;
+  z-index: 2;
+  width: 100%;
+  padding: 0 $leng-12;
+  align-items: center;
+  &-btn {
+    display: flex;
+    width: 40px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &-progress {
+    position: relative;
+    flex: 1;
+
+    &-bar {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      &-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: $brand-color;
+      }
+    }
+
+    &-point {
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      transform: translate(calc(-10px + 1.5px), calc(-10px + 1.5px));
+      background-color: $brand-color;
+      box-shadow: $box-shadow1;
+      border-radius: 50%;
+    }
+  }
+  &-time {
+    padding-left: $leng-24;
+  }
+}
+
+//포커스 효과
+.video-detail-active {
+  .video-header {
+    &-utill {
+      visibility: visible;
+    }
+  }
+  .input-box,
+  .video-chat-like-btn,
+  .video-chat,
+  .good-circle-list {
+    visibility: visible;
+  }
+
+  .video-control {
+    visibility: hidden;
   }
 }

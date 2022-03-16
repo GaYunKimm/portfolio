@@ -30,6 +30,8 @@
 
 </head>
 
+<!--video-detail-active-->
+
 <body class="video-detail-active">
   <div class="wrapper">
     <div class="contents">
@@ -39,62 +41,148 @@
 
 
         <header class="video-header">
-          <h1 class="video-header-logo">Kayoons</h1>
+          <h1 class="video-header-logo">
+            <a href="#" title="홈 바로가기"> Kay<span>oo</span>ns</a>
+          </h1>
           <ul class="video-header-utill">
-            <li><a href="#">
+            <li><button aria-hidden="true" href="#" title="음소거" class="video-btn">
                 <span class="hidden">음소거</span>
-                <span class="material-icons">
+                <span class="material-icons-outlined">
                   volume_up
                   <!-- volume_off -->
                 </span>
-              </a></li>
+              </button></li>
 
-            <li><a href="#">
+            <li><button aria-hidden="true" href="#" title="알람추가" class="video-btn">
                 <span class="hidden">알람추가</span>
-                <span class="material-icons">
+                <span class="material-icons-outlined">
                   notifications
                 </span>
 
-              </a></li>
+              </button></li>
 
           </ul>
           <!--util END-->
-          <a href="#" title="닫기">
+          <button aria-hidden="true" class="video-btn">
             <span class="material-icons">
               close
             </span>
-          </a>
+            <span class="hidden">닫기</span>
+          </button>
           <!--close-->
         </header>
         <!--video header END-->
 
         <div class="video-cont">
-          <a href="#" title="바로가기" class="video-cont-cover"
-            style="background-image: url(/assets/images/profile/profile15.jpg);">
-            <span class="hidden">프로필 이미지</span>
-          </a>
-          <div class="video-cont-desc">
-            <div class="video-cont-desc-title">별빛이 내린다 </div>
-            <div class="video-cont-desc-text">
-              <span>가윤스토어</span>
-              <div class="video-cont-desc-text-view">
-                <span class="material-icons-outlined">
-                  visibility
-                </span>
+          <ul class="good-circle-list">
+            <li>
+              <a href="#" title="바로가기" class="good-circle-list-cover"
+                style="background-image: url(/assets/images/profile/profile15.jpg);">
+                <span class="hidden">프로필 이미지</span>
+              </a>
+              <div class="elipsis-wrap">
+                <p class="elipsis-wrap-title">달걀흰자 에그비누❤️빅토리아 스웨덴 빅토리아팩 피부가 꿀피가 돼요!</p>
+                <div class="elipsis-wrap-text">
+                  <span>가윤스토어</span>
+                  <div class="good-circle-list--view">
+                    <span class="icon material-icons-outlined">
+                      visibility
+                    </span>
 
-                2.3만
+                    <span>2.3 만</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </li>
+            <!--li END-->
+
+
+
+
+
+          </ul>
         </div>
 
+        <div class="video-control">
+          <button aria-hidden="true" class="video-control-btn" data-play="play" title="재생/일시정지">
+            <span class="icon material-icons">
+              play_arrow
+              <!-- pause -->
+            </span>
+          </button>
+          <!--END-->
+          <div class="video-control-progress">
+
+            <div class="video-control-progress-bar">
+              <div class="video-control-progress-bar-inner" style="width: 100%;"></div>
+            </div>
+            <button aria-hidden="true" class="video-control-progress-point" style="left: 100%;">
+              <span class="hidden">재생바 버튼</span>
+            </button>
+          </div>
+
+          <div class="video-control-time">
+            49:00:20
+          </div>
+        </div>
 
         <div class="video-chat">
           <div class="video-chat-wrap">
             <ul class="video-chat-list">
               <li>
-                <span class="video-chat-list-user"></span>
-                <span></span>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?정말 피부가 좋아지나요?정말 피부가 좋아지나요?정말 피부가 좋아지나요?정말 피부가 좋아지나요?정말 피부가 좋아지나요?정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
+              </li>
+
+              <li>
+                <span class="video-chat-list-user">불타는개미</span>
+                <span>정말 피부가 좋아지나요?</span>
               </li>
             </ul>
 
@@ -104,24 +192,28 @@
         <!--END-->
 
         <div class="video-chat-input input-box">
-          <input type="text">
-          <button type="button">
-            <span class="material-icons-outlined">
+          <label for="video-chat" class="hidden">메세지입력창</label>
+          <input id="video-chat" required="required" class="input-box-inp" type="text" placeholder="Message">
+          <div class="input-box-focus"></div>
+
+          <button class="video-msg-btn" type="button">
+            <span class="icon material-icons-outlined">
               send
             </span>
           </button>
         </div>
 
-
-        <a href="#" class="video-chat-like-btn">
-          <span class="material-icons-outlined">
+        <button aria-hidden="true" class="video-chat-like-btn">
+          <span class="icon material-icons-outlined">
             favorite_border
           </span>
-        </a>
+          <span class="hidden">좋아요</span>
+        </button>
       </div>
     </div>
   </div>
   <!--//wrapper END-->
+
 
 </body>
 

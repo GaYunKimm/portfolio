@@ -41,7 +41,18 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
 }
-
+//스크롤박스
+@mixin scoll-wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
 .hidden {
   position: absolute;
   top: -9999%;
@@ -153,6 +164,7 @@ $leng-12: 12px;
 $leng-16: 16px;
 $leng-20: 20px;
 $leng-24: 24px;
+$leng-30: 30px;
 $leng-40: 40px;
 $leng-60: 60px;
 $leng-65: 65px;
