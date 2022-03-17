@@ -3,10 +3,14 @@
 //@include get-color(color, text-color);
 //@include get-color(background-color, bg-color);
 
-.lnb {
+.lnb-main {
   position: relative;
   z-index: 50;
   box-shadow: $box-shadow1;
+  @include pc-tablet-size {
+    z-index: 35;
+    left: 65px;
+  }
   &-list {
     @include flex--slide;
 

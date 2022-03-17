@@ -41,10 +41,10 @@
     </header>
     <!--//header END-->
     <!--nav-->
-    <nav class="lnb">
+    <nav class="lnb-main">
       <div class="slide-wrap">
-        <h2 class="hidden">메뉴</h2>
-        <ul class="lnb-list">
+        <h2 class="hidden">메인 메뉴</h2>
+        <ul class="lnb-main-list">
           <li><a class="active" href="#" title="홈 바로가기">홈</a></li>
           <li><a href="#" title="오늘의 사용자 바로가기">오늘의사용자</a></li>
           <li><a href="#" title="라이브 바로가기">라이브</a></li>
@@ -60,6 +60,7 @@
       </div>
     </nav>
     <!--//nav END-->
+
 
 
     <nav class="gnb">
@@ -1518,6 +1519,565 @@
 
   </div>
   <!--//wrapper END-->
+
+
+  <!--nav 메뉴 팝업-->
+  <div class="pop-full" style="display: none;">
+    <div class="pop-header">
+      <h2 class="pop-header-title">메뉴 컨텐츠</h2>
+
+      <!--util END-->
+      <button aria-hidden="true" class="pop-header-close-btn">
+        <span class="icon material-icons">
+          close
+        </span>
+        <span class="hidden">닫기</span>
+      </button>
+      <!--close-->
+    </div>
+
+    <div class="pop-content">
+      <nav class="nav pop-content-inner">
+        <div class="pop-title">카테고리</div>
+        <ul class="thum-grid category">
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-13.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리1
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-14.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리2
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-3.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리3
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-11.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리4
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-28.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리1
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-1.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리2
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-5.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리3
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-9.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리4
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-30.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리1
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-2.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리2
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-4.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리3
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-10.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  카테고리4
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+        </ul>
+        <!--ul END-->
+        <div class="pop-title">서비스</div>
+        <div class="info-list">
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                verified
+              </span>
+              주문 내역
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                thumb_up
+              </span>
+              최다 베스트
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                lightbulb
+              </span>
+              올해 최고상
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                credit_card
+              </span>
+              오늘의 사용자
+            </a>
+          </li>
+          <!--li END-->
+
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                star_rate
+              </span>
+              떠오르는 사용자
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                card_giftcard
+              </span>
+              오늘의 이벤트
+            </a>
+          </li>
+          <!--li END-->
+
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                extension
+              </span>
+              재미
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-round">
+                percent
+              </span>
+
+              구독권 확인 </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="서비스 바로가기">
+              <span class="icon material-icons-outlined">
+                verified
+              </span>
+              주문 내역
+            </a>
+          </li>
+          <!--li END-->
+        </div>
+        <!--ul END-->
+
+      </nav>
+    </div>
+    <!--video header END-->
+
+  </div>
+  <!--//nav END-->
+
+
+  <!--최근본-->
+  <div class="pop-full" style="display: none;">
+    <div class="pop-header">
+      <h2 class="pop-header-title">최근 본 컨텐츠</h2>
+
+      <!--util END-->
+      <button aria-hidden="true" class="pop-header-close-btn">
+        <span class="icon material-icons">
+          close
+        </span>
+        <span class="hidden">닫기</span>
+      </button>
+      <!--close-->
+    </div>
+
+    <div class="pop-content">
+      <div class="pop-content-inner">
+        <div class="pop-title">
+          2022.03.10
+
+          <button class="btn-circle">
+            전체삭제
+          </button>
+        </div>
+        <ul class="thum-grid list">
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-13.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-14.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-3.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-11.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-28.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-1.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-5.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-9.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-30.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-2.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-4.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="카테고리 바로가기">
+              <div class="thum-grid-cover" style="background-image: url(/assets/images/bookcover/L-10.jpg);">
+                <span class="hidden">카테고리 이미지</span>
+              </div>
+              <div class="thum-grid-cont">
+                <p class="thum-grid-cont-name">
+                  마이컨텐츠 별이 빛나는 밤에 만납시다. 다시는
+                </p>
+                <p class="thum-grid-cont-view">
+                  홍길동
+                </p>
+              </div>
+
+            </a>
+          </li>
+          <!--li END-->
+
+        </ul>
+        <!--ul END-->
+
+
+      </div>
+    </div>
+    <!--video header END-->
+
+  </div>
+  <!--//nav END-->
+
+  <div class="dark" style="display: none;"></div>
+
+
 
 
   <!-- <script>

@@ -101,6 +101,10 @@ input:focus, select:focus { outline-style: none; border-color: inherit; }
 ::-ms-reveal { width: 0; height: 0; display: none; }
 
 /*mixin*/
+.srcoll-wrap { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ }
+
+.srcoll-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
+
 .hidden { position: absolute; top: -9999%; left: -9999%; width: 1px; height: 1px; font-size: 0; line-height: 0; overflow: hidden; }
 
 @media (max-width: 992px) { .spanblock { display: inline; } }

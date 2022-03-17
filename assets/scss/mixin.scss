@@ -42,7 +42,18 @@
   justify-content: flex-start;
 }
 //스크롤박스
-@mixin scoll-wrap {
+.srcoll-wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+@mixin scroll-wrap {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -209,6 +220,8 @@ $colors: (
     bg-color2: #e0e0e0,
     bg-color3: #cecece,
     bg-color4: rgba(0, 0, 0, 0.1),
+    //blur
+    opacity-color1: rgba(255, 255, 255, 0.5),
   ),
   dark: (
     //font-color
@@ -224,6 +237,8 @@ $colors: (
     bg-color2: #1d1d1d,
     bg-color3: #2d2d2d,
     bg-color4: rgba(18, 18, 18, 0.1),
+    //blur
+    opacity-color1: rgba(0, 0, 0, 0.5),
   ),
 );
 

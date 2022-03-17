@@ -43,7 +43,9 @@ body {
   border-bottom-width: 1px;
   border-style: solid;
   @include get-color(border-color, line-color1);
-
+  @include pc-tablet-size {
+    z-index: 35;
+  }
   .containerBox {
     display: flex;
     position: relative;
@@ -70,19 +72,33 @@ body {
       left: 16px;
     }
   }
+  &-close-btn {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 24px;
+    width: 45px;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    @include pc-tablet-size {
+      right: 16px;
+    }
+  }
 }
 .gnb {
   display: flex;
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 50;
-  width: calc(100% - 16px);
+  z-index: 60;
+  //width: calc(100% - 16px);
+  width: 100%;
   height: 60px;
-  margin: 8px;
+  // margin: 8px;
   justify-content: center;
   align-items: center;
-  border-radius: $leng-10;
+  // border-radius: $leng-10;
   box-shadow: $box-shadow2;
   @include get-color(background-color, bg-color1);
 
@@ -230,4 +246,229 @@ body {
     @include get-color(color, font-color2);
     @include logo-font;
   }
+}
+
+.info-list {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  li {
+    width: 100%;
+    border-bottom-width: 1px;
+    border-style: solid;
+    @include get-color(border-color, line-color1);
+    &:last-child {
+      border: 0 none;
+    }
+
+    a {
+      display: flex;
+      height: 55px;
+      font-size: $size-h6;
+      align-items: center;
+      @include get-color(color, font-color3);
+      .icon {
+        padding-left: $leng-16;
+        padding-right: $leng-24;
+      }
+    }
+  }
+}
+.pop-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  //z-index: 65;
+  z-index: 55;
+  width: 100%;
+  //max-width: 500px;
+  height: 100vh;
+  min-width: 280px;
+  box-shadow: $box-shadow4;
+  @include get-color(background-color, bg-color1);
+  @include pc-tablet-size {
+    left: 65px;
+    // z-index: 45;
+    max-width: 400px;
+  }
+}
+.pop {
+  &-header {
+    display: flex;
+    position: relative;
+    width: 100%;
+    width: 100%;
+    height: 65px;
+    padding: $leng-12;
+    margin: 0 auto;
+    border-bottom-width: 1px;
+    border-style: solid;
+    align-items: center;
+    @include mobile-size-only {
+      padding: 0 $leng-24;
+    }
+    @include get-color(border-color, line-color1);
+    &-title {
+      display: inline-flex;
+      font-weight: 500;
+      //color: $brand-color;
+      font-size: $size-h5;
+      @include get-color(color, font-color2);
+    }
+    &-prev-btn {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 24px;
+      width: 45px;
+      height: 100%;
+      align-items: center;
+      @include get-color(color, font-color2);
+      @include pc-tablet-size {
+        left: 16px;
+      }
+    }
+    &-close-btn {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 24px;
+      width: 45px;
+      height: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      @include get-color(color, font-color2);
+      @include pc-tablet-size {
+        right: 16px;
+      }
+    }
+  }
+
+  &-content {
+    height: calc(100vh - 65px);
+
+    @include scroll-wrap;
+    &-inner {
+      padding: $leng-40 $leng-24 $leng-80;
+      @include pc-tablet-size {
+        padding: $leng-30 $leng-12 $leng-30;
+      }
+
+      ul {
+        padding-bottom: $leng-30;
+      }
+    }
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: $size-h5;
+    padding-bottom: $leng-24;
+    @include get-color(color, font-color2);
+
+    button {
+      margin-left: auto;
+    }
+  }
+}
+
+.dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  //z-index: 60;
+  z-index: 35;
+  width: 100%;
+  height: 100vh;
+  @include get-color(background-color, opacity-color1);
+  @include blur-filter2;
+}
+
+.category.thum-grid {
+  margin: 0 -8px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  li {
+    margin: 0 8px;
+    padding-right: 0;
+    padding-bottom: $leng-16;
+    flex: 1 1 20%;
+    a {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .thum-grid-cover {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    // @include bgs-cover(55px, 55px, 10px);
+  }
+  .thum-grid-cont {
+    padding-top: 4px;
+    &-name {
+      font-size: $size-small;
+      text-align: center;
+      @include get-color(color, font-color3);
+    }
+  }
+}
+
+.list.thum-grid {
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  li {
+    padding-right: 0;
+    padding-bottom: $leng-16;
+    width: 100%;
+
+    a {
+      display: flex;
+      padding: 12px;
+      border: 1px;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+
+      border-radius: 10px;
+      border-style: solid;
+      @include get-color(border-color, line-color1);
+    }
+  }
+  .thum-grid-cover {
+    @include bgs-cover(70px, 70px, 10px);
+    flex: 0 0 auto;
+  }
+  .thum-grid-cont {
+    padding-top: 0px;
+    padding-left: 12px;
+    width: calc(100% - 70px);
+    &-name {
+      font-weight: 600;
+      font-size: $size-h6;
+      @include txt-line(none);
+      @include get-color(color, font-color2);
+    }
+    &-view {
+      font-size: $size-small;
+      @include get-color(color, font-color3);
+    }
+  }
+}
+
+.btn-circle {
+  padding: 4px 10px;
+  border-radius: 25px;
+  border: 1px;
+  border-style: solid;
+  font-size: $size-small;
+  @include get-color(border-color, font-color3);
+  @include get-color(color, font-color3);
 }

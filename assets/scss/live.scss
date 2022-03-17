@@ -263,7 +263,7 @@ body {
   -webkit-mask-image: linear-gradient(transparent, #fff 30px);
   mask-image: linear-gradient(transparent, #fff 30px);
   //overflow: hidden;
-  @include scoll-wrap;
+  @include scroll-wrap;
   &-wrap {
   }
   &-list {
