@@ -11,7 +11,9 @@
   left: 0;
   background-color: transparent;
   border-bottom-color: transparent;
-  .logo {
+  @include pc-fixed-content;
+  .logo,
+  .header-prev-btn {
     color: $font-white1;
   }
 }
@@ -29,9 +31,7 @@ body {
   z-index: -1;
   width: 100%;
   height: 250px;
-  @include pc-tablet-size {
-    left: 65px;
-  }
+  @include pc-fixed-content;
 
   &-cover {
     position: absolute;
@@ -56,8 +56,8 @@ body {
     left: 0;
   }
 
-  .elipsis-wrap{
-    color:$font-white1
+  .elipsis-wrap {
+    color: $font-white1;
   }
 }
 

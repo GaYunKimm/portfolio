@@ -53,6 +53,7 @@
     display: none; /* Chrome, Safari, Opera*/
   }
 }
+//숨기
 .hidden {
   position: absolute;
   top: -9999%;
@@ -63,7 +64,6 @@
   line-height: 0;
   overflow: hidden;
 }
-//숨기기
 @mixin hidden {
   position: absolute;
   top: -9999%;
@@ -330,5 +330,13 @@ $breakpoint-mobile: 768px;
   //padding-left: $leng-12;
   @include mobile-size-only {
     padding-left: $leng-24;
+  }
+}
+
+//pc대응 컨텐츠 fixed 사이즈
+@mixin pc-fixed-content {
+  @include pc-tablet-size {
+    left: $leng-65;
+    width: calc(100% - 65px);
   }
 }

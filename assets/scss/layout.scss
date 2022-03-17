@@ -46,6 +46,7 @@ body {
 
   .containerBox {
     display: flex;
+    position: relative;
     height: $leng-65;
     align-items: center;
     justify-content: center;
@@ -55,6 +56,19 @@ body {
     color: $brand-color;
     font-size: $size-h2;
     @include logo-font;
+  }
+
+  &-prev-btn {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 45px;
+    height: 100%;
+    align-items: center;
+    @include pc-tablet-size {
+      left: 16px;
+    }
   }
 }
 .gnb {
