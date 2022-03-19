@@ -4,10 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Meow+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap");
-.srcoll-wrap { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ }
-
-.srcoll-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
-
 .hidden { position: absolute; top: -9999%; left: -9999%; width: 1px; height: 1px; font-size: 0; line-height: 0; overflow: hidden; }
 
 @media (max-width: 992px) { .spanblock { display: inline; } }
@@ -15,3 +11,15 @@
 .containerBox { width: 100%; padding: 0 6px; margin: 0 auto; max-width: 1280px; }
 
 @media (max-width: 1344px) { .containerBox { padding: 0 24px; } }
+
+.slide-list { padding-left: 12px; }
+
+@media (max-width: 1344px) { .slide-list { padding-left: 24px; } }
+
+.slide-wrap { -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ overflow-x: auto !important; /*  scroll-snap-type: x proximity; transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); */ }
+
+.slide-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
+
+.srcoll-wrap { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ -ms-touch-action: pan-x; touch-action: pan-x; -ms-scroll-snap-type: x proximity; scroll-snap-type: x proximity; -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); }
+
+.srcoll-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }

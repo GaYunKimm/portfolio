@@ -3,19 +3,33 @@
 //@include get-color(color, text-color);
 //@include get-color(background-color, bg-color);
 
+.bannel {
+  padding-top: 115px;
+
+  .arrow-btn {
+    top: calc(50% + (115px / 2));
+  }
+}
+
 .lnb-main {
   position: relative;
+  //top: $leng-65;
+  transition: transform 0.3s;
   z-index: 50;
+  width: 100%;
   box-shadow: $box-shadow1;
+  @include get-color(background-color, bg-color1);
   @include pc-tablet-size {
-    z-index: 35;
     left: 65px;
+    z-index: 35;
+    width: calc(100% - 65px);
   }
   &-list {
+    height: 50px;
     @include flex--slide;
-
     a {
       display: block;
+      height: 50px;
       padding: 10px;
       font-size: $size-h6;
       text-align: center;
@@ -82,5 +96,32 @@
         @include txt-line(2);
       }
     }
+  }
+}
+
+//.sticky
+
+//pc,mo 공통으로
+.sticky-elem .header-cont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  // @include blur-filter;
+}
+
+.sticky-elem .gnb {
+  position: fixed;
+  transform: translateY(0) !important;
+  @include mobile-size {
+    transform: translateY(0);
+  }
+}
+
+.nonetouch {
+  a {
+    pointer-events: none;
+    user-select: none;
   }
 }

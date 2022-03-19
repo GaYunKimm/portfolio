@@ -41,29 +41,7 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
 }
-//스크롤박스
-.srcoll-wrap {
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: none;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-  }
-}
-@mixin scroll-wrap {
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: none;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-  }
-}
+
 //숨기
 .hidden {
   position: absolute;
@@ -338,6 +316,84 @@ $breakpoint-mobile: 768px;
   @include mobile-size-only {
     padding-left: $leng-24;
     transform: translateX(0);
+  }
+}
+
+//스크롤박스
+//x스크롤
+.slide-list {
+  // @include containerBox2;
+  padding-left: $leng-12;
+  @include mobile-size-only {
+    padding-left: $leng-24;
+  }
+}
+
+.slide-wrap {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: auto !important;
+
+  // touch-action: pan-x;
+  /*  scroll-snap-type: x proximity;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+@mixin slide-wrap {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: auto !important;
+  scroll-snap-type: x proximity;
+
+  //touch-action: pan-x;
+  scroll-snap-type: x proximity;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  //@include containerBox2;
+  //pointer-events: none;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+//y스크롤
+.srcoll-wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  touch-action: pan-x;
+  scroll-snap-type: x proximity;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+@mixin scroll-wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  touch-action: pan-x;
+  scroll-snap-type: x proximity;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
   }
 }
 

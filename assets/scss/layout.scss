@@ -26,6 +26,7 @@ body {
   position: relative;
   width: 100%;
   height: auto;
+  // padding-top: 115px;
   overflow-x: hidden;
   flex-direction: column;
   min-height: 100vh;
@@ -34,14 +35,25 @@ body {
     margin-left: $leng-65;
   }
 }
+
+.header-cont {
+  transition: transform 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
 .header {
   position: relative;
   top: 0;
   left: 0;
   z-index: 50;
   width: 100%;
+  height: $leng-65;
   border-bottom-width: 1px;
   border-style: solid;
+  @include get-color(background-color, bg-color1);
   @include get-color(border-color, line-color1);
   @include pc-tablet-size {
     z-index: 35;
@@ -49,7 +61,7 @@ body {
   .containerBox {
     display: flex;
     position: relative;
-    height: $leng-65;
+    height: 100%;
     align-items: center;
     justify-content: center;
   }
