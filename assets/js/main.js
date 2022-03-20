@@ -111,10 +111,10 @@ $swiperX.forEach((swiper, idx) => {
     end: 0,
   }
 
-  swiper.addEventListener('wheel', (e) => {
+  /* swiper.addEventListener('wheel', (e) => {
     let $swiper = getTarget(e.target, "slide-wrap");
     slideWheel(e, idx, $swiper);
-  })
+  }) */
 
   swiper.addEventListener("mousedown", (e) => {
     let $swiper = getTarget(e.target, "slide-wrap");
