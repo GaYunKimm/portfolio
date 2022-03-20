@@ -2,8 +2,8 @@
 
 const $header = document.querySelector(".header-cont");
 const $gnb = document.querySelector(".gnb");
-const $contents = document.querySelector(".contents");
-const $swiperX = document.querySelectorAll(".slide-wrap")
+const $live = document.querySelector(".live");
+const $swiperX = document.querySelectorAll(".slide-wrap");
 let prevYoffset; //스크롤 이전 
 let scrollDirection;//스크롤방향
 
@@ -101,7 +101,74 @@ window.addEventListener('scroll', (e) => {
   scrollDirectionFunc();
   //스크롤 픽스드 효과
   headerSticky(e);
+
+  $live.querySelectorAll('.card-full-video').forEach((video, idx) => {
+
+    if (
+      pageYOffset > $live.offsetTop - (window.outerHeight / 2) && //아래로내릴때영역
+      pageYOffset < $live.offsetTop - (window.outerHeight / 3) + $live.offsetHeight//하단
+    ) {
+      scrollxlive(e, video);
+    }
+    else {
+      console.log('영역안임');
+      $live.querySelectorAll('.card-full-cover')[0].style.visibility = "visible";
+      video.currentTime = 0;
+      video.pause();
+      video.style.visibility = "hidden";
+      video.style.zIndex = "-1";
+    }
+  });
+
+
 });
+
+$live.parentNode.addEventListener("scroll", (e) => { //siide 
+
+   $live.querySelectorAll('.card-full-video').forEach((video, idx) => {
+    let videoElem = video.parentNode.parentNode;//li
+
+    if (
+      $live.parentNode.scrollLeft > videoElem.offsetLeft - (window.outerWidth / 2) && //아래로내릴때영역
+       $live.parentNode.scrollLeft < videoElem.offsetLeft - (window.outerWidth / 6) + video.offsetWidth//하단 
+    ) {
+      //console.log('영역안');
+
+      $live.querySelectorAll('.card-full-cover')[0].style.visibility = "hidden";
+      video.play();
+      video.style.visibility = "visible";
+      video.style.zIndex = "1";
+    }
+    else {
+     // console.log('영역안임');
+      $live.querySelectorAll('.card-full-cover')[0].style.visibility = "visible";
+      video.currentTime = 0;
+      video.pause();
+      video.style.visibility = "hidden";
+      video.style.zIndex = "-1";
+
+    }
+
+  }); 
+});
+
+
+function scrollxlive(e, video) {
+  let videoElem = video.parentNode.parentNode;
+  console.log(videoElem.offsetLeft)
+  if (
+    $live.scrollLeft > videoElem.offsetLeft - (window.outerWidth / 2) //&& //아래로내릴때영역
+    // $live.scrollLeft < videoElem.offsetLeft - (window.outerWidth / 2) + video.offsetWidth//하단 
+  ) {
+    console.log('영역안');
+
+    $live.querySelectorAll('.card-full-cover')[0].style.visibility = "hidden";
+    video.play();
+    video.style.visibility = "visible";
+    video.style.zIndex = "1";
+  }
+}
+
 
 $swiperX.forEach((swiper, idx) => {
   touchable[idx] = {};
@@ -136,3 +203,6 @@ $swiperX.forEach((swiper, idx) => {
   });
 
 });
+
+
+

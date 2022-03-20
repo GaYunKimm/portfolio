@@ -149,8 +149,8 @@
       z-index: 1;
     }
     &-cont {
-      text-align: center;
       position: relative;
+      text-align: center;
     }
   }
   .elipsis-wrap {
@@ -239,6 +239,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 1;
     color: rgba(0, 0, 0, 0.7);
     //transition: bottom 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     border-radius: 10px 10px 0 0;
@@ -399,9 +400,9 @@
   flex-direction: column;
 
   li {
+    width: 100%;
     padding-right: 0;
     padding-bottom: $leng-16;
-    width: 100%;
 
     a {
       display: flex;
@@ -417,13 +418,13 @@
     }
   }
   .thum-grid-cover {
-    @include bgs-cover(70px, 70px, 10px);
     flex: 0 0 auto;
+    @include bgs-cover(70px, 70px, 10px);
   }
   .thum-grid-cont {
+    width: calc(100% - 70px);
     padding-top: 0px;
     padding-left: 12px;
-    width: calc(100% - 70px);
     &-name {
       font-weight: 600;
       font-size: $size-h6;
@@ -533,8 +534,8 @@
   .elipsis-wrap {
     display: inline-block;
     width: calc(100% - 45px - 8px);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     padding: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     vertical-align: 5px;
     &-title {
       font-weight: 500;
@@ -645,9 +646,9 @@
 
   &-title {
     display: flex;
-    align-items: center;
     font-weight: 500;
     font-size: $size-h5;
+    align-items: center;
     padding-bottom: $leng-24;
     @include get-color(color, font-color2);
 
@@ -812,20 +813,20 @@
     }
   }
   &-focus {
+    position: relative;
     width: 100%;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: relative;
     &::after {
-      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-      content: "";
       display: block;
-      width: 0%;
-      height: 100%;
       position: absolute;
       bottom: 0;
       left: 50%;
+      width: 0%;
+      height: 100%;
+      content: "";
       transform: translateX(-50%);
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
       background-color: $brand-color;
     }
   }
@@ -833,10 +834,10 @@
 //버튼
 .btn-circle {
   padding: 4px 10px;
-  border-radius: 25px;
   border: 1px;
-  border-style: solid;
   font-size: $size-small;
+  border-radius: 25px;
+  border-style: solid;
   @include get-color(border-color, font-color3);
   @include get-color(color, font-color3);
 }
