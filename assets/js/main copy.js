@@ -49,66 +49,57 @@ function touchEvent(e) {
       tPosY.end = e.offsetY;
   }
 }
-function getTarget(elem, className) {
-  while (!elem.classList.contains(className)) {
+
+
+//타겟잡기
+function getTarget(elem, calssName) {
+  while (!elem.classList.contains(calssName)) {
     elem = elem.parentNode;
-    if (elem.nodeName === "BODY") {
+    if (elem.nodeName == "BODY") {
       elem = null;
-      return
+      return;
     }
   }
   return elem;
-}
+} //리팩토링
+
 
 $contents.addEventListener("mousedown", (e) => {
   let $swiper = getTarget(e.target, "slide-wrap");
-  $swiper.classList.add("nonetouch");
+  console.log()
+  if (!$swiper) return;
   touchable = true;
   tPosX.start = e.clientX;
+  console.log($swiper);
+
 });
 $contents.addEventListener("mousemove", (e) => {
   let $swiper = getTarget(e.target, "slide-wrap");
+  if (!$swiper) return
   if (!touchable && !$swiper.classList.contains("nonetouch")) return;
+  $swiper.classList.add("nonetouch");
+
+  console.log($swiper);
+
   if ($swiper.scrollLeft <= 0 && tPosX.start < e.clientX) { //이전스크롤
     tPosX.end = 0;
     tPosX.current = 0;
     tPosX.start = 0;
-  } else if ($swiper.scrollLeft === $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth&& tPosX.start > e.clientX) {
-    //tPosX.end = $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth;
+  } else if ($swiper.scrollLeft === $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth && tPosX.start > e.clientX) {
     tPosX.current = $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth;
   }
   else {
     tPosX.end = tPosX.current + (e.clientX - tPosX.start);//e.clientX;
   }
   $swiper.scrollTo(-tPosX.end, 0);
-
-
-  // $swiper.style.transform = `translate3d(${tPosX.end}px,0,0)`
-  //console.log(tPosX);
-  //else if (startX - endX > 30) { }  //첫시작 - 뒷터치 = 왼쪽이동
 });
 $contents.addEventListener("mouseup", (e) => {
   let $swiper = getTarget(e.target, "slide-wrap");
   $swiper.classList.remove("nonetouch");
   touchable = false;
   tPosX.current = tPosX.end;
-  //console.log($swiper.scrollLeft, tPosX)
-
-
-  console.log(tPosX);
-
+  console.log(tPosX, end);
 });
-
-
-// $contents.addEventListener("mousedown", swiper);
-// $contents.addEventListener("mousemove", swiper);
-// $contents.addEventListener("mouseup", swiper);
-
-// $contents.addEventListener("click",(e)=>{
-//   if(e.target.classList.contains("slide-wrap") ){
-
-//   }
-// })
 
 window.addEventListener('scroll', (e) => {
   if (prevYoffset > window.pageYOffset) {
