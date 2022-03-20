@@ -336,10 +336,15 @@ $breakpoint-mobile: 768px;
   scrollbar-width: none; /* Firefox */
   overflow-x: auto !important;
 
-  // touch-action: pan-x;
-  /*  scroll-snap-type: x proximity;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); */
+  touch-action: pan-x;
+  scroll-snap-type: x proximity;
 
+ /*  & > ul li {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  } */
+  /*transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); 
+*/
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
@@ -352,7 +357,7 @@ $breakpoint-mobile: 768px;
   overflow-x: auto !important;
   scroll-snap-type: x proximity;
 
-  //touch-action: pan-x;
+  touch-action: pan-x;
   scroll-snap-type: x proximity;
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
