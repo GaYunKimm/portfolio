@@ -95,7 +95,22 @@ function scrollDirectionFunc() {
   //스크롤시 이전변수값에 담기
   prevYoffset = window.pageYOffset;
 }
-
+//Y스크롤 시 라이브 특정 영역 라이브 영상 재생
+function scrollYLiveActive(e) {
+  $live.querySelectorAll('.card-full-video').forEach((video, idx) => {
+    if (
+      pageYOffset > $live.offsetTop - (window.outerHeight / 2) && //아래로내릴때영역
+      pageYOffset < $live.offsetTop - (window.outerHeight / 3) + $live.offsetHeight//하단 영역이 어디까지 보이는지
+    ) {
+      scrollXLiveActive(e, video);
+    }
+    else {
+      video.parentNode.parentNode.classList.remove('active'); //li
+      video.currentTime = 0;
+      video.pause();
+    }
+  });
+}
 //X스크롤 시 라이브 특정 영역 라이브 영상 재생
 function scrollXLiveActive(e, video) {
   let $videoWrap = video.parentNode.parentNode.parentNode.parentNode;
@@ -116,24 +131,15 @@ function scrollXLiveActive(e, video) {
 }
 
 
+
 window.addEventListener('scroll', (e) => {
+  //스크롤 방향
   scrollDirectionFunc();
   //스크롤 픽스드 효과
   headerSticky(e);
+  //y스크롤(x스크롤 포함) 동영상재생
+  scrollYLiveActive(e);
 
-  $live.querySelectorAll('.card-full-video').forEach((video, idx) => {
-    if (
-      pageYOffset > $live.offsetTop - (window.outerHeight / 2) && //아래로내릴때영역
-      pageYOffset < $live.offsetTop - (window.outerHeight / 3) + $live.offsetHeight//하단 영역이 어디까지 보이는지
-    ) {
-      scrollXLiveActive(e, video);
-    }
-    else {
-      video.parentNode.parentNode.classList.remove('active'); //li
-      video.currentTime = 0;
-      video.pause();
-    }
-  });
 });
 
 
