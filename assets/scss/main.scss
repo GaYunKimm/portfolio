@@ -4,7 +4,14 @@
 //@include get-color(background-color, bg-color);
 
 .bannel {
-  padding-top: 115px;
+  height: (400px + 115px);
+  @include mobile-size-only {
+    height: (300px + 115px);
+  }
+
+  &-inner {
+    top: 115px;
+  }
 
   .arrow-btn {
     top: calc(50% + (115px / 2));
@@ -43,7 +50,7 @@
       display: block;
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: auto;
       width: 45px;
       height: 2px;
       content: "";
@@ -95,7 +102,7 @@
       &-title {
         @include txt-line(2);
       }
-      &-title{
+      &-title {
         line-height: 1.5;
         margin-bottom: $leng-8;
       }

@@ -102,32 +102,33 @@ function scrollYLiveActive(e) {
       pageYOffset > $live.offsetTop - (window.outerHeight / 2) && //아래로내릴때영역
       pageYOffset < $live.offsetTop - (window.outerHeight / 3) + $live.offsetHeight//하단 영역이 어디까지 보이는지
     ) {
-      scrollXLiveActive(e, video);
+      scrollXLiveActive(e);
     }
     else {
-      video.parentNode.parentNode.classList.remove('active'); //li
       video.currentTime = 0;
       video.pause();
+      video.parentNode.parentNode.classList.remove('active'); //li
     }
   });
 }
 //X스크롤 시 라이브 특정 영역 라이브 영상 재생
 function scrollXLiveActive(e, video) {
-  let $videoWrap = video.parentNode.parentNode.parentNode.parentNode;
-  let $videoLi = video.parentNode.parentNode;
-  if (
-    //$live.scrollLeft > $videoLi.offsetLeft - (window.outerWidth / 2)
-    $videoWrap.scrollLeft > $videoLi.offsetLeft - (window.outerWidth / 2) && //아래로내릴때영역
-    $videoWrap.scrollLeft < $videoLi.offsetLeft - (window.outerWidth / 6) + video.offsetWidth//하단 
-  ) {
-    $videoLi.classList.add('active');
-    video.play();
-  }
-  else {
-    $videoLi.classList.remove('active');
-    video.currentTime = 0;
-    video.pause();
-  }
+  $live.querySelectorAll('.card-full-video').forEach((video, idx) => {
+    let $videoWrap = video.parentNode.parentNode.parentNode.parentNode;
+    let $videoLi = video.parentNode.parentNode;
+    if (
+      $videoWrap.scrollLeft > $videoLi.offsetLeft - (window.outerWidth / 2) && //아래로내릴때영역
+      $videoWrap.scrollLeft < $videoLi.offsetLeft - (window.outerWidth / 6) + video.offsetWidth//하단 
+    ) {
+      video.play();
+      $videoLi.classList.add('active');
+    }
+    else {
+      video.currentTime = 0;
+      video.pause();
+      $videoLi.classList.remove('active');
+    }
+  });
 }
 
 
@@ -139,14 +140,11 @@ window.addEventListener('scroll', (e) => {
   headerSticky(e);
   //y스크롤(x스크롤 포함) 동영상재생
   scrollYLiveActive(e);
-
 });
 
 
 $live.parentNode.addEventListener("scroll", (e) => { //siide 
-  $live.querySelectorAll('.card-full-video').forEach((video, idx) => {
-    scrollXLiveActive(e, video);
-  });
+  scrollXLiveActive(e);
 });
 
 $swiperX.forEach((swiper, idx) => {
@@ -184,4 +182,99 @@ $swiperX.forEach((swiper, idx) => {
 });
 
 
+//banner
 
+const $bannel = document.querySelector('.bannel');
+const $bannelItem = document.querySelectorAll('.bannel-inner');
+const $prevBtn = document.querySelector('.arrow-btn-prev');
+const $nextBtn = document.querySelector('.arrow-btn-next');
+const $pager = document.querySelector('.pager span');
+
+let pageNum = 0;
+let totalNum = $bannelItem.length;
+
+let startX = 0;
+let endX = 0;
+
+const bgArray = new Array();
+bgArray[0] = ["#aff6cf", "#9f98e8"];
+bgArray[1] = ["#f0d5a7", "#c9b4ff"];
+bgArray[2] = ["#a88beb", "#5de6de"];
+bgArray[3] = ["#f5f7fa", "#b8c6db"];
+
+$prevBtn.addEventListener('click', () => {
+  prev();
+  pageChange();
+  interval()
+});
+
+$nextBtn.addEventListener('click', () => {
+  next();
+  pageChange();
+  interval()
+});
+let bannelPlay = 0;
+
+pageChange();
+interval()
+
+
+function interval() {
+  clearInterval(bannelPlay);
+  bannelPlay = setInterval(() => {
+    next();
+    pageChange();
+  }, 5000);
+}
+
+function prev() {
+  pageNum--;
+  if (pageNum < 0) {
+    pageNum = totalNum - 1;
+  }
+  $pager.innerText = `${pageNum + 1} / ${totalNum}`
+}
+
+function next() {
+  pageNum++;
+  if (pageNum >= totalNum) {
+    pageNum = 0;
+  }
+  $pager.innerText = `${pageNum + 1} / ${totalNum}`
+
+}
+
+
+
+function pageChange() {
+
+  $bannel.style.background = `linear-gradient( -315deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]} 74%)`;
+
+  for (let i = 0; i < totalNum; i++) {
+    // $bannel.style.background = `linear-gradient(120deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]}) 74%`;
+    $bannelItem[i].classList.remove('active');
+  }
+  $bannelItem[pageNum].classList.add('active');
+  //$bannelItem[pageNum].style.backgroundColor = bgArray[pageNum][0];
+
+}
+
+$bannel.addEventListener('mousedown', touchX);
+$bannel.addEventListener('mouseup', touchX);
+
+function touchX(e) {
+  switch (e.type) {
+    case "mousedown":
+      startX = e.offsetX;
+      endX = 0;
+      break;
+    case "mouseup":
+      endX = e.offsetX;
+      if (endX - startX > 30) {
+        next();
+      } else if (startX - endX > 30) {
+        prev();
+      }
+      pageChange();
+  }
+}
