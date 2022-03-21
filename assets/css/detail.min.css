@@ -600,6 +600,14 @@ body[data-theme="dark"] .btn-circle { color: #a2a2a2; }
 
 @media (max-width: 1344px) { .arrow-btn-next { right: 0; } }
 
+.sticky-elem .header-cont { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; }
+
+.live li.active .card-full-cover { visibility: hidden; }
+
+.live li.active video { visibility: visible; z-index: 1; }
+
+.nonetouch a { pointer-events: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
 @-webkit-keyframes ani-indicator { 100% { -webkit-transform: rotateZ(360deg); transform: rotateZ(360deg); } }
 
 @keyframes ani-indicator { 100% { -webkit-transform: rotateZ(360deg); transform: rotateZ(360deg); } }

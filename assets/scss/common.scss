@@ -870,6 +870,41 @@
   }
 }
 
+//공통 active
+//.sticky
+
+//pc,mo 공통으로 고정
+.sticky-elem .header-cont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  // @include blur-filter;
+}
+//live 동영상 보이기
+.live {
+  li.active{
+    .card-full-cover{
+      visibility: hidden;
+    }
+    video{
+      visibility: visible;
+      z-index: 1;
+    }
+  }
+}
+
+//드래그 시 선택효과 제거
+.nonetouch {
+  a {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+
+
 //animation
 @keyframes ani-indicator {
   100% {
