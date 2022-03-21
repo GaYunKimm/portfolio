@@ -95,6 +95,10 @@
       &-title {
         @include txt-line(2);
       }
+      &-title{
+        line-height: 1.5;
+        margin-bottom: $leng-8;
+      }
     }
   }
 }

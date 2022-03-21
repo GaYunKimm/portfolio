@@ -534,6 +534,8 @@ body[data-theme="dark"] .dark { background-color: rgba(0, 0, 0, 0.5); }
 
 @media (max-width: 1344px) { .album { right: 40px; width: 180px; } }
 
+@media (max-width: 767px) { .album { right: 10px; width: 140px; } }
+
 .bannel-inner.active .album { visibility: visible; opacity: 1; }
 
 .bannel-inner.active .album .album-disk { left: 35%; -webkit-transition-delay: 0.5s; transition-delay: 0.5s; }
@@ -600,11 +602,11 @@ body[data-theme="dark"] .btn-circle { color: #a2a2a2; }
 
 @media (max-width: 1344px) { .arrow-btn-next { right: 0; } }
 
-.sticky-elem .header-cont { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; }
+.sticky-elem .header-cont { position: fixed; top: 0; left: 0; z-index: 50; width: 100%; }
 
 .live li.active .card-full-cover { visibility: hidden; }
 
-.live li.active video { visibility: visible; z-index: 1; }
+.live li.active video { z-index: 1; visibility: visible; }
 
 .nonetouch a { pointer-events: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
@@ -675,3 +677,5 @@ body[data-theme="dark"] .contents-soon .arrow-btn { color: #bbbbbb; }
 .today-event.card a { width: 320px; }
 
 .today-event.card a .elipsis-wrap-text, .today-event.card a .elipsis-wrap-title { overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: block; display: -webkit-box; white-space: normal; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+.today-event.card a .elipsis-wrap-title { line-height: 1.5; margin-bottom: 8px; }

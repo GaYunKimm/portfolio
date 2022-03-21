@@ -683,6 +683,10 @@
     right: 40px;
     width: 180px;
   }
+  @include mobile-size {
+    right: 10px;
+    width: 140px;
+  }
 
   @at-root .bannel-inner.active & {
     visibility: visible;
@@ -878,8 +882,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 50;
+  width: 100%;
   // @include blur-filter;
 }
 //live 동영상 보이기
@@ -889,8 +893,8 @@
       visibility: hidden;
     }
     video{
-      visibility: visible;
       z-index: 1;
+      visibility: visible;
     }
   }
 }
