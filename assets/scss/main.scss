@@ -110,3 +110,22 @@
     }
   }
 }
+
+
+.album {
+  position: absolute;
+  right: 70px;
+  bottom: -50px;
+  visibility: hidden;
+  opacity: 0;
+
+  @include mobile-size-only {
+    right: 40px;
+    width: 180px;
+  }
+  @include mobile-size {
+    right: 10px;
+    width: 140px;
+  }
+
+}

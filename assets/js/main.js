@@ -117,7 +117,7 @@ function scrollXLiveActive(e, video) {
     let $videoWrap = video.parentNode.parentNode.parentNode.parentNode;
     let $videoLi = video.parentNode.parentNode;
     if (
-      $videoWrap.scrollLeft > $videoLi.offsetLeft - (window.outerWidth / 2) && //아래로내릴때영역
+      $videoWrap.scrollLeft > $videoLi.offsetLeft - (window.outerWidth / 1.2) && //아래로내릴때영역
       $videoWrap.scrollLeft < $videoLi.offsetLeft - (window.outerWidth / 6) + video.offsetWidth//하단 
     ) {
       video.play();
@@ -271,9 +271,9 @@ function touchX(e) {
     case "mouseup":
       endX = e.offsetX;
       if (endX - startX > 30) {
-        next();
-      } else if (startX - endX > 30) {
         prev();
+      } else if (startX - endX > 30) {
+        next();
       }
       pageChange();
   }

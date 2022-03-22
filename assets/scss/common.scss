@@ -40,6 +40,7 @@
     transform: translateX(-50%);
     height: 100%;
     max-width: 1200px;
+    width: 100%;
     @include mobile-size-only {
       width: calc(100% - 80px);
     }
@@ -49,7 +50,7 @@
         //mix-blend-mode: overlay;
         line-height: 1.3;
         transform: translateY(-50px);
-        transition: all .5s 0.5s;
+        transition: all 0.5s 0.5s;
         opacity: 0;
         //text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
       }
@@ -674,21 +675,26 @@
 
 //공통스타일
 .album {
-  position: absolute;
-  right: 70px;
-  bottom: -50px;
+  position: relative;
   width: 300px;
   transition: all 0.4s ease-in-out;
-  visibility: hidden;
-  opacity: 0;
 
   @include mobile-size-only {
-    right: 40px;
     width: 180px;
   }
   @include mobile-size {
-    right: 10px;
     width: 140px;
+  }
+
+  &:hover .album-disk,
+  &:focus .album-disk {
+    left: 45%;
+    transition-delay: 0.2s;
+  }
+
+  @at-root .bannel-inner & {
+    visibility: hidden;
+    opacity: 0;
   }
 
   @at-root .bannel-inner.active & {
@@ -698,12 +704,6 @@
     .album-disk {
       left: 35%;
       transition-delay: 0.5s;
-    }
-
-    &:hover .album-disk,
-    &:focus .album-disk {
-      left: 45%;
-      transition-delay: 0.2s;
     }
   }
 
