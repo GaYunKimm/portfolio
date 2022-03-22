@@ -530,7 +530,7 @@ body[data-theme="dark"] { background-color: rgba(0, 0, 0, 0.5); }
 
 body[data-theme="dark"] .dark { background-color: rgba(0, 0, 0, 0.5); }
 
-.album { position: absolute; right: 70px; bottom: 50px; width: 300px; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; visibility: hidden; opacity: 0; }
+.album { position: absolute; right: 70px; bottom: -50px; width: 300px; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; visibility: hidden; opacity: 0; }
 
 @media (max-width: 1344px) { .album { right: 40px; width: 180px; } }
 
