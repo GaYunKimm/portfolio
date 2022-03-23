@@ -272,13 +272,17 @@ body[data-theme="dark"] .footer-logo { color: #bbbbbb; }
 
 .center-slide { padding-top: 40px; padding-bottom: 40px; }
 
-.center-slide .card-full { padding: 20px 0; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; }
+.center-slide .animate.card-full { -webkit-transition: 0.5s ease-out; transition: 0.5s ease-out; }
 
-.center-slide .card-full a { position: relative; width: 120px; height: 180px; opacity: 0.8; }
+.center-slide .card-full { padding: 20px 0; -webkit-box-align: self-end; -ms-flex-align: self-end; align-items: self-end; min-height: 310px; }
+
+.center-slide .card-full li { position: relative; }
+
+.center-slide .card-full a { position: relative; width: 150px; height: 210px; opacity: 0.8; -webkit-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; -webkit-transform-origin: center bottom; transform-origin: center bottom; }
 
 .center-slide .card-full a ::after { display: block; width: 100%; height: 100%; content: ""; background-color: rgba(0, 0, 0, 0.3); }
 
-.center-slide .card-full .active a { width: 150px; height: 230px; opacity: 1; }
+.center-slide .card-full .active a { opacity: 1; width: 180px; height: 270px; }
 
 .center-slide .card-full .active a ::after { content: none; }
 

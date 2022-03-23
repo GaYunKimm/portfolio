@@ -122,15 +122,25 @@
 .center-slide {
   padding-top: $leng-40;
   padding-bottom: $leng-40;
+
+  .animate.card-full {
+    transition: 0.5s ease-out;
+  }
+
   .card-full {
     padding: $leng-20 0;
-    justify-content: center;
-    align-items: baseline;
+    align-items: self-end;
+    min-height: 310px;
+    li {
+      position: relative;
+    }
     a {
       position: relative;
-      width: 120px;
-      height: 180px;
+      width: 150px;
+      height: 210px;
       opacity: 0.8;
+      transition: all 0.5s ease-in-out;
+      transform-origin: center bottom;
       ::after {
         display: block;
         width: 100%;
@@ -141,9 +151,10 @@
     }
 
     .active a {
-      width: 150px;
-      height: 230px;
       opacity: 1;
+      width: 180px;
+      height: 270px;
+      //transform: scale(1.5);
       ::after {
         content: none;
       }
