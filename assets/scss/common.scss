@@ -124,7 +124,8 @@
   padding-bottom: $leng-40;
 
   .animate.card-full {
-    transition: 0.5s ease-out;
+    transition: 0.3s ease-out;
+    will-change: transform;
   }
 
   .card-full {
@@ -139,8 +140,8 @@
       width: 150px;
       height: 210px;
       opacity: 0.8;
-      transition: all 0.5s ease-in-out;
-      transform-origin: center bottom;
+      transition: all 0.2s ease-in-out;
+      transform-origin: left bottom;
       ::after {
         display: block;
         width: 100%;

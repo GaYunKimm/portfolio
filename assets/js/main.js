@@ -292,6 +292,7 @@ const activeSlideWidth = 180;
 const slideMargin = 12;
 let soonCurrentIdx = 0;
 let $newSlideLi;
+let clickAble = false;
 
 
 function calcSlideValue() {
@@ -316,6 +317,8 @@ function makeClone() {
     $soonSlide.prepend(cloneSlide);
   }
   calcSlideValue();
+  $newSlideLi[21].classList.add("active");
+
   setTimeout(() => {
     $soonSlide.classList.add("animate");
   }, 100);
@@ -327,35 +330,43 @@ function activeSlide(num) {
   $newSlideLi.forEach(elem => {
     elem.classList.remove("active");
   });
-  //$newSlideLi[(num + soonCount) + (soonCount)].classList.add("active");
+  $newSlideLi[(num + soonCount) + (soonCount)].classList.add("active");
   $newSlideLi[num + soonCount].classList.add("active");
 }
 
 function moveSlidePos(idx, slideTransform) {
   soonCurrentIdx = idx;
+
+  $soonSlide.classList.remove("animate");
+  $soonSlide.style.transform = `translate3d(${slideTransform}px,0,0)`;
   activeSlide(idx);
 
   setTimeout(() => {
-    $soonSlide.classList.remove("animate");
-    $soonSlide.style.transform = `translate3d(${slideTransform}px,0,0)`;
-  }, 800);
-  setTimeout(() => {
     $soonSlide.classList.add("animate");
-  }, 850);
 
+  }, 200);
 }
+
+
 //$soonSlide.style.left = `${-initTransVal}px`
 function moveSlide(num) {
-  soonCurrentIdx = num;   
-   $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
-  if (soonCurrentIdx === soonCount) {
-    console.log(soonCurrentIdx, soonCount);
-    moveSlidePos(0, 0);
-  } else if (soonCurrentIdx === -1) {
-    moveSlidePos(soonCount - 1, -slideLeft - 24);
-  } else {
-    activeSlide(soonCurrentIdx);
-  }
+  clickAble = true;
+  if (!clickAble) return;
+  setTimeout(() => {
+    soonCurrentIdx = num;
+    $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
+    if (soonCurrentIdx === soonCount) {
+      console.log(soonCurrentIdx, soonCount);
+      moveSlidePos(0, 0);
+    } else if (soonCurrentIdx === -1) {
+      moveSlidePos(soonCount - 1, -slideLeft - 24);
+    } else {
+      activeSlide(soonCurrentIdx);
+    }
+    clickAble = false;
+
+  }, 300);
+
   //console.log(soonCurrentIdx, soonCount);
 
 }
