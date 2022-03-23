@@ -294,7 +294,7 @@ let soonCurrentIdx = 0;
 let $newSlideLi;
 let clickAble = false;
 
-
+//초기 가운데 정렬
 function calcSlideValue() {
   $newSlideLi = document.querySelectorAll(".center-slide .card-full li");
   const initSlideWidth = (slideWidth + slideMargin) * soonCount;
@@ -305,6 +305,8 @@ function calcSlideValue() {
   return initTransVal;
 }
 const slideLeft = calcSlideValue();
+
+// 슬라이드 요소 클론 만들기
 function makeClone() {
   for (let i = 0; i < soonCount; i++) {
     const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
@@ -317,7 +319,7 @@ function makeClone() {
     $soonSlide.prepend(cloneSlide);
   }
   calcSlideValue();
-  $newSlideLi[21].classList.add("active");
+  $newSlideLi[$newSlideLi.length - soonCount - 1].classList.add("active");
 
   setTimeout(() => {
     $soonSlide.classList.add("animate");
@@ -325,50 +327,52 @@ function makeClone() {
 }
 makeClone();
 
-
-function activeSlide(num) {
+//슬라이드 크기 효과
+function activeSlideEffect(num) {
   $newSlideLi.forEach(elem => {
     elem.classList.remove("active");
   });
+  //복사본 효과
   $newSlideLi[(num + soonCount) + (soonCount)].classList.add("active");
+  //원본 효과
   $newSlideLi[num + soonCount].classList.add("active");
 }
-
-function moveSlidePos(idx, slideTransform) {
+//슬라이드 박스 이동 효과
+function moveSlideEffect(idx, slidePos, slideTrans) {
   soonCurrentIdx = idx;
-
   $soonSlide.classList.remove("animate");
-  $soonSlide.style.transform = `translate3d(${slideTransform}px,0,0)`;
-  activeSlide(idx);
+  $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
+  activeSlideEffect(idx);
 
   setTimeout(() => {
     $soonSlide.classList.add("animate");
-
-  }, 200);
+    $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
+  }, 100);
 }
 
-
-//$soonSlide.style.left = `${-initTransVal}px`
 function moveSlide(num) {
   clickAble = true;
   if (!clickAble) return;
   setTimeout(() => {
     soonCurrentIdx = num;
     $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
+
+    //next : 마지막슬라이드에서 첫번째슬라이드
     if (soonCurrentIdx === soonCount) {
-      console.log(soonCurrentIdx, soonCount);
-      moveSlidePos(0, 0);
-    } else if (soonCurrentIdx === -1) {
-      moveSlidePos(soonCount - 1, -slideLeft - 24);
-    } else {
-      activeSlide(soonCurrentIdx);
+      moveSlideEffect(0, 0, activeSlideWidth);
+    }
+    //prev 첫번째슬라이드에서 마지막슬라이드
+    else if (soonCurrentIdx === -1) {
+      const prevLeft = ($newSlideLi[(soonCount * 2) - 1].offsetLeft / 2) - (activeSlideWidth / 2);
+      moveSlideEffect(soonCount - 1, -prevLeft, -activeSlideWidth);
+    }
+    //기본움직임
+    else {
+      activeSlideEffect(soonCurrentIdx);
     }
     clickAble = false;
 
-  }, 300);
-
-  //console.log(soonCurrentIdx, soonCount);
-
+  }, 200);
 }
 
 $soonPrevBtn.addEventListener('click', (e) => {
