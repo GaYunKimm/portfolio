@@ -85,14 +85,16 @@ body {
   }
 
   &-utill {
-    display: flex;
-    visibility: hidden;
+    display: none;
+    @at-root .video-detail-active & {
+      display: flex;
+    }
   }
 }
 
 #live {
   position: relative;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
   max-height: 100vh;
   min-height: 100vh;
@@ -130,11 +132,12 @@ body {
 //상품
 .good-circle-list {
   padding: 0 12px;
-  visibility: hidden;
+  display: none;
+  @at-root .video-detail-active & {
+    display: block;
+  }
+
   li {
-    /* display: flex;
-    align-items: center;
-    justify-content: flex-start; */
     font-size: 0;
   }
   &--view {
@@ -173,7 +176,6 @@ body {
     }
   }
 }
-
 //좋아요
 .chat-like {
   position: fixed;
@@ -182,7 +184,10 @@ body {
   z-index: 2;
   width: 45px;
   height: 45px;
-  visibility: hidden;
+  display: none;
+  @at-root .video-detail-active & {
+    display: block;
+  }
 
   &-btn {
     display: flex;
@@ -259,7 +264,10 @@ body {
   width: calc(100% - 45px - 12px - 24px);
   height: 30vh;
   padding: 10px 10px 0;
-  visibility: hidden;
+  display: none;
+  @at-root .video-detail-active & {
+    display: block;
+  }
   -webkit-mask-image: linear-gradient(transparent, #fff 30px);
   mask-image: linear-gradient(transparent, #fff 30px);
   //overflow: hidden;
@@ -291,7 +299,10 @@ body {
   left: $leng-12;
   z-index: 2;
   width: calc(100% - 45px - 12px - 24px);
-  visibility: hidden;
+  display: none;
+  @at-root .video-detail-active & {
+    display: block;
+  }
 
   &-inp {
     width: 100%;
@@ -343,6 +354,9 @@ body {
   width: 100%;
   padding: 0 $leng-12;
   align-items: center;
+  @at-root .video-detail-active & {
+    display: none;
+  }
   &-btn {
     display: flex;
     width: 40px;
@@ -383,25 +397,6 @@ body {
   }
   &-time {
     padding-left: $leng-24;
-  }
-}
-
-//토글
-.video-detail-active {
-  .video-header {
-    &-utill {
-      visibility: visible;
-    }
-  }
-  .input-box,
-  .chat-like,
-  .video-chat,
-  .good-circle-list {
-    visibility: visible;
-  }
-
-  .video-control {
-    visibility: hidden;
   }
 }
 
