@@ -48,6 +48,7 @@ body {
     height: 250px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 75%);
     content: "";
+    pointer-events: none;
   }
 
   &::after {
@@ -60,6 +61,7 @@ body {
     height: 250px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), transparent 75%);
     content: "";
+    pointer-events: none;
   }
 }
 
@@ -131,8 +133,8 @@ body {
 
 //상품
 .good-circle-list {
-  padding: 0 12px;
   display: none;
+  padding: 0 12px;
   @at-root .video-detail-active & {
     display: block;
   }
@@ -178,19 +180,20 @@ body {
 }
 //좋아요
 .chat-like {
+  display: none;
   position: fixed;
   right: $leng-12;
   bottom: $leng-12;
   z-index: 2;
   width: 45px;
   height: 45px;
-  display: none;
   @at-root .video-detail-active & {
     display: block;
   }
 
   &-btn {
     display: flex;
+    z-index: 2;
     width: 45px;
     height: 45px;
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -198,7 +201,6 @@ body {
     align-items: center;
     border-radius: 50%;
     background-color: #626261;
-    z-index: 2;
     .icon {
       color: rgba(255, 255, 255, 0.7);
       font-size: $leng-30;
@@ -207,11 +209,12 @@ body {
 
   &-effect {
     position: absolute;
-    width: 60px;
-    height: 140px;
     top: 0;
     left: 50%;
+    width: 60px;
+    height: 140px;
     transform: translate(-50%, -100%);
+    pointer-events: none;
 
     &-heart {
       position: absolute;
@@ -233,14 +236,14 @@ body {
       }
 
       span {
-        z-index: 0;
         display: block;
+        z-index: 0;
+        width: 50px;
+        height: 50px;
         background: url("/assets/images/effect/like.png") no-repeat;
+        animation: ani-like 1s steps(28) 1;
         background-position: left;
         background-size: 2900%;
-        height: 50px;
-        width: 50px;
-        animation: ani-like 1s steps(28) 1;
         background-position: right;
       }
     }
@@ -257,6 +260,7 @@ body {
 }
 //채팅
 .video-chat {
+  display: none;
   position: fixed;
   bottom: 60px;
   left: $leng-12;
@@ -264,12 +268,11 @@ body {
   width: calc(100% - 45px - 12px - 24px);
   height: 30vh;
   padding: 10px 10px 0;
-  display: none;
+  -webkit-mask-image: linear-gradient(transparent, #fff 30px);
+  mask-image: linear-gradient(transparent, #fff 30px);
   @at-root .video-detail-active & {
     display: block;
   }
-  -webkit-mask-image: linear-gradient(transparent, #fff 30px);
-  mask-image: linear-gradient(transparent, #fff 30px);
   //overflow: hidden;
   @include scroll-wrap;
   &-wrap {
@@ -294,12 +297,12 @@ body {
 
 //인풋 채팅입력
 .input-box {
+  display: none;
   position: fixed;
   bottom: $leng-12;
   left: $leng-12;
   z-index: 2;
   width: calc(100% - 45px - 12px - 24px);
-  display: none;
   @at-root .video-detail-active & {
     display: block;
   }
@@ -349,7 +352,7 @@ body {
 .video-control {
   display: flex;
   position: fixed;
-  bottom: $leng-12;
+  bottom: 0;
   z-index: 2;
   width: 100%;
   padding: 0 $leng-12;
@@ -365,8 +368,8 @@ body {
   }
   &-progress {
     position: relative;
+    padding: 30px 0;
     flex: 1;
-
     &-bar {
       position: relative;
       width: 100%;
@@ -389,7 +392,8 @@ body {
       top: 0;
       width: 20px;
       height: 20px;
-      transform: translate(calc(-10px + 1.5px), calc(-10px + 1.5px));
+      transform: translate(calc(-10px + 1.5px), calc(-10px + 2.5px + 30px));
+      pointer-events: none;
       background-color: $brand-color;
       box-shadow: $box-shadow1;
       border-radius: 50%;
@@ -408,8 +412,8 @@ body {
     left: 40%;
   }
   100% {
-    left: 30%;
     bottom: 100%;
+    left: 30%;
   }
 }
 
@@ -421,8 +425,8 @@ body {
     left: 20%;
   }
   100% {
-    left: 0%;
     bottom: 80%;
+    left: 0%;
   }
 }
 
@@ -434,8 +438,8 @@ body {
     left: 20%;
   }
   100% {
-    left: 0%;
     bottom: 60%;
+    left: 0%;
   }
 }
 
@@ -447,8 +451,8 @@ body {
     right: 30%;
   }
   100% {
-    left: -10%;
     bottom: 140%;
+    left: -10%;
   }
 }
 

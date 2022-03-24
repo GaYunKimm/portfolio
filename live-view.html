@@ -42,10 +42,10 @@
 
         <header class="video-header">
           <h1 class="video-header-logo">
-            <a href="#" title="홈 바로가기"> Kay<span>oo</span>ns</a>
+            <a href="/index.html" title="홈 바로가기"> Kay<span>oo</span>ns</a>
           </h1>
           <ul class="video-header-utill">
-            <li><button href="#" title="음소거" class="video-btn  video-btn-mute">
+            <li><button title="음소거" class="video-btn  video-btn-mute">
                 <span class="hidden">음소거</span>
                 <span class="icon material-icons-outlined">
                   volume_off
@@ -53,7 +53,7 @@
                 </span>
               </button></li>
 
-            <li><button aria-hidden="true" href="#" title="알람추가" class="video-btn">
+            <li><button aria-hidden="true" title="알람추가" class="video-btn">
                 <span class="hidden">알람추가</span>
                 <span class="material-icons-outlined">
                   notifications
@@ -104,8 +104,8 @@
         </div>
 
         <div class="video-control">
-          <button aria-hidden="true" class="video-control-btn" data-play="play" title="재생/일시정지">
-            <span class="icon material-icons">
+          <button class="video-control-btn" title="재생/일시정지">
+            <span class="icon icon material-icons">
               play_arrow
               <!-- pause -->
             </span>
@@ -114,14 +114,16 @@
           <div class="video-control-progress">
 
             <div class="video-control-progress-bar">
-              <div class="video-control-progress-bar-inner" style="width: 100%;"></div>
+              <div class="video-control-progress-bar-inner" style="width: 0%;"></div>
             </div>
-            <button aria-hidden="true" class="video-control-progress-point" style="left: 100%;">
-              <span class="hidden">재생바 버튼</span>
+            <button aria-hidden="true" class="video-control-progress-point" style="left: 0%;" tabindex="0" role="slider"
+              aria-orientation="horizontal" aria-valuemax="100" aria-valuemax="0" aria-valuenow="0">
+              <span class="hidden">재생바 컨트롤 버튼</span>
             </button>
           </div>
 
           <div class="video-control-time">
+            <span class="hidden">남은 재생시간</span>
             49:00:20
           </div>
         </div>
