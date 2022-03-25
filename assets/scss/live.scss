@@ -216,24 +216,24 @@ body {
     transform: translate(-50%, -100%);
     pointer-events: none;
 
+    &:nth-child(1n+1) .chat-like-effect-heart{
+      animation: ani-like-move1 1s linear 1;
+    }
+    &:nth-child(2n+1) .chat-like-effect-heart{
+      animation: ani-like-move2 1s linear 1;
+    }
+    &:nth-child(3n+1) .chat-like-effect-heart{
+      animation: ani-like-move3 1s linear 1;
+    }
+    &:nth-child(4n+1) .chat-like-effect-heart{
+      animation: ani-like-move4 1s linear 1;
+    }
+
     &-heart {
       position: absolute;
       bottom: -20px;
       left: 0;
       animation: ani-like-move1 1s linear 1;
-
-      &:nth-child(1) {
-        animation: ani-like-move1 1s linear 1;
-      }
-      &:nth-child(2) {
-        animation: ani-like-move2 1s linear 1;
-      }
-      &:nth-child(3) {
-        animation: ani-like-move3 1s linear 1;
-      }
-      &:nth-child(4) {
-        animation: ani-like-move4 1s linear 1;
-      }
 
       span {
         display: block;

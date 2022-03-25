@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function moveCurrentTime(e, targets) {
     cancelAnimationFrame(rafId);
     const lefts = $progressBar.getBoundingClientRect();
-    const target = targets? targets : e;
+    const target = targets ? targets : e;
     const moveTime = ((target.clientX - lefts.left) / $progressBar.offsetWidth) * vod.durationFrame;
     $video.currentTime = moveTime;
     init();
@@ -124,3 +124,32 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+const $heartWrap = document.querySelector(".chat-like-box");
+const $likeBtn = document.querySelector(".chat-like-btn");
+const $likes = document.querySelector(".chat-like-box");
+
+function addLike() {
+  let like = document.createElement("div");
+  like.classList.add("chat-like-effect")
+  like.innerHTML = `<span class="chat-like-effect-heart"><span></span></span>`;
+  $heartWrap.append(like);
+}
+
+$likeBtn.addEventListener("click", () => {
+  addLike();
+});
+
+function likeInit() {
+  $likes.removeChild($likes.children[0]);
+  requestAnimationFrame(() => {
+    likeInit();
+  });
+}
+
+setInterval(() => {
+  while ($likes.hasChildNodes()) {
+    $likes.removeChild($likes.firstChild);
+  }
+}, 1200);
+
