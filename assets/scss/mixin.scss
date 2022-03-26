@@ -315,13 +315,13 @@ $breakpoint-mobile: 768px;
 @mixin containerBox2 {
   width: 100%;
   margin: 0 auto;
+  transform: translateX(#{-$leng-12 / 2});
   max-width: 1280px;
   overflow: hidden;
   padding-left: $leng-12;
-  transform: translateX(#{-$leng-12 / 2});
   @include mobile-size-only {
-    padding-left: $leng-24;
     transform: translateX(0);
+    padding-left: $leng-24;
   }
 }
 
@@ -361,50 +361,68 @@ $breakpoint-mobile: 768px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   overflow-x: auto !important;
-  scroll-snap-type: x proximity;
 
   touch-action: pan-x;
   scroll-snap-type: x proximity;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-  //@include containerBox2;
-  //pointer-events: none;
-
+  /*  & > ul li {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  } */
+  /*transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); 
+*/
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
 }
+
 //y스크롤
 .srcoll-wrap {
+  /* touch-action: pan-x;
+  scroll-snap-type: x proximity; */
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: none;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 
-  touch-action: pan-x;
-  scroll-snap-type: x proximity;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
+  //스크롤설정
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    /* 스크롤바 막대 높이 설정 */
+    height: 17%;
+    /* 스크롤바 둥글게 설정 */
+    border-radius: 10px;
+    background-color: rgba(33, 133, 133, .5);
+  }
+  /* 스크롤바 뒷 배경 설정*/
+  &::-webkit-scrollbar-track {
+    background-color: rgba(33, 133, 133, 0.1);
   }
 }
 @mixin scroll-wrap {
+  /* touch-action: pan-x;
+  scroll-snap-type: x proximity; */
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: none;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 
-  touch-action: pan-x;
-  scroll-snap-type: x proximity;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
+  //스크롤설정
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    /* 스크롤바 막대 높이 설정 */
+    height: 17%;
+    /* 스크롤바 둥글게 설정 */
+    border-radius: 10px;
+    background-color: rgba(33, 133, 133, .5);
+  }
+  /* 스크롤바 뒷 배경 설정*/
+  &::-webkit-scrollbar-track {
+    background-color: rgba(33, 133, 133, 0.1);
   }
 }
 

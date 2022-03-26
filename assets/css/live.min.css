@@ -118,9 +118,13 @@ input:focus, select:focus { outline-style: none; border-color: inherit; }
 
 .slide-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
 
-.srcoll-wrap { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ -ms-touch-action: pan-x; touch-action: pan-x; -ms-scroll-snap-type: x proximity; scroll-snap-type: x proximity; -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); }
+.srcoll-wrap { /* touch-action: pan-x; scroll-snap-type: x proximity; */ -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; /* 스크롤바 뒷 배경 설정*/ }
 
-.srcoll-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
+.srcoll-wrap::-webkit-scrollbar { width: 6px; }
+
+.srcoll-wrap::-webkit-scrollbar-thumb { /* 스크롤바 막대 높이 설정 */ height: 17%; /* 스크롤바 둥글게 설정 */ border-radius: 10px; background-color: rgba(33, 133, 133, 0.5); }
+
+.srcoll-wrap::-webkit-scrollbar-track { background-color: rgba(33, 133, 133, 0.1); }
 
 body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
@@ -196,11 +200,15 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .chat-like:active .icon, .chat-like:hover .icon, .chat-like.active .icon { -webkit-transform: scale(0.8); transform: scale(0.8); }
 
-.video-chat { display: none; position: fixed; bottom: 60px; left: 12px; z-index: 2; width: calc(100% - 45px - 12px - 24px); height: 30vh; padding: 10px 10px 0; -webkit-mask-image: linear-gradient(transparent, #fff 30px); mask-image: linear-gradient(transparent, #fff 30px); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ -ms-touch-action: pan-x; touch-action: pan-x; -ms-scroll-snap-type: x proximity; scroll-snap-type: x proximity; -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); }
+.video-chat { display: none; position: fixed; bottom: 60px; left: 12px; z-index: 2; width: calc(100% - 45px - 12px - 24px); height: 30vh; padding: 10px 10px 0; -webkit-mask-image: linear-gradient(transparent, #fff 30px); mask-image: linear-gradient(transparent, #fff 30px); /* touch-action: pan-x; scroll-snap-type: x proximity; */ -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; /* 스크롤바 뒷 배경 설정*/ }
 
 .video-detail-active .video-chat { display: block; }
 
-.video-chat::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
+.video-chat::-webkit-scrollbar { width: 6px; }
+
+.video-chat::-webkit-scrollbar-thumb { /* 스크롤바 막대 높이 설정 */ height: 17%; /* 스크롤바 둥글게 설정 */ border-radius: 10px; background-color: rgba(33, 133, 133, 0.5); }
+
+.video-chat::-webkit-scrollbar-track { background-color: rgba(33, 133, 133, 0.1); }
 
 .video-chat-list li { display: -webkit-box; display: -ms-flexbox; display: flex; padding-bottom: 8px; }
 

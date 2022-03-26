@@ -118,9 +118,13 @@ input:focus, select:focus { outline-style: none; border-color: inherit; }
 
 .slide-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
 
-.srcoll-wrap { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ -ms-touch-action: pan-x; touch-action: pan-x; -ms-scroll-snap-type: x proximity; scroll-snap-type: x proximity; -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); }
+.srcoll-wrap { /* touch-action: pan-x; scroll-snap-type: x proximity; */ -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; /* 스크롤바 뒷 배경 설정*/ }
 
-.srcoll-wrap::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
+.srcoll-wrap::-webkit-scrollbar { width: 6px; }
+
+.srcoll-wrap::-webkit-scrollbar-thumb { /* 스크롤바 막대 높이 설정 */ height: 17%; /* 스크롤바 둥글게 설정 */ border-radius: 10px; background-color: rgba(33, 133, 133, 0.5); }
+
+.srcoll-wrap::-webkit-scrollbar-track { background-color: rgba(33, 133, 133, 0.1); }
 
 html, body { width: 100%; font-size: 14px; min-height: 100vh; overflow-x: hidden; overflow-y: auto; }
 
@@ -528,9 +532,13 @@ body[data-theme="dark"] .pop-header-close-btn { color: #bbbbbb; }
 
 @media (min-width: 992px) { .pop-header-close-btn { right: 16px; } }
 
-.pop-content { height: calc(100vh - 65px); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; -ms-scroll-snap-type: none; scroll-snap-type: none; -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ -ms-touch-action: pan-x; touch-action: pan-x; -ms-scroll-snap-type: x proximity; scroll-snap-type: x proximity; -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); }
+.pop-content { height: calc(100vh - 65px); /* touch-action: pan-x; scroll-snap-type: x proximity; */ -webkit-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; /* 스크롤바 뒷 배경 설정*/ }
 
-.pop-content::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera*/ }
+.pop-content::-webkit-scrollbar { width: 6px; }
+
+.pop-content::-webkit-scrollbar-thumb { /* 스크롤바 막대 높이 설정 */ height: 17%; /* 스크롤바 둥글게 설정 */ border-radius: 10px; background-color: rgba(33, 133, 133, 0.5); }
+
+.pop-content::-webkit-scrollbar-track { background-color: rgba(33, 133, 133, 0.1); }
 
 .pop-content-inner { padding: 40px 24px 80px; }
 
