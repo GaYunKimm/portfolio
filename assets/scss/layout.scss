@@ -144,7 +144,8 @@ body {
         width: 100%;
       }
 
-      a {
+      a,
+      button {
         display: flex;
         position: relative;
         width: 100%;
@@ -195,6 +196,7 @@ body {
       z-index: 1;
       text-align: center;
       transition: all 0.3s;
+      pointer-events: none;
       span {
         font-size: 2rem;
         line-height: 1;

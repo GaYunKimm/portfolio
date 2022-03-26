@@ -380,3 +380,88 @@ $soonNextBtn.addEventListener('click', (e) => {
   e.preventDefault();
   moveSlide(soonCurrentIdx + 1);
 });
+
+
+const $menuBtn = document.querySelector(".menu-button");
+const $recentBtn = document.querySelector(".recent-btn");
+const $popDark = document.querySelector(".dark");
+const $popCloseBtn = document.querySelectorAll(".pop-close-btn");
+
+$menuBtn.addEventListener("click", (e) => {
+  if (e.target.dataset.href === document.body.dataset.pop) return;
+  if (document.body.classList.contains("bodyfixed")) {
+    closePop(e, document.body);
+  }
+  popUp(e);
+});
+$recentBtn.addEventListener("click", (e) => {
+  if (e.target.dataset.href === document.body.dataset.pop) return;
+  if (document.body.classList.contains("bodyfixed")) {
+    closePop(e, document.body);
+  }
+  popUp(e);
+});
+
+$popCloseBtn.forEach(elem => {
+  elem.addEventListener("click", (e) => {
+    closePop(e);
+  });
+});
+
+
+$popDark.addEventListener("click", (e) => {
+  closePop(e);
+});
+
+
+
+//팝업열기
+function popUp(e) {
+  const href = e.currentTarget.dataset.href;
+  const $pop = document.querySelector(href);
+  const $popclose = $pop.querySelector(".pop-close-btn");
+
+  document.body.classList.add('bodyfixed');
+  document.body.dataset.pop = href;
+
+  $pop.setAttribute("tabindex", "0")
+  $pop.focus();
+  $pop.style.display = `block`;
+  setTimeout(() => {
+    $pop.style.transform = `translate3d(0%,0,0)`;
+  }, 300);
+  $popDark.style.display = "block";
+  $popDark.style.opacity = "1";
+
+  $popDark.dataset.href = href;
+  $popclose.dataset.href = href;
+}
+
+function closePop(e, eTartget) {
+  const href = eTartget ? eTartget.dataset.pop : e.currentTarget.dataset.href;
+  console.log(href)
+  const $pop = document.querySelector(href);
+  const $popclose = $pop.querySelector(".pop-close-btn");
+
+  $popDark.dataset.href = "";
+  $popclose.dataset.href = "";
+
+  document.body.classList.remove('bodyfixed');
+  document.body.dataset.pop = "";
+
+  $pop.setAttribute("tabindex", "-1");
+  $menuBtn.focus();
+  $pop.style.transform = `translate3d(-100%,0,0)`;
+  $popDark.style.opacity = "0";
+
+  if (eTartget) {
+    $popDark.style.display = "none";
+    $pop.style.display = `block`;
+  } else {
+    setTimeout(() => {
+      $popDark.style.display = "none";
+      $pop.style.display = `block`;
+    }, 300);
+  }
+
+}

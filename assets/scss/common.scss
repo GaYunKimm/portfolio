@@ -37,10 +37,10 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
-    max-width: 1200px;
     width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+    max-width: 1200px;
     @include mobile-size-only {
       width: calc(100% - 80px);
     }
@@ -139,8 +139,8 @@
       position: relative;
       width: 150px;
       height: 210px;
-      opacity: 0.8;
       transition: all 0.2s ease-in-out;
+      opacity: 0.8;
       transform-origin: left bottom;
       ::after {
         display: block;
@@ -152,9 +152,9 @@
     }
 
     .active a {
-      opacity: 1;
       width: 180px;
       height: 270px;
+      opacity: 1;
       //transform: scale(1.5);
       ::after {
         content: none;
@@ -575,6 +575,7 @@
 }
 //팝업
 .pop-full {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -583,8 +584,12 @@
   width: 100%;
   //max-width: 500px;
   height: 100vh;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   min-width: 280px;
-  box-shadow: $box-shadow4;
+  @at-root .bodyfixed & {
+    box-shadow: $box-shadow4;
+  }
   @include get-color(background-color, bg-color1);
   @include pc-tablet-size {
     left: 65px;
@@ -678,11 +683,21 @@
   top: 0;
   left: 0;
   //z-index: 60;
-  z-index: 35;
+  z-index: 50;
   width: 100%;
   height: 100vh;
+  transition: all 0.3s;
   @include get-color(background-color, opacity-color1);
   @include blur-filter2;
+}
+.bodyfixed {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow: hidden;
+  .wrapper {
+  }
 }
 
 //공통스타일
@@ -698,12 +713,6 @@
     width: 140px;
   }
 
-  &:hover .album-disk,
-  &:focus .album-disk {
-    left: 45%;
-    transition-delay: 0.2s;
-  }
-
   @at-root .bannel-inner & {
     visibility: hidden;
     opacity: 0;
@@ -717,6 +726,12 @@
       left: 35%;
       transition-delay: 0.5s;
     }
+  }
+
+  &:hover .album-disk,
+  &:focus .album-disk {
+    left: 45%;
+    transition-delay: 0.2s;
   }
 
   //커버이미지

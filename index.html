@@ -43,7 +43,7 @@
       <!--//header END-->
       <!--nav-->
       <nav class="lnb-main">
-        <div class="slide-wrap" dragable="true" dragable="true" dragable="true">
+        <div class="slide-wrap" dragable="true">
           <h2 class="hidden">메인 메뉴</h2>
           <ul class="lnb-main-list slide-list">
             <li><a class="active" href="#" title="홈 바로가기">홈</a></li>
@@ -69,13 +69,13 @@
     <nav class="gnb">
       <h2 class="hidden">하단메뉴</h2>
       <ul class="gnb-list">
-        <li><a href="#" title="메뉴">
+        <li><button class="menu-button" data-href="#menuNav" title="메뉴" aria-haspopup="true">
             <span class="gnb-list-icon"> <span class="material-icons-outlined">
                 menu
               </span></span>
 
             <span class="gnb-list-text">메뉴</span>
-          </a></li>
+          </button></li>
         <li><a href="#" title="검색 바로가기">
 
             <span class="gnb-list-icon"> <span class="material-icons-outlined">
@@ -98,13 +98,13 @@
 
             <span class="gnb-list-text">마이페이지</span>
           </a></li>
-        <li><a href="#" title="최근본 바로가기">
+        <li><button class="recent-btn" data-href="#recentPop" aria-haspopup="true" title="최근본 팝업창 열기">
             <span class="gnb-list-icon"> <span class="material-icons-outlined">
                 visibility
               </span></span>
 
             <span class="gnb-list-text">최근본</span>
-          </a></li>
+          </button></li>
       </ul>
       <div class="gnb-indicator"></div>
     </nav>
@@ -223,13 +223,13 @@
             </span>
           </div>
 
-          <a href="#" title="이전" class="arrow-btn arrow-btn-prev">
+          <a href="#" role="button" title="이전" class="arrow-btn arrow-btn-prev">
             <span class="material-icons-outlined">
               arrow_back_ios
             </span>
 
           </a>
-          <a href="#" title="다음" class="arrow-btn arrow-btn-next"> <span class="material-icons-outlined">
+          <a href="#" role="button" title="다음" class="arrow-btn arrow-btn-next"> <span class="material-icons-outlined">
               arrow_forward_ios
             </span>
           </a>
@@ -249,7 +249,7 @@
         </h3>
         <!--title END-->
 
-        <div class="slide-wrap" dragable="true" dragable="true" dragable="true">
+        <div class="slide-wrap" dragable="true">
           <ul class="live card-full slide-list">
             <li><a href="#" title="라이브 보기 바로가기">
 
@@ -927,11 +927,11 @@
               </li>
               <!--li end-->
 
-         
 
 
 
-              
+
+
             </ul>
 
 
@@ -952,13 +952,13 @@
                   가을 속의 별들을 다 헤일 듯합니다.</p>
               </div>
 
-              <a href="#" title="이전" class="arrow-btn arrow-btn-prev">
+              <a href="#" role="button" title="이전" class="arrow-btn arrow-btn-prev">
                 <span class="material-icons-outlined">
                   arrow_back_ios
                 </span>
 
               </a>
-              <a href="#" title="이전" class="arrow-btn arrow-btn-next">
+              <a href="#" role="button" title="이전" class="arrow-btn arrow-btn-next">
                 <span class="material-icons-outlined">
                   arrow_forward_ios
                 </span>
@@ -1622,16 +1622,17 @@
 
 
   <!--nav 메뉴 팝업-->
-  <div class="pop-full" style="display: none;">
+  <div id="menuNav" class="pop-full" tabindex="-1" role="navigation" aria-labelledby="wa-dialog-title"
+    aria-describedby="wa-dialog-message">
     <div class="pop-header">
-      <h2 class="pop-header-title">메뉴 컨텐츠</h2>
+      <h2 class="pop-header-title" id="wa-dialog-title">메뉴 컨텐츠</h2>
 
       <!--util END-->
-      <button aria-hidden="true" class="pop-header-close-btn">
+      <button class="pop-header-close-btn pop-close-btn">
         <span class="icon material-icons">
           close
         </span>
-        <span class="hidden">닫기</span>
+        <span class="hidden">메뉴 팝업닫기</span>
       </button>
       <!--close-->
     </div>
@@ -1927,12 +1928,13 @@
 
 
   <!--최근본-->
-  <div class="pop-full" style="display: none;">
+  <div class="pop-full" tabindex="-1" role="dialog" id="recentPop" aria-labelledby="wa-dialog-title"
+    aria-describedby="wa-dialog-message">
     <div class="pop-header">
       <h2 class="pop-header-title">최근 본 컨텐츠</h2>
 
       <!--util END-->
-      <button aria-hidden="true" class="pop-header-close-btn">
+      <button class="pop-header-close-btn pop-close-btn">
         <span class="icon material-icons">
           close
         </span>
