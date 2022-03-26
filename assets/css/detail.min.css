@@ -270,9 +270,9 @@ body[data-theme="dark"] .footer-logo { color: #bbbbbb; }
 
 .touch-wrap::after { display: block; position: absolute; bottom: 0; left: 0; z-index: -1; width: 100%; height: 60%; content: ""; background-color: #eff8ef; }
 
-body[data-theme="dark"] { background-color: #182523; }
+body[data-theme="dark"] { background-color: #1d2423; }
 
-body[data-theme="dark"] .touch-wrap::after { background-color: #182523; }
+body[data-theme="dark"] .touch-wrap::after { background-color: #1d2423; }
 
 .thum-wrap { width: 100%; padding: 20px 6px 40px; margin: 0 auto; max-width: 1280px; }
 
@@ -364,9 +364,9 @@ body[data-theme="dark"] .card .elipsis-wrap-text, body[data-theme="dark"] .card 
 
 .thum-gallery-cover { padding: 16px; text-align: center; background-color: #eff8ef; width: 100%; height: auto; background-position: center; background-size: cover; background-repeat: no-repeat; border-radius: 10px; }
 
-body[data-theme="dark"] { background-color: #182523; }
+body[data-theme="dark"] { background-color: #1d2423; }
 
-body[data-theme="dark"] .thum-gallery-cover { background-color: #182523; }
+body[data-theme="dark"] .thum-gallery-cover { background-color: #1d2423; }
 
 .thum-gallery-cover img { height: 150px; }
 
@@ -664,17 +664,17 @@ body[data-theme="dark"] .btn-circle { color: #a2a2a2; }
 @keyframes ani-disk { 0% { -webkit-transform: translateY(-50%) rotate(0deg); transform: translateY(-50%) rotate(0deg); }
   100% { -webkit-transform: translateY(-50%) rotate(360deg); transform: translateY(-50%) rotate(360deg); } }
 
-.header { background-color: #fff; -webkit-transition: all 0.5s linear; transition: all 0.5s linear; position: fixed; top: 0; left: 0; }
+.header { position: fixed; top: 0; left: 65px; width: calc(100% - 65px); -webkit-transition: all 0.5s linear; transition: all 0.5s linear; background-color: #fff; }
 
 body[data-theme="dark"] { background-color: #121212; }
 
 body[data-theme="dark"] .header { background-color: #121212; }
 
-.detail-scroll .header { background-color: transparent; border-bottom-color: transparent; }
+.detail-scroll .header, .detail-scroll[data-theme="dark"] .header { background-color: transparent; border-bottom-color: transparent; }
 
-@media (min-width: 992px) { .detail-scroll .header { left: 65px; width: calc(100% - 65px); } }
+@media (min-width: 992px) { .detail-scroll .header, .detail-scroll[data-theme="dark"] .header { left: 65px; width: calc(100% - 65px); } }
 
-.detail-scroll .header .logo, .detail-scroll .header .header-prev-btn { color: #e1e1e1; }
+.detail-scroll .header .logo, .detail-scroll .header .header-prev-btn, .detail-scroll[data-theme="dark"] .header .logo, .detail-scroll[data-theme="dark"] .header .header-prev-btn { color: #e1e1e1; }
 
 body { padding: 0; margin: 0; overflow-x: hidden; }
 
@@ -684,14 +684,14 @@ body { padding: 0; margin: 0; overflow-x: hidden; }
 
 .detail-title-cover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.3; }
 
-.detail-title-cover-img { top: 0; left: 0; width: 100%; height: 100%; background: url("/assets/images/bg/bg22.jpg") center center no-repeat; background-size: cover; background-attachment: fixed; -webkit-transform: scale(1); transform: scale(1); }
+.detail-title-cover-img { top: 0; left: 0; width: 100%; height: 100%; background: url("/assets/images/bg/bg22.jpg") center center no-repeat; -webkit-transform: scale(1); transform: scale(1); background-size: cover; background-attachment: fixed; }
 
 .detail-title .containerBox { position: absolute; bottom: 70px; left: 0; }
 
 .detail-title .elipsis-wrap { color: #e1e1e1; }
 
 /* 본문 영역 */
-.detail-cont { position: relative; z-index: 1; width: 100%; margin-top: 200px; padding-top: 70px; border-radius: 0; -webkit-box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.2); box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.2); -webkit-transition: all 0.3s; transition: all 0.3s; background-color: #fff; }
+.detail-cont { position: relative; z-index: 1; width: 100%; -webkit-transition: all 0.3s; transition: all 0.3s; margin-top: 200px; padding-top: 70px; border-radius: 0; -webkit-box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.2); box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.2); background-color: #fff; }
 
 body[data-theme="dark"] { background-color: #121212; }
 
