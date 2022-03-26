@@ -342,8 +342,8 @@ $breakpoint-mobile: 768px;
   scrollbar-width: none; /* Firefox */
   overflow-x: auto !important;
 
-  touch-action: pan-x;
-  scroll-snap-type: x proximity;
+  // touch-action: pan-x;
+  // scroll-snap-type: x proximity;
 
   /*  & > ul li {
     scroll-snap-align: start;
@@ -362,8 +362,8 @@ $breakpoint-mobile: 768px;
   scrollbar-width: none; /* Firefox */
   overflow-x: auto !important;
 
-  touch-action: pan-x;
-  scroll-snap-type: x proximity;
+  //touch-action: pan-x;
+  //scroll-snap-type: x proximity;
 
   /*  & > ul li {
     scroll-snap-align: start;
@@ -394,7 +394,7 @@ $breakpoint-mobile: 768px;
     height: 17%;
     /* 스크롤바 둥글게 설정 */
     border-radius: 10px;
-    background-color: rgba(33, 133, 133, .5);
+    background-color: rgba(33, 133, 133, 0.5);
   }
   /* 스크롤바 뒷 배경 설정*/
   &::-webkit-scrollbar-track {
@@ -418,7 +418,7 @@ $breakpoint-mobile: 768px;
     height: 17%;
     /* 스크롤바 둥글게 설정 */
     border-radius: 10px;
-    background-color: rgba(33, 133, 133, .5);
+    background-color: rgba(33, 133, 133, 0.5);
   }
   /* 스크롤바 뒷 배경 설정*/
   &::-webkit-scrollbar-track {

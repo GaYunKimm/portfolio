@@ -6,11 +6,69 @@ const $header = document.querySelector(".header-cont");
 const $gnb = document.querySelector(".gnb");
 const $live = document.querySelector(".live");
 const $swiperX = document.querySelectorAll(".slide-wrap");
-let prevYoffset; //스크롤 이전 
-let scrollDirection;//스크롤방향
+//banner
+const $bannel = document.querySelector('.bannel');
+const $bannelItem = document.querySelectorAll('.bannel-inner');
+const $prevBtn = document.querySelector('.arrow-btn-prev');
+const $nextBtn = document.querySelector('.arrow-btn-next');
+const $pager = document.querySelector('.pager span');
+//soon 무한슬라이드
+const $soonSlide = document.querySelector(".center-slide .card-full");
+const $soonSlideLi = document.querySelectorAll(".center-slide .card-full li");
+const $soonPrevBtn = document.querySelector(".center-slide .arrow-btn-prev");
+const $soonNextBtn = document.querySelector(".center-slide .arrow-btn-next");
+const soonCount = $soonSlideLi.length;
+const slideWidth = 150;
+const activeSlideWidth = 180;
+const slideMargin = 12;
 
-let touchable = []; //터치여부 
-let tPosX = []; //xScroll 값
+let prevYoffset; //공통 : 스크롤 이전 
+let scrollDirection;//공통 : 스크롤방향
+let isMobile = false;
+isMobile = mobileChk();
+
+let touchable = []; //스와이프 터치여부 
+let tPosX = []; //스와이프 xScroll 값
+
+let pageNum = 0; //배너 페이지
+let totalNum = $bannelItem.length; //배너 최종슬라이드 갯수
+let bannelPlay = 0;//배너 인터벌
+
+let startX = 0; // 배너 좌우구분
+let endX = 0;// 배너 좌우구분
+
+let soonCurrentIdx = 0; //동영상 
+let $newSlideLi;
+let clickAble = false;
+
+const bgArray = new Array();
+bgArray[0] = ["#aff6cf", "#9f98e8"];
+bgArray[1] = ["#f0d5a7", "#c9b4ff"];
+bgArray[2] = ["#a88beb", "#5de6de"];
+bgArray[3] = ["#f5f7fa", "#b8c6db"];
+
+//모바일체크
+function mobileChk() {
+  var mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+  for (var info in mobileKeyWords) {
+    if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
+      return true;
+    }
+  }
+  return false;
+}
+
+//타겟잡기
+function getTarget(elem, className) {
+  while (!elem.classList.contains(className)) {
+    elem = elem.parentNode;
+    if (elem.nodeName === "BODY") {
+      elem = null;
+      return
+    }
+  }
+  return elem;
+}
 
 //header animation
 function headerSticky(e) {
@@ -31,24 +89,14 @@ function headerSticky(e) {
   }
 }
 
-//타겟잡기
-function getTarget(elem, className) {
-  while (!elem.classList.contains(className)) {
-    elem = elem.parentNode;
-    if (elem.nodeName === "BODY") {
-      elem = null;
-      return
-    }
-  }
-  return elem;
-}
-
 //slide function
 function slideDown(e, idx, $swiper) {
+  if (!isMobile) return;
   touchable[idx] = true;
   tPosX[idx].start = e.clientX;
 }
 function slideMove(e, idx, $swiper) {
+  if (!isMobile) return;
 
   let slideScrollEnd = $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth;
 
@@ -72,6 +120,8 @@ function slideMove(e, idx, $swiper) {
   $swiper.scrollLeft = -tPosX[idx].end;
 }
 function slideUp(e, idx, $swiper) {
+  if (!isMobile) return;
+
   $swiper.classList.remove("nonetouch");
   touchable[idx] = false;
   tPosX[idx].current = tPosX[idx].end;
@@ -134,7 +184,7 @@ function scrollXLiveActive(e, video) {
 }
 
 
-
+//스크롤 이벤트
 window.addEventListener('scroll', (e) => {
   //스크롤 방향
   scrollDirectionFunc();
@@ -144,11 +194,12 @@ window.addEventListener('scroll', (e) => {
   scrollYLiveActive(e);
 });
 
-
+//라이브 스크롤이벤트
 $live.parentNode.addEventListener("scroll", (e) => { //siide 
   scrollXLiveActive(e);
 });
 
+//스와이퍼 이벤트
 $swiperX.forEach((swiper, idx) => {
   touchable[idx] = {};
   tPosX[idx] = {
@@ -183,39 +234,18 @@ $swiperX.forEach((swiper, idx) => {
 
 });
 
-
-//banner
-
-const $bannel = document.querySelector('.bannel');
-const $bannelItem = document.querySelectorAll('.bannel-inner');
-const $prevBtn = document.querySelector('.arrow-btn-prev');
-const $nextBtn = document.querySelector('.arrow-btn-next');
-const $pager = document.querySelector('.pager span');
-
-let pageNum = 0;
-let totalNum = $bannelItem.length;
-
-let startX = 0;
-let endX = 0;
-
-const bgArray = new Array();
-bgArray[0] = ["#aff6cf", "#9f98e8"];
-bgArray[1] = ["#f0d5a7", "#c9b4ff"];
-bgArray[2] = ["#a88beb", "#5de6de"];
-bgArray[3] = ["#f5f7fa", "#b8c6db"];
-
+//배너 이벤트
 $prevBtn.addEventListener('click', () => {
   prev();
   pageChange();
   interval()
 });
-
+//배너이벤트
 $nextBtn.addEventListener('click', () => {
   next();
   pageChange();
   interval()
 });
-let bannelPlay = 0;
 
 pageChange();
 interval()
@@ -246,8 +276,6 @@ function next() {
 
 }
 
-
-
 function pageChange() {
 
   $bannel.style.background = `linear-gradient( -315deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]} 74%)`;
@@ -260,10 +288,6 @@ function pageChange() {
   //$bannelItem[pageNum].style.backgroundColor = bgArray[pageNum][0];
 
 }
-
-$bannel.addEventListener('mousedown', touchX);
-$bannel.addEventListener('mouseup', touchX);
-
 function touchX(e) {
   switch (e.type) {
     case "mousedown":
@@ -280,21 +304,13 @@ function touchX(e) {
       pageChange();
   }
 }
+$bannel.addEventListener('mousedown', touchX);
+$bannel.addEventListener('mouseup', touchX);
 
 
-//soon
 
-const $soonSlide = document.querySelector(".center-slide .card-full");
-const $soonSlideLi = document.querySelectorAll(".center-slide .card-full li");
-const $soonPrevBtn = document.querySelector(".center-slide .arrow-btn-prev");
-const $soonNextBtn = document.querySelector(".center-slide .arrow-btn-next");
-const soonCount = $soonSlideLi.length;
-const slideWidth = 150;
-const activeSlideWidth = 180;
-const slideMargin = 12;
-let soonCurrentIdx = 0;
-let $newSlideLi;
-let clickAble = false;
+
+
 
 //초기 가운데 정렬
 function calcSlideValue() {
@@ -350,7 +366,7 @@ function moveSlideEffect(idx, slidePos, slideTrans) {
     $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
   }, 50);
 }
-
+//슬라이드 전체박스 이동
 function moveSlide(num) {
   clickAble = true;
   if (!clickAble) return;
