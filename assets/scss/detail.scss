@@ -5,10 +5,13 @@
 .header {
   position: fixed;
   top: 0;
-  left: 65px;
-  width: calc(100% - 65px);
+  left: 0px;
   transition: all 0.5s linear;
   @include get-color(background-color, bg-color1);
+  @include pc-tablet-size{
+    left: 65px;
+  width: calc(100% - 65px);
+  }
 }
 .detail-scroll .header,
 .detail-scroll[data-theme="dark"] .header {
