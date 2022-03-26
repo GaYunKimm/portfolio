@@ -462,3 +462,50 @@ function closePop(e, eTartget) {
   }
 
 }
+
+const $themeBtn = document.querySelector(".theme-toggle-btn");
+
+
+
+const load = () => {
+  const data = localStorage.getItem("application");
+  if (data !== null) {
+    return JSON.parse(data);
+  } else {
+    return {
+      background: "null",
+      user: "",
+    }
+  }
+}
+
+const data = load();
+const save = () => {
+  localStorage.setItem("application", JSON.stringify(data));
+}
+
+const setTheme = () => {
+  changeTheme(data.background);
+  console.log(data.background);
+}
+changeTheme(data.background);
+
+$themeBtn.addEventListener("click", (e) => {
+  const theme = e.currentTarget.dataset.theme;
+  changeTheme(theme);
+});
+//nights_stay
+//light_mode
+function changeTheme(theme) {
+  const themeIcon = theme === "dark" ? "light_mode" : "nights_stay";
+  const themeText = theme === "dark" ? "라이트모드" : "다크모드";
+  const themeData = theme === "dark" ? "light" : "dark"
+
+  $themeBtn.querySelector(".gnb-list-text").innerText = themeText;
+  $themeBtn.querySelector(".gnb-list-icon span").innerText = themeIcon;
+  $themeBtn.dataset.theme = themeData;
+  document.body.dataset.theme = theme;
+
+  data.background = theme;
+  save(data)
+}

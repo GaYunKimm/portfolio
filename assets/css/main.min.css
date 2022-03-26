@@ -699,3 +699,5 @@ body[data-theme="dark"] .contents-soon .arrow-btn { color: #bbbbbb; }
 @media (max-width: 1344px) { .album { right: 40px; width: 180px; } }
 
 @media (max-width: 767px) { .album { right: 10px; width: 140px; } }
+
+.theme-btn { position: absolute; right: 12px; width: 45px; height: 45px; background-size: 25px; background-position: center; background-repeat: no-repeat; background-image: url(/assets/images/theme-light.svg); }

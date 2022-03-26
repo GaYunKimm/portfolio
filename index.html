@@ -91,13 +91,15 @@
               </span></span>
             <span class="gnb-list-text">홈</span>
           </a></li>
-        <li><a href="#" title="마이페이지 바로가기">
+        <li><button class="theme-toggle-btn" data-theme="dark">
             <span class="gnb-list-icon"> <span class="material-icons-outlined">
-                account_circle
-              </span></span>
+              nights_stay
+                <!-- light_mode -->
+              </span>
+            </span>
 
-            <span class="gnb-list-text">마이페이지</span>
-          </a></li>
+            <span class="gnb-list-text">다크모드</span>
+          </button></li>
         <li><button class="recent-btn" data-href="#recentPop" aria-haspopup="true" title="최근본 팝업창 열기">
             <span class="gnb-list-icon"> <span class="material-icons-outlined">
                 visibility
@@ -2179,18 +2181,6 @@
 
   <div class="dark" style="display: none;"></div>
 
-
-
-
-  <!-- <script>
-    document.body.addEventListener("click", () => {
-      if (document.body.dataset.theme === "dark") {
-        document.body.dataset.theme = "light"
-      } else {
-        document.body.dataset.theme = "dark"
-      }
-    })
-  </script> -->
   <script src="/assets/js/main.js" defer></script>
 
 </body>

@@ -1,0 +1,66 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+  <defs>
+  
+    <linearGradient id="hair-color">
+      <stop offset="0%" stop-color="#868f96" />
+      <stop offset="100%" stop-color="#f3e7e9" />
+    </linearGradient>
+
+    <style>
+    <!--오류방지-->
+    <![CDATA[
+
+    .st0{
+      fill:url('#hair-color');
+    }
+    .sun-circle{
+      animation: eye-ani 5s linear  infinite;
+      transform-origin:center center
+    }
+
+
+
+    @keyframes eye-ani{
+      from{
+        transform:rotate(0deg)
+      }
+      to{
+        transform:rotate(360deg)
+      }
+    }
+    ]]>
+   <!--오류방지-->
+    </style>
+
+  </defs>
+<g>
+<g>
+	<path class="st0" d="M21.82,15.06c0,3.72-3.01,6.73-6.73,6.73s-6.73-3.01-6.73-6.73c0-1.06,0.25-2.07,0.68-2.96
+		c0.71-1.45,1.93-2.61,3.43-3.24c0.81-0.34,1.69-0.53,2.62-0.53C18.81,8.33,21.82,11.34,21.82,15.06z"/>
+</g>
+
+<g class="sun-circle">
+ <g>
+		<circle class="st0" cx="15.08" cy="4.45" r="2.33"/>
+	</g>
+	<g>
+		<circle class="st0" cx="5.88" cy="9.77" r="2.33"/>
+	</g>
+	<g>
+		<circle class="st0" cx="5.9" cy="20.4" r="2.33"/>
+	</g>
+	<g>
+		<circle class="st0" cx="15.13" cy="25.67" r="2.33"/>
+	</g>
+	<g>
+		<circle class="st0" cx="24.3" cy="20.3" r="2.33"/>
+	</g>
+	<g>
+		<circle class="st0" cx="24.22" cy="9.67" r="2.33"/>
+	</g>
+
+
+	</g>	</g>
+
+</svg>
