@@ -388,17 +388,9 @@ const $popDark = document.querySelector(".dark");
 const $popCloseBtn = document.querySelectorAll(".pop-close-btn");
 
 $menuBtn.addEventListener("click", (e) => {
-  if (e.target.dataset.href === document.body.dataset.pop) return;
-  if (document.body.classList.contains("bodyfixed")) {
-    closePop(e, document.body);
-  }
   popUp(e);
 });
 $recentBtn.addEventListener("click", (e) => {
-  if (e.target.dataset.href === document.body.dataset.pop) return;
-  if (document.body.classList.contains("bodyfixed")) {
-    closePop(e, document.body);
-  }
   popUp(e);
 });
 
@@ -420,6 +412,11 @@ function popUp(e) {
   const href = e.currentTarget.dataset.href;
   const $pop = document.querySelector(href);
   const $popclose = $pop.querySelector(".pop-close-btn");
+
+  if (e.target.dataset.href === document.body.dataset.pop) return;
+  if (document.body.classList.contains("bodyfixed")) {
+    closePop(e, document.body);
+  }
 
   document.body.classList.add('bodyfixed');
   document.body.dataset.pop = href;
