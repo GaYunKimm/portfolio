@@ -37,12 +37,12 @@ body {
 }
 
 .header-cont {
-  transition: transform 0.3s;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 50;
+  width: 100%;
+  transition: transform 0.3s;
 }
 .header {
   position: relative;
@@ -139,9 +139,16 @@ body {
       position: relative;
       width: 20%;
       height: 100%;
-
       @include pc-tablet-size {
         width: 100%;
+      }
+      @include tablet-size {
+        &:nth-child(3) .gnb-list-icon {
+          span {
+            color: rgba(255, 255, 255, 0.9);
+            mix-blend-mode: overlay;
+          }
+        }
       }
 
       a,
@@ -172,7 +179,7 @@ body {
           height: $leng-65;
 
           &:hover .gnb-list-icon,
-          &:focus .gnb-list-icon,
+          &:active .gnb-list-icon,
           &.active .gnb-list-icon {
             color: $brand-color;
             span {
@@ -180,7 +187,7 @@ body {
             }
           }
           &:hover .gnb-list-text,
-          &:focus .gnb-list-text,
+          &:active .gnb-list-text,
           &.active .gnb-list-text {
             color: $brand-color;
             transform: translateY(0px);
@@ -220,6 +227,7 @@ body {
     box-shadow: $box-shadow2;
     border-radius: 50%;
     overflow: hidden;
+    pointer-events: none;
     @include pc-tablet-size {
       display: none;
     }
@@ -238,6 +246,18 @@ body {
     }
   }
 }
+
+.theme-btn {
+  position: absolute;
+  right: 12px;
+  width: 45px;
+  height: 45px;
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/theme-light.svg);
+}
+
 .contents {
   flex: 1;
 }

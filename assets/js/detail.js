@@ -1,4 +1,5 @@
 'use strict';
+//import local from '/assets/js/module-local.js';
 
 const $cover = document.querySelector(".detail-title-cover");
 const $coverImg = document.querySelector(".detail-title-cover-img");

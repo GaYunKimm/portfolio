@@ -198,6 +198,9 @@ $colors: (
     bg-color2: #e0e0e0,
     bg-color3: #cecece,
     bg-color4: rgba(0, 0, 0, 0.1),
+    bg-color5: #fff,
+    //point-color
+    point-color: #eff8ef,
     //blur
     opacity-color1: rgba(255, 255, 255, 0.5),
   ),
@@ -215,6 +218,10 @@ $colors: (
     bg-color2: #1d1d1d,
     bg-color3: #2d2d2d,
     bg-color4: rgba(18, 18, 18, 0.1),
+    bg-color5: #1d1d1d,
+
+    //point-color
+    point-color: #1d2423,
     //blur
     opacity-color1: rgba(0, 0, 0, 0.5),
   ),
@@ -339,7 +346,7 @@ $breakpoint-mobile: 768px;
   touch-action: pan-x;
   scroll-snap-type: x proximity;
 
- /*  & > ul li {
+  /*  & > ul li {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   } */
