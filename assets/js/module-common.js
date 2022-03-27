@@ -1,3 +1,22 @@
+
+//스크롤 방향
+const scrollDirect = {
+  prevYoffset: 0,
+  scrollDirection: 0,
+  scrollDirectionFunc: function (e) {
+    if (scrollDirect.prevYoffset > window.pageYOffset) {
+      scrollDirect.scrollDirection = 'up'
+    } else {
+      scrollDirect.scrollDirection = 'down'
+    }
+    //스크롤시 이전변수값에 담기
+    scrollDirect.prevYoffset = window.pageYOffset;
+  },
+}
+export default scrollDirect;
+
+
+//타겟 잡기 (이벤트위임)
 export const getTarget = (elem, className) => {
   //타겟잡기
   while (!elem.classList.contains(className)) {
@@ -9,16 +28,63 @@ export const getTarget = (elem, className) => {
   }
   return elem;
 }
-
 //모바일체크
-export const mobileChk = () => {
-  var mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
-  for (var info in mobileKeyWords) {
+export const isMobile = () => {
+  const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+  for (let info in mobileKeyWords) {
     if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
       return true;
     }
   }
   return false;
 }
+let isMobileState = isMobile();
 
+//X slide
+export const slide = {
+  touchable: [], //스와이프 터치여부 
+  tPosX: [], //스와이프 xScroll 값
+  slideDown: function (e, idx, $swiper) {
+    if (isMobileState) return;
+    this.touchable[idx] = true;
+    this.tPosX[idx].start = e.clientX;
+  },
+  slideMove: function (e, idx, $swiper) {
+    if (isMobileState) return;
+    let slideScrollEnd = $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth;
+    if (!this.touchable[idx] && !$swiper.classList.contains("nonetouch")) return;
+    $swiper.classList.add("nonetouch");
+    //스크롤 0 위치 && 이전스크롤 방향
+    if ($swiper.scrollLeft <= 0 && this.tPosX[idx].start < e.clientX) {
+      this.tPosX[idx] = {
+        start: 0,
+        current: 0,
+        end: 0,
+      }
+    }
+    // 스크롤끝지점 && 다음스크롤방향
+    else if ($swiper.scrollLeft === slideScrollEnd && this.tPosX[idx].start > e.clientX) {
+      this.tPosX[idx].current = slideScrollEnd
+    }
+    else {
+      this.tPosX[idx].end = this.tPosX[idx].current + (e.clientX - this.tPosX[idx].start);//e.clientX;
+    }
+    $swiper.scrollLeft = -this.tPosX[idx].end;
+  },
+  slideUp: function (e, idx, $swiper) {
+    if (isMobileState) return;
 
+    $swiper.classList.remove("nonetouch");
+    this.touchable[idx] = false;
+    this.tPosX[idx].current = this.tPosX[idx].end;
+  },
+  slideWheel: function (e, idx, $swiper) {
+    this.tPosX[idx] = {
+      start: 0,
+      current: e.scrollLeft,
+      end: e.scrollLeft,
+    }
+    //console.log(tPosX[idx])
+    console.log(e)
+  }
+}

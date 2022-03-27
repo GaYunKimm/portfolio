@@ -1,5 +1,5 @@
 'use strict';
-import { mobileChk } from '/assets/js/module-common.js';
+import { isMobile } from '/assets/js/module-common.js';
 
 (() => {
 
@@ -18,8 +18,8 @@ import { mobileChk } from '/assets/js/module-common.js';
   const $likeBtn = document.querySelector(".chat-like-btn");
   const $likes = document.querySelector(".chat-like-box");
 
-  let isMobile = false;
-  isMobile = mobileChk();//모바일 체크
+  let isMobileState = false;
+  isMobileState = isMobile();
 
   let clickable = false; //비디오 컨트롤러 드래그여부
 
@@ -137,7 +137,7 @@ import { mobileChk } from '/assets/js/module-common.js';
   //재생바 클릭시 플레이타임 이동
   $progressBar.addEventListener('click', (e) => { moveCurrentTime(e); });
 
-  if (!isMobile) {
+  if (!isMobileState) {
     //pc 재생바 드래그 
     $progressBar.addEventListener('mousedown', (e) => clickable = true);
     $progressBar.addEventListener('mousemove', (e) => { if (clickable) moveCurrentTime(e) });
