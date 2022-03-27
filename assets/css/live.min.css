@@ -156,6 +156,8 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .video-btn { display: block; width: 40px; font-size: calc(1rem + 4px); text-align: center; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); }
 
+.video-btn span { pointer-events: none; }
+
 .video-cont { position: absolute; top: 75px; left: 0; z-index: 1; width: 100%; }
 
 .good-circle-list { display: none; padding: 0 12px; }
@@ -186,13 +188,13 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .chat-like-effect { position: absolute; top: 0; left: 50%; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; }
 
-.chat-like-effect:nth-child(1n+1) .chat-like-effect-heart { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
+.chat-like-effect:nth-child(1n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 
-.chat-like-effect:nth-child(2n+1) .chat-like-effect-heart { -webkit-animation: ani-like-move2 1s linear 1; animation: ani-like-move2 1s linear 1; }
+.chat-like-effect:nth-child(2n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move2 1s linear 1; animation: ani-like-move2 1s linear 1; }
 
-.chat-like-effect:nth-child(3n+1) .chat-like-effect-heart { -webkit-animation: ani-like-move3 1s linear 1; animation: ani-like-move3 1s linear 1; }
+.chat-like-effect:nth-child(3n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move3 1s linear 1; animation: ani-like-move3 1s linear 1; }
 
-.chat-like-effect:nth-child(4n+1) .chat-like-effect-heart { -webkit-animation: ani-like-move4 1s linear 1; animation: ani-like-move4 1s linear 1; }
+.chat-like-effect:nth-child(4n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move4 1s linear 1; animation: ani-like-move4 1s linear 1; }
 
 .chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 
@@ -235,6 +237,8 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 .video-detail-active .video-control { display: none; }
 
 .video-control-btn { display: -webkit-box; display: -ms-flexbox; display: flex; width: 40px; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; }
+
+.video-control-btn span { pointer-events: none; }
 
 .video-control-progress { position: relative; padding: 30px 0; -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
 

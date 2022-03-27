@@ -121,6 +121,9 @@ body {
   font-size: $size-h5;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  span {
+    pointer-events: none;
+  }
 }
 
 .video-cont {
@@ -216,16 +219,16 @@ body {
     transform: translate(-50%, -100%);
     pointer-events: none;
 
-    &:nth-child(1n+1) .chat-like-effect-heart{
+    &:nth-child(1n + 1) .chat-like-effect-heart {
       animation: ani-like-move1 1s linear 1;
     }
-    &:nth-child(2n+1) .chat-like-effect-heart{
+    &:nth-child(2n + 1) .chat-like-effect-heart {
       animation: ani-like-move2 1s linear 1;
     }
-    &:nth-child(3n+1) .chat-like-effect-heart{
+    &:nth-child(3n + 1) .chat-like-effect-heart {
       animation: ani-like-move3 1s linear 1;
     }
-    &:nth-child(4n+1) .chat-like-effect-heart{
+    &:nth-child(4n + 1) .chat-like-effect-heart {
       animation: ani-like-move4 1s linear 1;
     }
 
@@ -365,6 +368,9 @@ body {
     width: 40px;
     align-items: center;
     justify-content: flex-start;
+    span {
+      pointer-events: none;
+    }
   }
   &-progress {
     position: relative;

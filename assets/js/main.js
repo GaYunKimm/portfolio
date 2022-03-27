@@ -184,6 +184,146 @@ function scrollXLiveActive(e, video) {
 }
 
 
+
+function interval() {
+  clearInterval(bannelPlay);
+  bannelPlay = setInterval(() => {
+    next();
+    pageChange();
+  }, 5000);
+}
+
+function prev() {
+  pageNum--;
+  if (pageNum < 0) {
+    pageNum = totalNum - 1;
+  }
+  $pager.innerText = `${pageNum + 1} / ${totalNum}`
+}
+
+function next() {
+  pageNum++;
+  if (pageNum >= totalNum) {
+    pageNum = 0;
+  }
+  $pager.innerText = `${pageNum + 1} / ${totalNum}`
+
+}
+
+function pageChange() {
+
+  $bannel.style.background = `linear-gradient( -315deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]} 74%)`;
+
+  for (let i = 0; i < totalNum; i++) {
+    // $bannel.style.background = `linear-gradient(120deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]}) 74%`;
+    $bannelItem[i].classList.remove('active');
+  }
+  $bannelItem[pageNum].classList.add('active');
+  //$bannelItem[pageNum].style.backgroundColor = bgArray[pageNum][0];
+
+}
+function touchX(e) {
+  switch (e.type) {
+    case "touchstart":
+    case "mousedown":
+      startX = e.offsetX;
+      endX = 0;
+      break;
+    case "touchend":
+    case "mouseup":
+      endX = e.offsetX;
+      if (endX - startX > 30) {
+        prev();
+      } else if (startX - endX > 30) {
+        next();
+      }
+      pageChange();
+  }
+}
+
+
+//슬라이드 크기 효과
+function activeSlideEffect(num) {
+  $newSlideLi.forEach(elem => {
+    elem.classList.remove("active");
+  });
+  //복사본 효과
+  $newSlideLi[(num + soonCount) + (soonCount)].classList.add("active");
+  //원본 효과
+  $newSlideLi[num + soonCount].classList.add("active");
+}
+//슬라이드 박스 이동 효과
+function moveSlideEffect(idx, slidePos, slideTrans) {
+  soonCurrentIdx = idx;
+  $soonSlide.classList.remove("animate");
+  $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
+  activeSlideEffect(idx);
+  setTimeout(() => {
+    $soonSlide.classList.add("animate");
+    $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
+  }, 50);
+}
+//슬라이드 전체박스 이동
+function moveSlide(num) {
+  clickAble = true;
+  if (!clickAble) return;
+  soonCurrentIdx = num;
+  $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
+  //next : 마지막슬라이드에서 첫번째슬라이드
+  if (soonCurrentIdx === soonCount) {
+    moveSlideEffect(0, 0, activeSlideWidth);
+  }
+  //prev 첫번째슬라이드에서 마지막슬라이드
+  else if (soonCurrentIdx === -1) {
+    const prevLeft = ($newSlideLi[(soonCount * 2) - 1].offsetLeft / 2) - (activeSlideWidth / 2);
+    moveSlideEffect(soonCount - 1, -prevLeft, -activeSlideWidth);
+  }
+  //기본움직임
+  else {
+    activeSlideEffect(soonCurrentIdx);
+  }
+  setTimeout(() => {
+    clickAble = false;
+  }, 400);
+}
+
+//초기 가운데 정렬
+function calcSlideValue() {
+  $newSlideLi = document.querySelectorAll(".center-slide .card-full li");
+  const initSlideWidth = (slideWidth + slideMargin) * soonCount;
+  const initWidth = $soonSlide.parentNode.clientWidth;
+  const initTransVal = initSlideWidth + ((activeSlideWidth / 2) + 24) - (initWidth / 2);
+  $soonSlide.style.left = `${-initTransVal}px`
+
+  return initTransVal;
+}
+const slideLeft = calcSlideValue();
+
+// 슬라이드 요소 클론 만들기
+function makeClone() {
+  for (let i = 0; i < soonCount; i++) {
+    const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
+    cloneSlide.setAttribute('class', '');
+    $soonSlide.appendChild(cloneSlide);
+  }
+  for (let i = soonCount - 1; i >= 0; i--) {
+    const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
+    cloneSlide.setAttribute('class', '');
+    $soonSlide.prepend(cloneSlide);
+  }
+  calcSlideValue();
+  $newSlideLi[$newSlideLi.length - soonCount - 1].classList.add("active");
+
+  setTimeout(() => {
+    $soonSlide.classList.add("animate");
+  }, 100);
+}
+
+
+
+
+                                                                    
+
 //스크롤 이벤트
 window.addEventListener('scroll', (e) => {
   //스크롤 방향
@@ -251,59 +391,6 @@ pageChange();
 interval()
 
 
-function interval() {
-  clearInterval(bannelPlay);
-  bannelPlay = setInterval(() => {
-    next();
-    pageChange();
-  }, 5000);
-}
-
-function prev() {
-  pageNum--;
-  if (pageNum < 0) {
-    pageNum = totalNum - 1;
-  }
-  $pager.innerText = `${pageNum + 1} / ${totalNum}`
-}
-
-function next() {
-  pageNum++;
-  if (pageNum >= totalNum) {
-    pageNum = 0;
-  }
-  $pager.innerText = `${pageNum + 1} / ${totalNum}`
-
-}
-
-function pageChange() {
-
-  $bannel.style.background = `linear-gradient( -315deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]} 74%)`;
-
-  for (let i = 0; i < totalNum; i++) {
-    // $bannel.style.background = `linear-gradient(120deg, ${bgArray[pageNum][0]} 0%, ${bgArray[pageNum][1]}) 74%`;
-    $bannelItem[i].classList.remove('active');
-  }
-  $bannelItem[pageNum].classList.add('active');
-  //$bannelItem[pageNum].style.backgroundColor = bgArray[pageNum][0];
-
-}
-function touchX(e) {
-  switch (e.type) {
-    case "mousedown":
-      startX = e.offsetX;
-      endX = 0;
-      break;
-    case "mouseup":
-      endX = e.offsetX;
-      if (endX - startX > 30) {
-        prev();
-      } else if (startX - endX > 30) {
-        next();
-      }
-      pageChange();
-  }
-}
 $bannel.addEventListener('mousedown', touchX);
 $bannel.addEventListener('mouseup', touchX);
 
@@ -312,83 +399,9 @@ $bannel.addEventListener('mouseup', touchX);
 
 
 
-//초기 가운데 정렬
-function calcSlideValue() {
-  $newSlideLi = document.querySelectorAll(".center-slide .card-full li");
-  const initSlideWidth = (slideWidth + slideMargin) * soonCount;
-  const initWidth = $soonSlide.parentNode.clientWidth;
-  const initTransVal = initSlideWidth + ((activeSlideWidth / 2) + 24) - (initWidth / 2);
-  $soonSlide.style.left = `${-initTransVal}px`
 
-  return initTransVal;
-}
-const slideLeft = calcSlideValue();
-
-// 슬라이드 요소 클론 만들기
-function makeClone() {
-  for (let i = 0; i < soonCount; i++) {
-    const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
-    cloneSlide.setAttribute('class', '');
-    $soonSlide.appendChild(cloneSlide);
-  }
-  for (let i = soonCount - 1; i >= 0; i--) {
-    const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
-    cloneSlide.setAttribute('class', '');
-    $soonSlide.prepend(cloneSlide);
-  }
-  calcSlideValue();
-  $newSlideLi[$newSlideLi.length - soonCount - 1].classList.add("active");
-
-  setTimeout(() => {
-    $soonSlide.classList.add("animate");
-  }, 100);
-}
 makeClone();
 
-//슬라이드 크기 효과
-function activeSlideEffect(num) {
-  $newSlideLi.forEach(elem => {
-    elem.classList.remove("active");
-  });
-  //복사본 효과
-  $newSlideLi[(num + soonCount) + (soonCount)].classList.add("active");
-  //원본 효과
-  $newSlideLi[num + soonCount].classList.add("active");
-}
-//슬라이드 박스 이동 효과
-function moveSlideEffect(idx, slidePos, slideTrans) {
-  soonCurrentIdx = idx;
-  $soonSlide.classList.remove("animate");
-  $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
-  activeSlideEffect(idx);
-  setTimeout(() => {
-    $soonSlide.classList.add("animate");
-    $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
-  }, 50);
-}
-//슬라이드 전체박스 이동
-function moveSlide(num) {
-  clickAble = true;
-  if (!clickAble) return;
-  soonCurrentIdx = num;
-  $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
-  //next : 마지막슬라이드에서 첫번째슬라이드
-  if (soonCurrentIdx === soonCount) {
-    moveSlideEffect(0, 0, activeSlideWidth);
-  }
-  //prev 첫번째슬라이드에서 마지막슬라이드
-  else if (soonCurrentIdx === -1) {
-    const prevLeft = ($newSlideLi[(soonCount * 2) - 1].offsetLeft / 2) - (activeSlideWidth / 2);
-    moveSlideEffect(soonCount - 1, -prevLeft, -activeSlideWidth);
-  }
-  //기본움직임
-  else {
-    activeSlideEffect(soonCurrentIdx);
-  }
-  setTimeout(() => {
-    clickAble = false;
-  }, 400);
-}
 
 $soonPrevBtn.addEventListener('click', (e) => {
   e.preventDefault();
