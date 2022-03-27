@@ -194,11 +194,11 @@ import scrollDirect from '/assets/js/module-common.js';
     soonCurrentIdx = num;
     $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
     //next : 마지막슬라이드에서 첫번째슬라이드
-    if (soonCurrentIdx === soonCount) {
+    if (soonCurrentIdx >= soonCount) {
       moveSlideEffect(0, 0, activeSlideWidth);
     }
     //prev 첫번째슬라이드에서 마지막슬라이드
-    else if (soonCurrentIdx === -1) {
+    else if (soonCurrentIdx <= -1) {
       const prevLeft = ($newSlideLi[(soonCount * 2) - 1].offsetLeft / 2) - (activeSlideWidth / 2);
       moveSlideEffect(soonCount - 1, -prevLeft, -activeSlideWidth);
     }

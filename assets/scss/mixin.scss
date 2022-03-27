@@ -341,6 +341,7 @@ $breakpoint-mobile: 768px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   overflow-x: auto !important;
+  cursor: grab;
 
   // touch-action: pan-x;
   // scroll-snap-type: x proximity;
@@ -361,7 +362,7 @@ $breakpoint-mobile: 768px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   overflow-x: auto !important;
-
+  cursor: grab;
   //touch-action: pan-x;
   //scroll-snap-type: x proximity;
 
