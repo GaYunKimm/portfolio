@@ -293,7 +293,6 @@ import scrollDirect from '/assets/js/module-common.js';
     swiper.addEventListener("mousedown", (e) => {
       let $swiper = getTarget(e.target, "slide-wrap");
       slide.slideDown(e, idx, $swiper);
-      console.log("e")
     });
     swiper.addEventListener("mousemove", (e) => {
       let $swiper = getTarget(e.target, "slide-wrap");
@@ -307,7 +306,10 @@ import scrollDirect from '/assets/js/module-common.js';
       let $swiper = getTarget(e.target, "slide-wrap");
       slide.slideUp(e, idx, $swiper);
     });
-
+    swiper.addEventListener("wheel", (e) => {
+      let $swiper = getTarget(e.target, "slide-wrap");
+      slide.slideWheel(e, idx, $swiper);
+    });
   });
 
   //리사이즈 이벤트
