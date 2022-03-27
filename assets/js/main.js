@@ -1,6 +1,9 @@
 'use strict';
-//import local from '/assets/js/module-local.js';
+import { getTarget, mobileChk } from '/assets/js/module-common.js';
 
+(() => {
+
+});
 //상수 및 변수
 const $header = document.querySelector(".header-cont");
 const $gnb = document.querySelector(".gnb");
@@ -46,29 +49,6 @@ bgArray[0] = ["#aff6cf", "#9f98e8"];
 bgArray[1] = ["#f0d5a7", "#c9b4ff"];
 bgArray[2] = ["#a88beb", "#5de6de"];
 bgArray[3] = ["#f5f7fa", "#b8c6db"];
-
-//모바일체크
-function mobileChk() {
-  var mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
-  for (var info in mobileKeyWords) {
-    if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
-      return true;
-    }
-  }
-  return false;
-}
-
-//타겟잡기
-function getTarget(elem, className) {
-  while (!elem.classList.contains(className)) {
-    elem = elem.parentNode;
-    if (elem.nodeName === "BODY") {
-      elem = null;
-      return
-    }
-  }
-  return elem;
-}
 
 //header animation
 function headerSticky(e) {
@@ -322,7 +302,7 @@ function makeClone() {
 
 
 
-                                                                    
+
 
 //스크롤 이벤트
 window.addEventListener('scroll', (e) => {
