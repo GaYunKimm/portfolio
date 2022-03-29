@@ -41,7 +41,7 @@ export const isMobile = () => {
 let isMobileState = isMobile();
 
 //트랜스폼 위치
-const getMatrix = (element) => {
+export const getMatrix = (element) => {
   const values = element.style.transform.split(/\w+\(|\);?/);
   const transform = values[1].split(/,\s?/g).map(parseInt);
 
