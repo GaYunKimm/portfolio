@@ -40,6 +40,20 @@ export const isMobile = () => {
 }
 let isMobileState = isMobile();
 
+//트랜스폼 위치
+const getMatrix = (element) => {
+  const values = element.style.transform.split(/\w+\(|\);?/);
+  const transform = values[1].split(/,\s?/g).map(parseInt);
+
+  return {
+    x: transform[0],
+    y: transform[1],
+    z: transform[2]
+  };
+}
+
+
+
 //X slide
 export const slide = {
   touchable: [], //스와이프 터치여부 

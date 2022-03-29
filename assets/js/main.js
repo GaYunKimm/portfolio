@@ -1,5 +1,5 @@
 'use strict';
-import { getTarget, isMobile, slide } from '/assets/js/module-common.js';
+import { getTarget, isMobile, slide, getMatrix } from '/assets/js/module-common.js';
 import scrollDirect from '/assets/js/module-common.js';
 
 (() => {
@@ -33,13 +33,31 @@ import scrollDirect from '/assets/js/module-common.js';
       ["#f5f7fa", "#b8c6db"],
     ]
   }
+  //soon info 
+  const soonInfo = {
+    wrapWidth: 0, //슬라이드 총 넓이 //li의총합
+    winWidth: 0, //보이는영역 넓이
+    width: 150,//soon 가로크기
+    activeWidth: 180,// soon active된 크기
+    margin: 12,// soon 마진 값
 
+    count: $soonSlideLi.length, // soon 원본 갯수
+    cloneCount: 0,//soon 클론 총 갯수
+
+    currentIdx: 0,//soon 현재  idx (변해야하는 값)
+    idx: 0, //soon 현재  idx
+    cloneCurrentIdx: 0,//soon 클론 idx
+
+    firstIdx: 0,
+    lastIdx: 0,
+  }
 
   let $newSlideLi; //soon 클론된  li
 
   let isMobileState = false; //모바일 체크
   isMobileState = isMobile();//모바일 체크
   let clickAble = false; // 클릭체크
+
 
   //Func header animation
   const headerSticky = (e) => {
@@ -149,29 +167,6 @@ import scrollDirect from '/assets/js/module-common.js';
         bannerPageChange();
     }
   }
-  const soonCount = $soonSlideLi.length; // soon 갯수
-  const slideWidth = 150; //soon 가로크기
-  const activeSlideWidth = 180; // soon active 크기
-  const slideMargin = 12; // soon 마진 값
-  let soonCurrentIdx = 0; //soon 현재  
-
-  const soonInfo = {
-    wrapWidth: 0, //슬라이드 총 넓이 //li의총합
-    winWidth: 0, //보이는영역 넓이
-    width: 150,//soon 가로크기
-    activeWidth: 180,// soon active된 크기
-    margin: 12,// soon 마진 값
-
-    count: $soonSlideLi.length, // soon 원본 갯수
-    cloneCount: 0,//soon 클론 총 갯수
-
-    currentIdx: 0,//soon 현재  idx (변해야하는 값)
-    idx: 0, //soon 현재  idx
-    cloneCurrentIdx: 0,//soon 클론 idx
-
-    firstIdx: 0,
-    lastIdx: 0,
-  }
 
   //Func soon초기 가운데 정렬
   const setSoonInit = () => {
@@ -261,17 +256,53 @@ import scrollDirect from '/assets/js/module-common.js';
     }, 100);
   }
 
-  //soon 배너 이벤트 이전
-  $soonPrevBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    moveSlide(soonInfo.currentIdx - 1);
-  });
-  //soon 배너 이벤트 다음
-  $soonNextBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    moveSlide(soonInfo.currentIdx + 1);
-  });
+  //Func soon 슬라이드 터치
+  const slideSoon = {
+    touchable: false, //스와이프 터치여부 
+    tPosX: {
+      start: 0,
+      current: 0,
+      end: 0,
+    }, //스와이프 xScroll 값
 
+    slideDown: function (e) {
+      slideSoon.touchable = true;
+      slideSoon.tPosX.start = e.clientX;
+      //console.log(this.tPosX)
+    },
+    slideMove: function (e) {
+      if (!slideSoon.touchable) return;
+      if (!this.touchable && !$soonSlide.classList.contains("nonetouch")) return;
+      $soonSlide.classList.add("nonetouch");
+      this.tPosX.end = this.tPosX.current + (e.clientX - this.tPosX.start);
+      $soonSlide.style.transform = `translate3d(${slideSoon.tPosX.end}px,0,0)`;
+    },
+    slideUp: function (e) {
+      $soonSlide.classList.remove("nonetouch");
+      $newSlideLi.forEach((elem, idx) => {
+        const $slideWrap = elem.parentNode;
+        const slideWrapWidth = $slideWrap.getBoundingClientRect();
+        let soonActive;
+        if (
+          -(slideWrapWidth.left) > elem.offsetLeft - (window.outerWidth / 2) &&
+          -(slideWrapWidth.left) < elem.offsetLeft - (window.outerWidth / 2) + elem.offsetWidth
+        ) {
+          if (idx > soonInfo.firstIdx) {
+            soonActive = idx - ($newSlideLi.length / 3);
+          }
+          else {
+            soonActive = idx;
+          }
+          moveSlide(soonActive);
+        }
+      });
+      const xpos = getMatrix($soonSlide);
+      this.tPosX.current = xpos.x;
+      this.tPosX.end = xpos.x;
+      slideSoon.touchable = false;
+      //console.log(this.tPosX)
+    },
+  }
 
 
 
@@ -313,8 +344,6 @@ import scrollDirect from '/assets/js/module-common.js';
     scrollXLiveActive(e);
   });
 
-
-
   //공통 스와이퍼 이벤트
   $swiperX.forEach((swiper, idx) => {
     slide.touchable[idx] = {};
@@ -345,77 +374,26 @@ import scrollDirect from '/assets/js/module-common.js';
     });
   });
 
-  //리사이즈 이벤트
-  window.addEventListener("resize", () => {
-    setSoonInit();
+  //soon 배너 이벤트 이전
+  $soonPrevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    moveSlide(soonInfo.currentIdx - 1);
   });
-
-  const getMatrix = (element) => {
-    const values = element.style.transform.split(/\w+\(|\);?/);
-    const transform = values[1].split(/,\s?/g).map(parseInt);
-
-    return {
-      x: transform[0],
-      y: transform[1],
-      z: transform[2]
-    };
-  }
-
-  const slideSoon = {
-    touchable: false, //스와이프 터치여부 
-    tPosX: {
-      start: 0,
-      current: 0,
-      end: 0,
-    }, //스와이프 xScroll 값
-
-    slideDown: function (e) {
-      slideSoon.touchable = true;
-      slideSoon.tPosX.start = e.clientX;
-      //console.log(this.tPosX)
-    },
-    slideMove: function (e) {
-      if (!slideSoon.touchable) return;
-      if (!this.touchable && !$soonSlide.classList.contains("nonetouch")) return;
-      $soonSlide.classList.add("nonetouch");
-      this.tPosX.end = this.tPosX.current + (e.clientX - this.tPosX.start);
-      $soonSlide.style.transform = `translate3d(${slideSoon.tPosX.end}px,0,0)`;
-    },
-    slideUp: function (e) {
-      $soonSlide.classList.remove("nonetouch");
-
-      $newSlideLi.forEach((elem, idx) => {
-        const $slideWrap = elem.parentNode;
-        const slideWrapWidth = $slideWrap.getBoundingClientRect();
-
-        let soonActive;
-        if (
-          -(slideWrapWidth.left) > elem.offsetLeft - (window.outerWidth / 2) &&
-          -(slideWrapWidth.left) < elem.offsetLeft - (window.outerWidth / 2) + elem.offsetWidth
-          //  (slideWrapWidth.left) > elem.offsetLeft - (window.outerWidth / 2) &&
-          //  (slideWrapWidth.left) < elem.offsetLeft - (window.outerWidth / 2) + elem.offsetWidth
-        ) {
-          if (idx > soonInfo.firstIdx) {
-            soonActive = idx - ($newSlideLi.length / 3);
-          }
-          else {
-            soonActive = idx;
-          }
-          moveSlide(soonActive);
-        }
-      });
-      const xpos = getMatrix($soonSlide);
-      this.tPosX.current = xpos.x;
-      this.tPosX.end = xpos.x;
-      slideSoon.touchable = false;
-      //console.log(this.tPosX)
-    },
-  }
+  //soon 배너 이벤트 다음
+  $soonNextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    moveSlide(soonInfo.currentIdx + 1);
+  });
 
   $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
   $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
   $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
   $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
+
+  //리사이즈 이벤트
+  window.addEventListener("resize", () => {
+    setSoonInit();
+  });
 
 
 })();
