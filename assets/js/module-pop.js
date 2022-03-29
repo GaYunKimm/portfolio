@@ -5,15 +5,16 @@
   const $recentBtn = document.querySelector(".recent-btn");
   const $popDark = document.querySelector(".dark");
   const $popCloseBtn = document.querySelectorAll(".pop-close-btn");
-
+  let setID;
   //Func 팝업열기
   const popUp = (e) => {
     const href = e.currentTarget.dataset.href;
     const $pop = document.querySelector(href);
     const $popclose = $pop.querySelector(".pop-close-btn");
 
-    if (e.target.dataset.href === document.body.dataset.pop) return;
+    if ($pop.style.display === "block" && e.target.dataset.href === document.body.dataset.pop) return;
     if (document.body.classList.contains("bodyfixed")) {
+      //clearTimeout(setID);
       closePop(e, document.body);
     }
 
@@ -30,7 +31,7 @@
     $popDark.dataset.href = href;
     $popclose.dataset.href = href;
 
-    setTimeout(() => {
+    setID = setTimeout(() => {
       $pop.style.transform = `translate3d(0%,0,0)`;
     }, 300);
   }
@@ -75,5 +76,20 @@
   });
   //오버레이 팝업창 닫기
   $popDark.addEventListener("click", (e) => { closePop(e); });
+
+  document.body.classList.add("loader-body");
+  const $loader = document.querySelector(".loader")
+  window.addEventListener('load', () => {
+
+    //loading bar 재생 제거
+    //바디 재생 제거
+    setTimeout(() => {
+      document.body.classList.remove("loader-body");
+    }, 500);
+    //loader 지우기
+    $loader.addEventListener("transitionend", e => {
+      e.currentTarget.remove();
+    });//end
+  });
 
 })();

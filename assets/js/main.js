@@ -171,34 +171,6 @@ import scrollDirect from '/assets/js/module-common.js';
     }
   }
 
-  /*   switch (e.type) {
-      case "touchstart":
-        banner.startX = e.targetTouches[0].offsetX;
-        banner.endX = 0;
-      case "mousedown":
-        banner.startX = e.offsetX;
-        banner.endX = 0;
-        break;
-      case "touchend":
-        banner.endX = e.targetTouches[0].offsetX;
-        banner.endX = e.offsetX;
-        if (banner.endX - banner.startX > 30) {
-          bannerPrev();
-        } else if (banner.startX - banner.endX > 30) {
-          bannerNext();
-        }
-        bannerPageChange();
-      case "mouseup":
-        banner.endX = e.offsetX;
-        if (banner.endX - banner.startX > 30) {
-          bannerPrev();
-        } else if (banner.startX - banner.endX > 30) {
-          bannerNext();
-        }
-        bannerPageChange();
-    } */
-
-
   //Func soon초기 가운데 정렬
   const setSoonInit = () => {
   $newSlideLi = document.querySelectorAll(".center-slide .card-full li");

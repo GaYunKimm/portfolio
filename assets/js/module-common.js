@@ -61,13 +61,13 @@ export const slide = {
   slideDown: function (e, idx, $swiper) {
     if (isMobileState) return;
     this.touchable[idx] = true;
-    this.tPosX[idx].start = e.clientX;
+    this.tPosX[idx].start = e.clientX; 
   },
   slideMove: function (e, idx, $swiper) {
     if (isMobileState) return;
     let slideScrollEnd = $swiper.querySelector('.slide-list').scrollWidth - $swiper.clientWidth;
     if (!this.touchable[idx] && !$swiper.classList.contains("nonetouch")) return;
-    $swiper.classList.add("nonetouch");
+    
     //스크롤 0 위치 && 이전스크롤 방향
     if ($swiper.scrollLeft <= 0 && this.tPosX[idx].start < e.clientX) {
       this.tPosX[idx] = {
@@ -84,6 +84,8 @@ export const slide = {
       this.tPosX[idx].end = this.tPosX[idx].current + (e.clientX - this.tPosX[idx].start);//e.clientX;
     }
     $swiper.scrollLeft = -this.tPosX[idx].end;
+    $swiper.classList.add("nonetouch");
+
   },
   slideUp: function (e, idx, $swiper) {
     if (isMobileState) return;
