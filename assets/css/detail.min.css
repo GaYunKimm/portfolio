@@ -284,7 +284,7 @@ body[data-theme="dark"] .touch-wrap::after { background-color: #1d2423; }
 
 .center-slide { padding-top: 40px; padding-bottom: 40px; }
 
-.center-slide .animate.card-full { -webkit-transition: 0.3s ease-out; transition: 0.3s ease-out; will-change: transform; }
+.center-slide .animate.card-full { -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); transition: -webkit-transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1); will-change: transform; }
 
 .center-slide .card-full { padding: 20px 0; -webkit-box-align: self-end; -ms-flex-align: self-end; align-items: self-end; min-height: 310px; }
 

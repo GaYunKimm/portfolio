@@ -77,8 +77,6 @@ export const slide = {
     $swiper.classList.remove("nonetouch");
     this.touchable[idx] = false;
     this.tPosX[idx].current = this.tPosX[idx].end;
-    console.log(this.tPosX[idx])
-
   },
   slideWheel: function (e, idx, $swiper) {
     if (isMobileState) return;

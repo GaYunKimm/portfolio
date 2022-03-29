@@ -19,16 +19,6 @@ import scrollDirect from '/assets/js/module-common.js';
   const $soonSlideLi = document.querySelectorAll(".center-slide .card-full li");
   const $soonPrevBtn = document.querySelector(".center-slide .arrow-btn-prev");
   const $soonNextBtn = document.querySelector(".center-slide .arrow-btn-next");
-  const soonCount = $soonSlideLi.length; // soon 갯수
-  const slideWidth = 150; //soon 가로크기
-  const activeSlideWidth = 180; // soon active 크기
-  const slideMargin = 12; // soon 마진 값
-  let soonCurrentIdx = 0; //soon 현재  
-  let $newSlideLi; //soon 클론된 갯수
-
-  let isMobileState = false; //모바일 체크
-  isMobileState = isMobile();//모바일 체크
-  let clickAble = false; // 클릭체크
 
   const banner = {
     pageNum: 0,//배너 현재 페이지
@@ -43,6 +33,13 @@ import scrollDirect from '/assets/js/module-common.js';
       ["#f5f7fa", "#b8c6db"],
     ]
   }
+
+
+  let $newSlideLi; //soon 클론된  li
+
+  let isMobileState = false; //모바일 체크
+  isMobileState = isMobile();//모바일 체크
+  let clickAble = false; // 클릭체크
 
   //Func header animation
   const headerSticky = (e) => {
@@ -153,9 +150,21 @@ import scrollDirect from '/assets/js/module-common.js';
     }
   }
 
-
+  const soonInfo = {
+    wrapWidth: 0, //슬라이드 총 넓이
+    width: 150,//soon 가로크기
+    activeWidth: 180,// soon active된 크기
+    margin: 12,// soon 마진 값
+    count: $soonSlideLi.length, // soon 원본 갯수
+    cloneCount: 0,//soon 클론 총 갯수
+    soonIdx: $soonSlideLi.length,
+    firstIdx: 0,
+    lastIdx: 0,
+    currentIdx: 0,//soon 현재  idx
+    cloneCurrentIdx: 0,//soon 클론 idx
+  }
   //Func soon초기 가운데 정렬
-  const calcSlideValue = () => {
+  const calcSlideValue1 = () => {
     $newSlideLi = document.querySelectorAll(".center-slide .card-full li");
     const initSlideWidth = (slideWidth + slideMargin) * soonCount;
     const initWidth = $soonSlide.parentNode.clientWidth;
@@ -164,9 +173,9 @@ import scrollDirect from '/assets/js/module-common.js';
 
     return initTransVal;
   }
-  const slideLeft = calcSlideValue();
+  //const slideLeft1 = calcSlideValue();
   //Func soon 슬라이드 크기 효과
-  const activeSlideEffect = (num) => {
+  const activeSlideEffect1 = (num) => {
     $newSlideLi.forEach(elem => {
       elem.classList.remove("active");
     });
@@ -176,26 +185,27 @@ import scrollDirect from '/assets/js/module-common.js';
     $newSlideLi[num + soonCount].classList.add("active");
   }
   //Func soon 슬라이드 박스 이동 효과
-  const moveSlideEffect = (idx, slidePos, slideTrans) => {
+  const moveSlideEffect1 = (idx) => {
     soonCurrentIdx = idx;
+    //슬라이드 박스 애니메이션 제거
     $soonSlide.classList.remove("animate");
     $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
     activeSlideEffect(idx);
 
     setTimeout(() => {
-      $soonSlide.classList.add("animate");
+      $soonSlide.classList.add("animate");//슬라이드 박스 애니메이션 추가
       $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
     }, 50);
   }
   //Func soon 슬라이드 전체박스 이동
-  const moveSlide = (num) => {
+  const moveSlide1 = (num) => {
     clickAble = true;
     if (!clickAble) return;
     soonCurrentIdx = num;
     $soonSlide.style.transform = `translate3d(${-num * (slideWidth + 12)}px,0,0)`;
     //next : 마지막슬라이드에서 첫번째슬라이드
     if (soonCurrentIdx >= soonCount) {
-      moveSlideEffect(0, 0, activeSlideWidth);
+      moveSlideEffect(0, 0, activeSlideWidth); // index 
     }
     //prev 첫번째슬라이드에서 마지막슬라이드
     else if (soonCurrentIdx <= -1) {
@@ -211,7 +221,7 @@ import scrollDirect from '/assets/js/module-common.js';
     }, 400);
   }
   //Func soon 슬라이드 요소 클론 만들기
-  const makeClone = () => {
+  const makeClone1 = () => {
     for (let i = 0; i < soonCount; i++) {
       const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
       cloneSlide.setAttribute('class', '');
@@ -229,6 +239,113 @@ import scrollDirect from '/assets/js/module-common.js';
       $soonSlide.classList.add("animate");
     }, 100);
   }
+
+  
+ /*  //Func soon초기 가운데 정렬
+  const setSoonInit = () => {
+    //클론된 li업데이트
+    $newSlideLi = document.querySelectorAll(".center-slide .card-full li");
+
+    soonInfo.wrapWidth = (soonInfo.width + soonInfo.margin) * soonInfo.count;//클론된 li 개수
+    soonInfo.cloneCount = $newSlideLi.length;//슬라이드 총 갯수
+    soonInfo.firstIdx = soonInfo.cloneCount / 3;
+    soonInfo.lastIdx = soonInfo.firstIdx + soonInfo.count;
+    soonInfo.currentIdx = soonInfo.firstIdx;
+    soonInfo.cloneCurrentIdx = (soonInfo.firstIdx + soonInfo.count) - soonInfo.count;
+    //(num + soonCount) + (soonCount)
+
+    //슬라이드 감싸는 박스 넓이 (overflow)
+    const slideParentWidth = $soonSlide.parentNode.clientWidth;
+    //슬라이드 가운데 정렬 값
+    const centerPos = soonInfo.wrapWidth + ((soonInfo.activeWidth / 2) + (soonInfo.margin * 2)) - (slideParentWidth / 2);
+    console.log(soonInfo)
+
+    return centerPos;
+  }
+  //Func soon 슬라이드 크기 효과
+  const activeSlideEffect = (idx) => {
+    soonInfo.soonIdx = idx;
+    soonInfo.cloneCurrentIdx = (idx + soonInfo.soonIdx) + (soonInfo.soonIdx);
+
+    console.log(soonInfo.currentIdx, soonInfo.cloneCurrentIdx)
+
+    $newSlideLi.forEach(elem => {
+      elem.classList.remove("active");
+    });
+    //복사본 효과(num + soonCount) + (soonCount)
+    $newSlideLi[soonInfo.cloneCurrentIdx].classList.add("active");
+    //원본 효과 num + soonCount
+    $newSlideLi[soonInfo.currentIdx].classList.add("active");
+  }
+  //Func soon 슬라이드 박스 이동 효과
+  const moveSlideEffect = (idx, slidePos, slideTrans) => {
+    soonInfo.currentIdx = idx;
+    //슬라이드 박스 애니메이션 제거
+    $soonSlide.classList.remove("animate");
+    $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
+
+    activeSlideEffect(idx);
+
+    setTimeout(() => {
+      $soonSlide.classList.add("animate");//슬라이드 박스 애니메이션 추가
+      $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
+    }, 50);
+  }
+  //Func soon 슬라이드 전체박스 이동
+  const moveSlide = (idx, cloneidx) => {
+    clickAble = true;
+    if (!clickAble) return;
+
+    soonInfo.soonIdx = idx;
+    soonInfo.cloneCurrentIdx = cloneidx;
+    console.log(idx);
+
+    //$soonSlide.style.transform = `translate3d(${-($newSlideLi[soonInfo.currentIdx].offsetLeft)}px,0,0)`;
+    $soonSlide.style.transform = `translate3d(${idx * (soonInfo.width + soonInfo.margin)}px,0,0)`;
+
+    //next : 마지막슬라이드에서 첫번째슬라이드
+    if (soonInfo.soonIdx >= soonInfo.count) {
+      soonInfo.soonIdx = soonInfo.firstIdx;
+      soonInfo.cloneCurrentIdx = soonInfo.firstIdx;
+      moveSlideEffect(0, 0, soonInfo.activeWidth);
+    }
+    //prev 첫번째슬라이드에서 마지막슬라이드
+    else if (soonInfo.currentIdx < soonInfo.firstIdx) {
+      const prevLeft = ($newSlideLi[(soonInfo.count * 2) - 1].offsetLeft / 2) - (soonInfo.activeWidth / 2);
+      moveSlideEffect(soonInfo.count - 1, -prevLeft, -soonInfo.activeWidth);
+    }
+    else {
+      activeSlideEffect(soonInfo.currentIdx);
+    }
+    console.log(soonInfo.currentIdx, soonInfo.cloneCurrentIdx);
+    //console.log(soonInfo);
+
+    //console.log(soonInfo)
+    setTimeout(() => {
+      clickAble = false;
+    }, 400);
+  }
+  //Func soon 슬라이드 요소 클론 만들기
+  const makeClone = () => {
+    for (let i = 0; i < soonInfo.count; i++) {
+      const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
+      cloneSlide.setAttribute('class', '');
+      $soonSlide.appendChild(cloneSlide);
+    }
+    for (let i = soonInfo.count - 1; i >= 0; i--) {
+      const cloneSlide = $soonSlideLi[i].cloneNode(true); //요소복사(하위포함)
+      cloneSlide.setAttribute('class', '');
+      $soonSlide.prepend(cloneSlide);
+    }
+    setSoonInit();
+    const slideCenter = setSoonInit();
+    $soonSlide.style.left = `${-slideCenter}px`; //
+    $newSlideLi[soonInfo.firstIdx].classList.add("active"); //초기 액티브 설정
+    $newSlideLi[soonInfo.cloneCurrentIdx].classList.add("active"); //초기 액티브 설정
+    setTimeout(() => {
+      $soonSlide.classList.add("animate");
+    }, 100);
+  } */
 
 
 
@@ -274,12 +391,13 @@ import scrollDirect from '/assets/js/module-common.js';
   //soon 배너 이벤트 이전
   $soonPrevBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    moveSlide(soonCurrentIdx - 1);
+    moveSlide(soonInfo.soonIdx - 1);
   });
   //soon 배너 이벤트 다음
   $soonNextBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    moveSlide(soonCurrentIdx + 1);
+    moveSlide(soonInfo.soonIdx + 1);
+    console.log(soonInfo)
   });
 
   //공통 스와이퍼 이벤트
@@ -314,8 +432,80 @@ import scrollDirect from '/assets/js/module-common.js';
 
   //리사이즈 이벤트
   window.addEventListener("resize", () => {
-    calcSlideValue();
+    setSoonInit();
   });
+
+  function getMatrix(element) {
+    const values = element.style.transform.split(/\w+\(|\);?/);
+    const transform = values[1].split(/,\s?/g).map(parseInt);
+
+    return {
+      x: transform[0],
+      y: transform[1],
+      z: transform[2]
+    };
+  }
+
+  /* const slideSoon = {
+    touchable: false, //스와이프 터치여부 
+    tPosX: {
+      start: 0,
+      current: 0,
+      end: 0,
+    }, //스와이프 xScroll 값
+ 
+    slideDown: function (e) {
+      slideSoon.touchable = true;
+      slideSoon.tPosX.start = e.clientX;
+ 
+      //console.log(this.tPosX)
+    },
+    slideMove: function (e) {
+      if (!this.touchable && !$soonSlide.classList.contains("nonetouch")) return;
+      $soonSlide.classList.add("nonetouch");
+      this.tPosX.end = this.tPosX.current + (e.clientX - this.tPosX.start);
+      $soonSlide.style.transform = `translate3d(${slideSoon.tPosX.end}px,0,0)`;
+    },
+    slideUp: function (e) {
+      $soonSlide.classList.remove("nonetouch");
+      slideSoon.touchable = false;
+ 
+      $newSlideLi.forEach((elem, idx) => {
+        const $slideWrap = elem.parentNode;
+        const slideWrapWidth = $slideWrap.getBoundingClientRect();
+ 
+        let soonActive;
+ 
+        //  console.log(-(slideWrapWidth.left), elem.offsetLeft)
+        if (
+          -(slideWrapWidth.left) > elem.offsetLeft - (window.outerWidth / 2) &&
+          -(slideWrapWidth.left) < elem.offsetLeft - (window.outerWidth / 2) + elem.offsetWidth
+        ) {
+          soonActive = idx - ($newSlideLi.length / 3);
+          //  console.log(soonActive) //30-elem[idx]
+          moveSlide(soonActive);
+        }
+        else {
+          elem.classList.remove('active');
+        }
+      });
+      const xpos = getMatrix($soonSlide);
+      this.tPosX.current = xpos.x;
+      this.tPosX.end = xpos.x;
+      //console.log(this.tPosX)
+    },
+  }
+ 
+  $soonSlide.addEventListener("mousedown", (e) => {
+    slideSoon.slideDown(e);
+  });
+  $soonSlide.addEventListener("mousemove", (e) => {
+    slideSoon.slideMove(e);
+  });
+  $soonSlide.addEventListener("mouseup", (e) => {
+    slideSoon.slideUp(e);
+  }); */
+
 
 })();
 

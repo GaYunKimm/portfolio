@@ -125,7 +125,7 @@
   padding-bottom: $leng-40;
 
   .animate.card-full {
-    transition: 0.3s ease-out;
+    transition: transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
     will-change: transform;
   }
 
