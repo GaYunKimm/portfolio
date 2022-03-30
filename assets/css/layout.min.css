@@ -174,7 +174,7 @@ body[data-theme="dark"] { background-color: #121212; }
 
 body[data-theme="dark"] .gnb { background-color: #121212; }
 
-@media (min-width: 992px) { .gnb { position: fixed; width: 65px; height: 100vh; min-height: -webkit-fill-available; margin: 0; -webkit-transform: translate3d(0, 0, 0) !important; transform: translate3d(0, 0, 0) !important; -webkit-box-shadow: none; box-shadow: none; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; border-right-width: 1px; border-right-style: solid; border-radius: 0; border-right-color: #ededed; }
+@media (min-width: 992px) { .gnb { position: fixed; top: 0; width: 65px; height: 100vh; margin: 0; -webkit-transform: translate3d(0, 0, 0) !important; transform: translate3d(0, 0, 0) !important; min-height: -webkit-fill-available; -webkit-box-shadow: none; box-shadow: none; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; border-right-width: 1px; border-right-style: solid; border-radius: 0; border-right-color: #ededed; }
   body[data-theme="dark"] { border-right-color: #2c2c2c; }
   body[data-theme="dark"] .gnb { border-right-color: #2c2c2c; } }
 
@@ -243,7 +243,7 @@ body[data-theme="dark"] { color: #bbbbbb; }
 
 body[data-theme="dark"] .footer-logo { color: #bbbbbb; }
 
-.loader-body { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 65; }
+.loader-body { position: fixed; top: 0; left: 0; z-index: 65; width: 100%; height: 100%; overflow: hidden; }
 
 .loader-body .loaders { display: -webkit-box; display: -ms-flexbox; display: flex; position: fixed; top: 0; left: 0; z-index: 65; width: 100%; height: 100%; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; background-color: rgba(0, 0, 0, 0.5); }
 
