@@ -93,7 +93,7 @@
     return false;
   }
   //Func 트랜스폼 위치
-  function getMatrix(element) {
+  const getMatrix = (element) => {
     const values = element.style.transform.split(/\w+\(|\);?/);
     const transform = values[1].split(/,\s?/g).map(parseInt);
 
@@ -321,11 +321,16 @@
     $soonSlide.style.transform = `translate3d(${-idx * (soonInfo.width + soonInfo.margin)}px,0,0)`;
     //next : 마지막슬라이드에서 첫번째슬라이드
     if (soonInfo.currentIdx >= soonInfo.count) {
-      const idxs = idx - soonInfo.currentIdx;
-      console.log(soonInfo.currentIdx - soonInfo.firstIdx)
-      const slidePos = ($newSlideLi[soonInfo.currentIdx - soonInfo.firstIdx].offsetLeft / 2);
-      const slidePos1 = ($newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2)) + soonInfo.activeWidth;
-      moveSlideEffect(idx - soonInfo.count, slidePos, soonInfo.activeWidth);
+      //const idxs = idx - soonInfo.currentIdx;
+      const idxs = soonInfo.currentIdx - soonInfo.firstIdx + soonInfo.count
+      let slidePos;
+      if (soonInfo.currentIdx === soonInfo.count) {
+        slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth - (soonInfo.margin * 4);
+      } else {
+        slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
+      }
+
+      moveSlideEffect(idx - soonInfo.count, -slidePos, soonInfo.activeWidth);
     }
     //prev 첫번째슬라이드에서 마지막슬라이드
     else if (soonInfo.currentIdx < 0) {
