@@ -81,7 +81,7 @@
 
     const lefts = $progressBar.getBoundingClientRect();
     const target = targets ? targets : e;
-    const moveTime = ((target.clientX - lefts.left) / $progressBar.offsetWidth) * vod.durationFrame;
+    const moveTime = ((target.pageX - lefts.left) / $progressBar.offsetWidth) * vod.durationFrame;
     $video.currentTime = moveTime;
 
     videoInit();//업데이트 시작
