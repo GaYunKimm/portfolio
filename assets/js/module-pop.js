@@ -79,17 +79,18 @@
 
   document.body.classList.add("loader-body");
   const $loader = document.querySelector(".loader")
+
+
   window.addEventListener('load', () => {
 
     //loading bar 재생 제거
     //바디 재생 제거
     setTimeout(() => {
       document.body.classList.remove("loader-body");
+      $loader.remove();
     }, 500);
     //loader 지우기
-    $loader.addEventListener("transitionend", e => {
-      e.currentTarget.remove();
-    });//end
+
   });
 
 })();
