@@ -7,6 +7,7 @@ body {
   width: 100%;
   font-size: 14px;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -30,6 +31,7 @@ body {
   overflow-x: hidden;
   flex-direction: column;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   @include pc-tablet-size {
     width: calc(100% - 65px);
     margin-left: $leng-65;
@@ -119,8 +121,9 @@ body {
     position: fixed;
     width: $leng-65;
     height: 100vh;
+    min-height: -webkit-fill-available; 
     margin: 0;
-    transform: translateY(0) !important;
+    transform: translate3d(0,0,0) !important;
     box-shadow: none;
     align-items: flex-start;
     border-right-width: 1px;

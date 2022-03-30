@@ -128,7 +128,7 @@ input:focus, select:focus { outline-style: none; border-color: inherit; }
 
 body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
-.conetents { position: fixed; width: 100%; min-height: 100vh; max-height: 100vh; }
+.conetents { position: fixed; width: 100%; min-height: 100vh; max-height: 100vh; min-height: -webkit-fill-available; max-height: -webkit-fill-available; }
 
 @media (max-width: 767px) { .conetents { position: static; width: 100%; min-height: none; max-height: none; } }
 
@@ -186,7 +186,7 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .chat-like-btn .icon { color: rgba(255, 255, 255, 0.7); font-size: 30px; }
 
-.chat-like-effect { position: absolute; z-index: 1; top: 15px; left: 50%; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; }
+.chat-like-effect { position: absolute; top: 15px; left: 50%; z-index: 1; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; }
 
 .chat-like-effect:nth-child(1n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 

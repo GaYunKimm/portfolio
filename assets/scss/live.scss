@@ -13,6 +13,8 @@ body {
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
+  min-height: -webkit-fill-available;
+  max-height: -webkit-fill-available;
   @include mobile-size {
     position: static;
     width: 100%;
@@ -213,9 +215,9 @@ body {
 
   &-effect {
     position: absolute;
-    z-index: 1;
     top: 15px;
     left: 50%;
+    z-index: 1;
     width: 60px;
     height: 140px;
     transform: translate(-50%, -100%);
