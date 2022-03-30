@@ -93,7 +93,7 @@
     return false;
   }
   //Func 트랜스폼 위치
-  const getMatrix = (element) => {
+  function getMatrix(element) {
     const values = element.style.transform.split(/\w+\(|\);?/);
     const transform = values[1].split(/,\s?/g).map(parseInt);
 
@@ -159,7 +159,7 @@
   let isMobileState = false; //모바일 체크
   isMobileState = isMobile();//모바일 체크
   let clickAble = false; // 클릭체크
-
+  let touchIdx = 0;
 
   //Func header animation
   const headerSticky = (e) => {
@@ -322,14 +322,15 @@
     //next : 마지막슬라이드에서 첫번째슬라이드
     if (soonInfo.currentIdx >= soonInfo.count) {
       const idxs = idx - soonInfo.currentIdx;
-      console.log(idxs)
-      const slidePos = ($newSlideLi[idxs].offsetLeft / 2 - window.innerWidth / 2) + soonInfo.activeWidth;
-      moveSlideEffect(0, 0, soonInfo.activeWidth);
+      console.log(soonInfo.currentIdx - soonInfo.firstIdx)
+      const slidePos = ($newSlideLi[soonInfo.currentIdx - soonInfo.firstIdx].offsetLeft / 2);
+      const slidePos1 = ($newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2)) + soonInfo.activeWidth;
+      moveSlideEffect(idx - soonInfo.count, slidePos, soonInfo.activeWidth);
     }
     //prev 첫번째슬라이드에서 마지막슬라이드
     else if (soonInfo.currentIdx < 0) {
       const slidePos = ($newSlideLi[(soonInfo.lastIdx) - soonInfo.currentIdx].offsetLeft / 2) - (soonInfo.activeWidth) + soonInfo.margin;
-      moveSlideEffect(soonInfo.count - 1, -slidePos, -soonInfo.activeWidth);
+      moveSlideEffect(0 - idx, -slidePos, -soonInfo.activeWidth);
     }
     //기본움직임
     else {
@@ -365,25 +366,31 @@
       start: 0,
       current: 0,
       end: 0,
+      firstTouch: 0,
     }, //스와이프 xScroll 값
     slideDown: function (e, targets) {
       const target = targets ? targets : e;
       slideSoon.touchable = true;
+
+      slideSoon.tPosX.firstTouch += 1;
       slideSoon.tPosX.start = target.clientX;
-      // console.log(slideSoon.touchable)
     },
     slideMove: function (e, targets) {
       const target = targets ? targets : e
-      console.log(target)
       if (!slideSoon.touchable) return;
       if (!this.touchable && !$soonSlide.classList.contains("nonetouch")) return;
-
       $soonSlide.classList.add("nonetouch");
-      this.tPosX.end = this.tPosX.current + (target.clientX - this.tPosX.start);
+      touchIdx = soonInfo.currentIdx;
+      if (touchIdx === 0 && this.tPosX.firstTouch !== 1) {
+        this.tPosX.end = this.tPosX.current + (target.clientX - this.tPosX.start) - 180;
+      } else {
+        this.tPosX.end = this.tPosX.current + (target.clientX - this.tPosX.start);
+      }
       $soonSlide.style.transform = `translate3d(${slideSoon.tPosX.end}px,0,0)`;
     },
     slideUp: function (e) {
-      $soonSlide.classList.remove("nonetouch");
+      if (!slideSoon.touchable) return;
+
       $newSlideLi.forEach((elem, idx) => {
         const $slideWrap = elem.parentNode;
         const slideWrapWidth = $slideWrap.getBoundingClientRect();
@@ -396,7 +403,7 @@
             soonActive = idx - ($newSlideLi.length / 3);
           }
           else {
-            soonActive = idx;
+            soonActive = idx; //이전
           }
           moveSlide(soonActive);
         }
@@ -404,8 +411,9 @@
       const xpos = getMatrix($soonSlide);
       this.tPosX.current = xpos.x;
       this.tPosX.end = xpos.x;
-      slideSoon.touchable = false;
       //console.log(this.tPosX)
+      $soonSlide.classList.remove("nonetouch");
+      slideSoon.touchable = false;
     },
   }
 

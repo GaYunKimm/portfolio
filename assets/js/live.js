@@ -68,9 +68,6 @@
       $btnPlay.querySelector(".icon").textContent = "play_arrow";
       cancelAnimationFrame(rafId)
     }
-    console.log(vod.persent)
-
-
   }
   //Func 프로그래스 클릭시 시간 변경
   const moveCurrentTime = (e, targets) => {
