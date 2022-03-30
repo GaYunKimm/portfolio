@@ -152,7 +152,7 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .video-detail-active .video-header-utill { display: -webkit-box; display: -ms-flexbox; display: flex; }
 
-#live { position: relative; z-index: 1; width: 100%; max-height: 100vh; min-height: 100vh; }
+#live { position: relative; z-index: 1; width: 100%; max-height: 100vh; min-height: 100vh; min-height: calc(var(--vh, 1vh) * 100); max-height: calc(var(--vh, 1vh) * 100); }
 
 @media (max-width: 767px) { #live { position: absolute; top: 50%; left: 50%; z-index: -1; width: 100%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 100vh; min-height: 100vh; -o-object-fit: cover; object-fit: cover; max-height: none; } }
 
