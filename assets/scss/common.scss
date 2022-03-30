@@ -186,6 +186,7 @@
       height: 360px;
       box-shadow: $box-shadow2;
       border-radius: $leng-10;
+      isolation: isolate;
       overflow: hidden;
     }
   }

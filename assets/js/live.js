@@ -26,7 +26,7 @@
 
   //Func 모바일체크
   const isMobile = () => {
-    const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    const mobileKeyWords = new Array('Android', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
     for (let info in mobileKeyWords) {
       if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
         return true;
