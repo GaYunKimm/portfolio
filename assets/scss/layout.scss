@@ -125,10 +125,10 @@ body {
     top: 0;
     width: $leng-65;
     height: 100vh;
+    height: -webkit-fill-available;
+    height: calc(var(--vh, 1vh) * 100);
     margin: 0;
     transform: translate3d(0, 0, 0) !important;
-    min-height: calc(var(--vh, 1vh) * 100);
-    min-height: -webkit-fill-available;
     box-shadow: none;
     align-items: flex-start;
     border-right-width: 1px;

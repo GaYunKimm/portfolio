@@ -176,7 +176,7 @@ body[data-theme="dark"] { background-color: #121212; }
 
 body[data-theme="dark"] .gnb { background-color: #121212; }
 
-@media (min-width: 992px) { .gnb { position: fixed; top: 0; width: 65px; height: 100vh; margin: 0; -webkit-transform: translate3d(0, 0, 0) !important; transform: translate3d(0, 0, 0) !important; min-height: calc(var(--vh, 1vh) * 100); min-height: -webkit-fill-available; -webkit-box-shadow: none; box-shadow: none; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; border-right-width: 1px; border-right-style: solid; border-radius: 0; border-right-color: #ededed; }
+@media (min-width: 992px) { .gnb { position: fixed; top: 0; width: 65px; height: 100vh; height: -webkit-fill-available; height: calc(var(--vh, 1vh) * 100); margin: 0; -webkit-transform: translate3d(0, 0, 0) !important; transform: translate3d(0, 0, 0) !important; -webkit-box-shadow: none; box-shadow: none; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; border-right-width: 1px; border-right-style: solid; border-radius: 0; border-right-color: #ededed; }
   body[data-theme="dark"] { border-right-color: #2c2c2c; }
   body[data-theme="dark"] .gnb { border-right-color: #2c2c2c; } }
 
@@ -311,7 +311,7 @@ body[data-theme="dark"] .touch-wrap::after { background-color: #1d2423; }
 
 .center-slide .animate.card-full { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1); transition: -webkit-transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1); transition: transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1); transition: transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1); will-change: transform; }
 
-.center-slide .card-full { padding: 20px 0; -webkit-box-align: self-end; -ms-flex-align: self-end; align-items: self-end; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; min-height: 310px; }
+.center-slide .card-full { padding: 20px 0; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; min-height: 310px; }
 
 .center-slide .card-full li { position: relative; }
 
