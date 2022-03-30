@@ -567,9 +567,9 @@ body[data-theme="dark"] .pop-header-close-btn { color: #bbbbbb; }
 
 .pop-content::-webkit-scrollbar-track { background-color: rgba(33, 133, 133, 0.1); }
 
-.pop-content-inner { padding: 40px 24px 80px; }
+.pop-content-inner { padding: 40px 24px 100px; }
 
-@media (min-width: 992px) { .pop-content-inner { padding: 30px 12px 30px; } }
+@media (min-width: 992px) { .pop-content-inner { padding: 30px 12px 80px; } }
 
 .pop-content-inner ul { padding-bottom: 30px; }
 

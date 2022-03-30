@@ -663,9 +663,9 @@
 
     @include scroll-wrap;
     &-inner {
-      padding: $leng-40 $leng-24 $leng-80;
+      padding: $leng-40 $leng-24 $leng-100;
       @include pc-tablet-size {
-        padding: $leng-30 $leng-12 $leng-30;
+        padding: $leng-30 $leng-12 $leng-80;
       }
 
       ul {
