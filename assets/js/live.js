@@ -26,7 +26,7 @@
 
   //Func 모바일체크
   const isMobile = () => {
-    const mobileKeyWords = new Array('Android', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
     for (let info in mobileKeyWords) {
       if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
         return true;
@@ -181,7 +181,7 @@
   } else {
     //mo 재생바 드래그 
     $progressBar.addEventListener('touchstart', (e) => clickable = true);
-    $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.targetTouches[0]) });
+    $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.originalEvent.touches[0]) });
     $progressBar.addEventListener('touchend', (e) => clickable = false);
   }
 

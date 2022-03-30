@@ -532,15 +532,14 @@
     $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
   } else {
     //mo  드래그 
-    $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.targetTouches[0]));
-    $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.targetTouches[0]));
+    $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.originalEvent.touches[0]));
+    $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.originalEvent.touches[0]));
     $soonSlide.addEventListener('touchend', (e) => slideSoon.slideUp(e));
   }
 
   //리사이즈 이벤트
   window.addEventListener("resize", () => {
     setSoonInit();
-    setScreenSize();
   });
 
 
