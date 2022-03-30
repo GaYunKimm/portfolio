@@ -134,7 +134,7 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 @media (max-width: 767px) { .conetents { position: static; width: 100%; min-height: none; max-height: none; } }
 
-.content-video { position: absolute; top: 50%; left: 50%; width: auto; width: calc(100vh * 0.5); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); min-height: 100vh; max-height: 100vh; }
+.content-video { position: absolute; top: 50%; left: 50%; width: auto; width: calc(100vh * 0.5); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); min-height: 100vh; max-height: 100vh; min-height: calc(var(--vh, 1vh) * 100); max-height: calc(var(--vh, 1vh) * 100); }
 
 @media (max-width: 767px) { .content-video { position: relative; top: 0%; left: 0%; width: auto; -webkit-transform: translate(0%, 0%); transform: translate(0%, 0%); overflow: hidden; } }
 
