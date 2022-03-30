@@ -198,7 +198,7 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 
-.chat-like-effect-heart span { display: block; z-index: 0; width: 50px; height: 50px; background: url("/assets/images/effect/like.png") no-repeat; -webkit-animation: ani-like 1s steps(28) 1; animation: ani-like 1s steps(28) 1; background-position: left; background-size: 2900%; background-position: right; }
+.chat-like-effect-heart span { display: block; z-index: 0; width: 50px; height: 50px; background: url("./assets/images/effect/like.png") no-repeat; -webkit-animation: ani-like 1s steps(28) 1; animation: ani-like 1s steps(28) 1; background-position: left; background-size: 2900%; background-position: right; }
 
 .chat-like:active .icon, .chat-like:hover .icon, .chat-like.active .icon { -webkit-transform: scale(0.8); transform: scale(0.8); }
 
