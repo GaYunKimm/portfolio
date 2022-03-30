@@ -330,7 +330,7 @@
       const idxs = soonInfo.currentIdx - soonInfo.firstIdx + soonInfo.count
       let slidePos;
       if (soonInfo.currentIdx === soonInfo.count) {
-        slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth - (soonInfo.margin * 4);
+        slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin * 4);
       } else {
         slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
       }

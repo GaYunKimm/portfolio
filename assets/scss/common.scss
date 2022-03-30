@@ -28,6 +28,7 @@
   background-image: linear-gradient(-315deg, #aff6cf 0%, #9f98e8 74%);
   //touch-action: none;
   align-items: flex-end;
+  align-items: end;
   justify-content: center;
   @include mobile-size-only {
     height: 300px;
