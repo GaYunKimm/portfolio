@@ -461,22 +461,20 @@
     bannerInterval()
   });
   //배너 drag
-  if (!isMobileState) {
-    //pc 배너이벤트 터치
-    $bannel.addEventListener('mousedown', bannerTouchX);
-    $bannel.addEventListener('mouseup', bannerTouchX);
-  } else {
-    //mo 배너이벤트 터치
-    $bannel.addEventListener('touchstart', (e) => {
-      bannerTouchX(e, e.targetTouches[0])
-    });
-    $bannel.addEventListener('touchmove', (e) => {
-      bannerTouchX(e, e.targetTouches[0])
-    });
-    $bannel.addEventListener('touchend', (e) => {
-      bannerTouchX(e, e.targetTouches[0])
-    });
-  }
+  //pc 배너이벤트 터치
+  $bannel.addEventListener('mousedown', bannerTouchX);
+  $bannel.addEventListener('mouseup', bannerTouchX);
+  //mo 배너이벤트 터치
+  $bannel.addEventListener('touchstart', (e) => {
+    bannerTouchX(e, e.targetTouches[0])
+  });
+  $bannel.addEventListener('touchmove', (e) => {
+    bannerTouchX(e, e.targetTouches[0])
+  });
+  $bannel.addEventListener('touchend', (e) => {
+    bannerTouchX(e, e.targetTouches[0])
+  });
+
 
 
   //라이브 스크롤이벤트
