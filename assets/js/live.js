@@ -16,7 +16,7 @@ import { isMobile } from '/assets/js/module-common.js';
   //좋아요
   const $heartWrap = document.querySelector(".chat-like-box");
   const $likeBtn = document.querySelector(".chat-like-btn");
-  const $likes = document.querySelector(".chat-like-box");
+  let $likes = document.querySelectorAll(".chat-like-effect");
 
   let isMobileState = false;
   isMobileState = isMobile();
@@ -51,10 +51,16 @@ import { isMobile } from '/assets/js/module-common.js';
     $btnSlider.style.left = `${vod.persent}%`;
     $btnSlider.setAttribute("aria-valuenow", vod.persent);
     $remainingTime.innerText = getVideoTime(vod.remainingTime);
-
     rafId = requestAnimationFrame(() => {
       videoInit();
     });
+    if (vod.persent === 100 && $video.paused) {
+      $btnPlay.querySelector(".icon").textContent = "play_arrow";
+      cancelAnimationFrame(rafId)
+    }
+    console.log(vod.persent)
+
+
   }
   //Func 프로그래스 클릭시 시간 변경
   const moveCurrentTime = (e, targets) => {
@@ -68,6 +74,12 @@ import { isMobile } from '/assets/js/module-common.js';
     videoInit();//업데이트 시작
   }
 
+  const currentTime = (time) => {
+    //cancelAnimationFrame(rafId); //업데이트 중지
+    $video.currentTime = time;
+    videoInit();//업데이트 시작
+  }
+
   //Func 뮤트 토글
   const VideoMuteToggle = (e) => {
     e.preventDefault();
@@ -78,15 +90,18 @@ import { isMobile } from '/assets/js/module-common.js';
   }
   //Func 재생/일시정지 토글
   const videoPlayToggle = (e) => {
-    e.preventDefault();
-
+    // e.preventDefault();
     const playIcon = $video.paused ? "pause" : "play_arrow";
     const playState = $video.paused ? 'play' : 'pause';
     const playrafId = $video.paused ? cancelAnimationFrame(rafId) : videoInit();
-
     $btnPlay.querySelector(".icon").textContent = playIcon;
+
+
     $video[playState]();
     playrafId;
+    if (vod.persent === 100) {
+      currentTime(0)
+    }
   }
   //Func 상세화면/재생화면 토글
   const videoWrapToggle = (e) => {
@@ -108,15 +123,22 @@ import { isMobile } from '/assets/js/module-common.js';
     $likes.removeChild($likes.children[0]);
     requestAnimationFrame(() => {
       likeInit();
+      if ($likes.hasChildNodes() && $likes.firstChild) {
+        $likes.removeChild($likes.firstChild);
+      }
     });
   }
 
   //좋아요 첫번째 삭제
   setInterval(() => {
-    if ($likes.hasChildNodes() && $likes.firstChild) {
-      $likes.removeChild($likes.firstChild);
+    //console.log($likes.length )
+    if ($likes.length > 0) {
+      $likes[0].remove();
+      console.log("e");
     }
-  }, 60);
+
+  }, 100);
+
 
 
 

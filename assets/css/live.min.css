@@ -182,11 +182,11 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .video-detail-active .chat-like { display: block; }
 
-.chat-like-btn { display: -webkit-box; display: -ms-flexbox; display: flex; z-index: 2; width: 45px; height: 45px; -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; border-radius: 50%; background-color: #626261; }
+.chat-like-btn { display: -webkit-box; display: -ms-flexbox; display: flex; position: relative; z-index: 2; width: 45px; height: 45px; -webkit-transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; border-radius: 50%; background-color: #626261; }
 
 .chat-like-btn .icon { color: rgba(255, 255, 255, 0.7); font-size: 30px; }
 
-.chat-like-effect { position: absolute; top: 0; left: 50%; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; }
+.chat-like-effect { position: absolute; z-index: 1; top: 15px; left: 50%; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; }
 
 .chat-like-effect:nth-child(1n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
 
