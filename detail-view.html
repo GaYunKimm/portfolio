@@ -62,7 +62,7 @@
 
             <span class="gnb-list-text">메뉴</span>
           </button></li>
-        <li><button href="#" title="검색 바로가기">
+        <li><button class="search-btn" data-href="#searchPop" aria-haspopup="true" title="검색">
 
             <span class="gnb-list-icon"> <span class="material-icons-outlined">
                 search
@@ -691,8 +691,116 @@
     <!--video header END-->
 
   </div>
-  <!--//nav END-->
+  <!--//pop END-->
 
+  <!--검색-->
+  <div class="pop-full" tabindex="-1" role="dialog" id="searchPop" aria-labelledby="wa-dialog-title"
+    aria-describedby="wa-dialog-message">
+    <div class="pop-header">
+      <h2 class="pop-header-title">검색</h2>
+
+      <!--util END-->
+      <button class="pop-header-close-btn pop-close-btn">
+        <span class="icon material-icons">
+          close
+        </span>
+        <span class="hidden">닫기</span>
+      </button>
+      <!--close-->
+    </div>
+
+    <div class="pop-content">
+      <div class="pop-content-inner">
+
+        <div class="search-content btn-input input-box">
+          <label for="search" class="hidden">메세지입력창</label>
+          <input id="search" required="required" class="input-box-inp" type="text" placeholder="검색어 입력">
+          <div class="input-box-focus"></div>
+
+          <button class="input-btn" type="button">
+            <span class="icon material-icons-outlined">
+              search
+            </span>
+          </button>
+        </div>
+
+
+        <div class="pop-title">
+          검색기록
+          <button class="btn-circle">
+            전체삭제
+          </button>
+        </div>
+        <div class="info-list">
+          <li>
+            <a href="#" title="검색 바로가기">
+              <span class="icon material-icons-round">
+                history
+              </span>
+              고기
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="검색 바로가기">
+              <span class="icon material-icons-round">
+                history
+              </span>
+              토마토 미트 소스
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="검색 바로가기">
+              <span class="icon material-icons-round">
+                history
+              </span>
+              파스타 면
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="검색 바로가기">
+              <span class="icon material-icons-round">
+                history
+              </span>
+              무직 타이거 한과
+            </a>
+          </li>
+          <!--li END-->
+
+
+          <li>
+            <a href="#" title="검색 바로가기">
+              <span class="icon material-icons-round">
+                history
+              </span>
+              장인한과
+            </a>
+          </li>
+          <!--li END-->
+
+          <li>
+            <a href="#" title="검색 바로가기">
+              <span class="icon material-icons-round">
+                history
+              </span>
+              요거트
+            </a>
+          </li>
+          <!--li END-->
+        </div>
+
+
+      </div>
+    </div>
+    <!--video header END-->
+
+  </div>
+  <!--//pop END-->
 
   <!--최근본-->
   <div class="pop-full" tabindex="-1" role="dialog" id="recentPop" aria-labelledby="wa-dialog-title"
@@ -942,7 +1050,7 @@
     <!--video header END-->
 
   </div>
-  <!--//nav END-->
+  <!--//pop END-->
 
   <div class="dark" style="display: none;"></div>
   <div class="loaders">

@@ -3,6 +3,7 @@
   //팝업
   const $menuBtn = document.querySelector(".menu-button");
   const $recentBtn = document.querySelector(".recent-btn");
+  const $searchBtn = document.querySelector(".search-btn");
   const $popDark = document.querySelector(".dark");
   const $popCloseBtn = document.querySelectorAll(".pop-close-btn");
   let setID;
@@ -68,6 +69,7 @@
   $menuBtn.addEventListener("click", (e) => { popUp(e) });
   //최근본 열기
   $recentBtn.addEventListener("click", (e) => { popUp(e) });
+  $searchBtn.addEventListener("click", (e) => { popUp(e) });
   //팝업닫기
   $popCloseBtn.forEach(elem => {
     elem.addEventListener("click", (e) => {
@@ -87,7 +89,7 @@
     //바디 재생 제거
     setTimeout(() => {
       document.body.classList.remove("loader-body");
-    //  $loader.remove();
+      //  $loader.remove();
     }, 500);
     //loader 지우기
 
