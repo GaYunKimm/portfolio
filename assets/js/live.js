@@ -172,18 +172,16 @@
   //재생바 클릭시 플레이타임 이동
   $progressBar.addEventListener('click', (e) => { moveCurrentTime(e); });
 
-  if (!isMobileState) {
-    //pc 재생바 드래그 
-    $progressBar.addEventListener('mousedown', (e) => clickable = true);
-    $progressBar.addEventListener('mousemove', (e) => { if (clickable) moveCurrentTime(e) });
-    $progressBar.addEventListener('mouseup', (e) => clickable = false);
-    $progressBar.addEventListener('mouseleave', (e) => clickable = false);
-  } else {
-    //mo 재생바 드래그 
-    $progressBar.addEventListener('touchstart', (e) => clickable = true);
-    $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.originalEvent.touches[0]) });
-    $progressBar.addEventListener('touchend', (e) => clickable = false);
-  }
+  //pc 재생바 드래그 
+  $progressBar.addEventListener('mousedown', (e) => clickable = true);
+  $progressBar.addEventListener('mousemove', (e) => { if (clickable) moveCurrentTime(e) });
+  $progressBar.addEventListener('mouseup', (e) => clickable = false);
+  $progressBar.addEventListener('mouseleave', (e) => clickable = false);
+  //mo 재생바 드래그 
+  $progressBar.addEventListener('touchstart', (e) => clickable = true);
+  $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.originalEvent.touches[0]) });
+  $progressBar.addEventListener('touchend', (e) => clickable = false);
+
 
   window.addEventListener("resize", () => {
     setScreenSize();

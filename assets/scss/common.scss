@@ -109,6 +109,9 @@
     @include get-color(background-color, point-color);
     // background-color: $brand-color3;
   }
+  .nonetouch {
+    touch-action: pan-x;
+  }
 }
 .thum-wrap {
   width: 100%;
