@@ -86,6 +86,8 @@
     }
     return elem;
   }
+  // 브라우저 체크
+  const agent = navigator.userAgent.toLowerCase();
   //Func 모바일체크
   const isMobile = () => {
     const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
@@ -524,15 +526,28 @@
     moveSlide(soonInfo.currentIdx + 1);
   });
 
-  //pc  드래그 
-  $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
-  $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
-  $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
-  $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
-  //mo  드래그 
-  $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.targetTouches[0]));
-  $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.targetTouches[0]));
-  $soonSlide.addEventListener('touchend', (e) => slideSoon.slideUp(e));
+  if (!isMobileState) {
+    //pc  드래그 
+    $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
+    $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
+    $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
+    $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
+  } else {
+    if (agent.indexOf("safari") != -1) {
+      //pc  드래그 
+      $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
+      $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
+      $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
+      $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
+    } else {
+      //mo  드래그 
+      $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.targetTouches[0]));
+      $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.targetTouches[0]));
+      $soonSlide.addEventListener('touchend', (e) => slideSoon.slideUp(e));
+    }
+
+  }
+
 
 
   //리사이즈 이벤트
