@@ -54,12 +54,13 @@
     lastIdx: 0,
   }
   let $newSlideLi; //soon 클론된  li
-  
-  //Func height 설정
+
   const setScreenSize = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
+
+
   //Func 스크롤 방향
   const scrollDirect = {
     prevYoffset: 0,
