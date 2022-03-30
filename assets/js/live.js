@@ -18,6 +18,11 @@
   const $likeBtn = document.querySelector(".chat-like-btn");
   let $likes = document.querySelectorAll(".chat-like-effect");
 
+  //Func height 설정
+  const setScreenSize = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
   //Func 모바일체크
   const isMobile = () => {
     const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
@@ -146,8 +151,8 @@
 
   }, 100);
 
-
-
+  //초기설정
+  setScreenSize();
 
   //초기화 라이브 시작
   $btnPlay.querySelector(".icon").textContent = "pause";
@@ -178,6 +183,10 @@
     $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.targetTouches[0]) });
     $progressBar.addEventListener('touchend', (e) => clickable = false);
   }
+
+  window.addEventListener("resize", () => {
+    setScreenSize();
+  })
 
 
 })();

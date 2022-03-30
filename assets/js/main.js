@@ -55,6 +55,11 @@
   }
   let $newSlideLi; //soon 클론된  li
 
+  const setScreenSize = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
 
   //Func 스크롤 방향
   const scrollDirect = {
@@ -429,6 +434,7 @@
   bannerPageChange();
   bannerInterval()
   makeClone();
+  setScreenSize();
 
 
   //스크롤 이벤트
@@ -534,6 +540,7 @@
   //리사이즈 이벤트
   window.addEventListener("resize", () => {
     setSoonInit();
+    setScreenSize();
   });
 
 

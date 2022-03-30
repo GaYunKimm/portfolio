@@ -101,6 +101,8 @@ input:focus, select:focus { outline-style: none; border-color: inherit; }
 ::-ms-reveal { width: 0; height: 0; display: none; }
 
 /*mixin*/
+:root { --vh: 100%; }
+
 .hidden { position: absolute; top: -9999%; left: -9999%; width: 1px; height: 1px; font-size: 0; line-height: 0; overflow: hidden; }
 
 @media (max-width: 992px) { .spanblock { display: inline; } }
@@ -128,7 +130,7 @@ input:focus, select:focus { outline-style: none; border-color: inherit; }
 
 body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
-.conetents { position: fixed; width: 100%; min-height: 100vh; max-height: 100vh; min-height: -webkit-fill-available; max-height: -webkit-fill-available; }
+.conetents { position: fixed; width: 100%; min-height: 100vh; max-height: 100vh; min-height: -webkit-fill-available; max-height: -webkit-fill-available; min-height: calc(var(--vh, 1vh) * 100); max-height: calc(var(--vh, 1vh) * 100); }
 
 @media (max-width: 767px) { .conetents { position: static; width: 100%; min-height: none; max-height: none; } }
 
