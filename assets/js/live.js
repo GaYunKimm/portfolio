@@ -179,7 +179,7 @@
   $progressBar.addEventListener('mouseleave', (e) => clickable = false);
   //mo 재생바 드래그 
   $progressBar.addEventListener('touchstart', (e) => clickable = true);
-  $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.originalEvent.touches[0]) });
+  $progressBar.addEventListener('touchmove', (e) => { if (clickable) moveCurrentTime(e, e.touches[0]) });
   $progressBar.addEventListener('touchend', (e) => clickable = false);
 
 
