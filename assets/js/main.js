@@ -54,7 +54,7 @@
     lastIdx: 0,
   }
   let $newSlideLi; //soon 클론된  li
-  
+
   //Func height 설정
   const setScreenSize = () => {
     let vh = window.innerHeight * 0.01;
@@ -341,8 +341,8 @@
     else if (soonInfo.currentIdx < 0) {
       /*  const slidePos = ($newSlideLi[(soonInfo.lastIdx) - soonInfo.currentIdx].offsetLeft / 2) - (soonInfo.activeWidth) + soonInfo.margin;
        moveSlideEffect(0 - idx, -slidePos, -soonInfo.activeWidth); */
-      slidePos = ($newSlideLi[(soonCount * 2) - 1].offsetLeft / 2) - (activeSlideWidth / 2);
-      moveSlideEffect(soonCount - 1, -slidePos, -activeSlideWidth);
+      const slidePos = ($newSlideLi[(soonInfo.count * 2) - 1].offsetLeft / 2) - (soonInfo.activeWidth / 2);
+      moveSlideEffect(soonInfo.count - 1, -slidePos, -soonInfo.activeWidth);
     }
     //기본움직임
     else {
