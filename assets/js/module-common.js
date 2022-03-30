@@ -1,5 +1,5 @@
 
-//스크롤 방향
+//Func 스크롤 방향
 const scrollDirect = {
   prevYoffset: 0,
   scrollDirection: 0,
@@ -16,7 +16,7 @@ const scrollDirect = {
 export default scrollDirect;
 
 
-//타겟 잡기 (이벤트위임)
+//Func 타겟 잡기 (이벤트위임)
 export const getTarget = (elem, className) => {
   //타겟잡기
   while (!elem.classList.contains(className)) {
@@ -28,7 +28,7 @@ export const getTarget = (elem, className) => {
   }
   return elem;
 }
-//모바일체크
+//Func 모바일체크
 export const isMobile = () => {
   const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
   for (let info in mobileKeyWords) {
@@ -40,7 +40,7 @@ export const isMobile = () => {
 }
 let isMobileState = isMobile();
 
-//트랜스폼 위치
+//Func 트랜스폼 위치
 export const getMatrix = (element) => {
   const values = element.style.transform.split(/\w+\(|\);?/);
   const transform = values[1].split(/,\s?/g).map(parseInt);
@@ -54,7 +54,7 @@ export const getMatrix = (element) => {
 
 
 
-//X slide
+//Func X slide
 export const slide = {
   touchable: [], //스와이프 터치여부 
   tPosX: [], //스와이프 xScroll 값

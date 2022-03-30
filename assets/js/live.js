@@ -1,5 +1,5 @@
 'use strict';
-import { isMobile } from './assets/js/module-common.js';
+//import { isMobile } from './assets/js/module-common.js';
 
 (() => {
 
@@ -18,6 +18,16 @@ import { isMobile } from './assets/js/module-common.js';
   const $likeBtn = document.querySelector(".chat-like-btn");
   let $likes = document.querySelectorAll(".chat-like-effect");
 
+  //Func 모바일체크
+  const isMobile = () => {
+    const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    for (let info in mobileKeyWords) {
+      if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
+        return true;
+      }
+    }
+    return false;
+  }
   let isMobileState = false;
   isMobileState = isMobile();
 
