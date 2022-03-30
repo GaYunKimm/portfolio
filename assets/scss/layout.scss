@@ -7,7 +7,7 @@ body {
   width: 100%;
   font-size: 14px;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
+ // min-height: -webkit-fill-available;
   min-height: calc(var(--vh, 1vh) * 100);
   overflow-x: hidden;
   overflow-y: auto;
@@ -32,7 +32,7 @@ body {
   overflow-x: hidden;
   flex-direction: column;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
+ // min-height: -webkit-fill-available;
   min-height: calc(var(--vh, 1vh) * 100);
 
   @include pc-tablet-size {
@@ -124,7 +124,7 @@ body {
     top: 0;
     width: $leng-65;
     height: 100vh;
-    height: -webkit-fill-available;
+   //fill-available  height: -webkit-fill-available;
     height: calc(var(--vh, 1vh) * 100);
     margin: 0;
     transform: translate3d(0, 0, 0) !important;
