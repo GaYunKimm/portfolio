@@ -1,8 +1,9 @@
+'use strict';
+
 //import { getTarget, isMobile, slide, getMatrix } from './assets/js/module-common.js';
 //import scrollDirect from './assets/js/module-common.js';
 
 (() => {
-  'use strict';
 
   //상수 및 변수
   const $header = document.querySelector(".header-cont");
