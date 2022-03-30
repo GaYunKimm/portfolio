@@ -235,7 +235,7 @@ body {
 
   &-indicator {
     position: absolute;
-    bottom: 6px;
+    bottom: 6px + env(safe-area-inset-bottom);
     width: 65px;
     height: 65px;
     transform: translate3d(0, 0, 0);
