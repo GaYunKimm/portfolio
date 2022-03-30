@@ -282,11 +282,9 @@
     soonInfo.firstIdx = soonInfo.count;
     soonInfo.lastIdx = soonInfo.firstIdx + soonInfo.count - 1;
 
-    const centerPos = soonInfo.wrapWidth + ((soonInfo.activeWidth / 2) + (soonInfo.margin)) - (soonInfo.winWidth / 2);
+    const centerPos = soonInfo.wrapWidth + ((soonInfo.activeWidth / 2) + (soonInfo.margin * 2)) - (soonInfo.winWidth / 2);
     $soonSlide.style.left = `${-centerPos}px`
-
     // console.log(soonInfo)
-
     return centerPos;
   }
   const slideLeft = setSoonInit();
