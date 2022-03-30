@@ -1,5 +1,5 @@
 'use strict';
-import { isMobile } from '/assets/js/module-common.js';
+import { isMobile } from './assets/js/module-common.js';
 
 (() => {
 

@@ -87,7 +87,7 @@
     //바디 재생 제거
     setTimeout(() => {
       document.body.classList.remove("loader-body");
-      $loader.remove();
+    //  $loader.remove();
     }, 500);
     //loader 지우기
 

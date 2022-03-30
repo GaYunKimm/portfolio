@@ -1,6 +1,6 @@
 'use strict';
-import { getTarget, isMobile, slide, getMatrix } from '/assets/js/module-common.js';
-import scrollDirect from '/assets/js/module-common.js';
+import { getTarget, isMobile, slide, getMatrix } from './assets/js/module-common.js';
+import scrollDirect from './assets/js/module-common.js';
 
 (() => {
   //상수 및 변수
