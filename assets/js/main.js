@@ -525,19 +525,17 @@
     e.preventDefault();
     moveSlide(soonInfo.currentIdx + 1);
   });
-  //soon drag
-  if (!isMobileState) {
-    //pc  드래그 
-    $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
-    $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
-    $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
-    $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
-  } else {
-    //mo  드래그 
-    $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.targetTouches[0]));
-    $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.targetTouches[0]));
-    $soonSlide.addEventListener('touchend', (e) => slideSoon.slideUp(e));
-  }
+
+  //pc  드래그 
+  $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
+  $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
+  $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
+  $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
+  //mo  드래그 
+  $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.targetTouches[0]));
+  $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.targetTouches[0]));
+  $soonSlide.addEventListener('touchend', (e) => slideSoon.slideUp(e));
+
 
   //리사이즈 이벤트
   window.addEventListener("resize", () => {
