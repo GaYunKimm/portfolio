@@ -58,6 +58,8 @@ https://gayunkimm.github.io/portfolio/index.html
 - 메뉴, 검색, 최근본은 팝업 형태로 제작되었습니다.
 
 
+---
+
 
 ## [live 페이지 바로가기](https://gayunkimm.github.io/portfolio/live-view.html)
 
@@ -80,7 +82,9 @@ https://gayunkimm.github.io/portfolio/index.html
 
 - 브라우저 정책상 뮤트된 상태가 아니면 동영상이 재생되지 않기 때문에 뮤트를 기본설정으로 적용하였습니다.
 - 상세화면의 상단 뮤트버튼을 클릭시 사운드 뮤트를 제어합니다.
-
+ 
+ 
+---
 
 
 ## [content 페이지 바로가기](https://gayunkimm.github.io/portfolio/detail-view.html)
