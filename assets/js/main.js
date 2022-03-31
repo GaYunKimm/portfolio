@@ -87,7 +87,7 @@
     return elem;
   }
   // 브라우저 체크
-  const agent = navigator.userAgent.toLowerCase();
+  let agent = window.navigator.userAgent;
   //Func 모바일체크
   const isMobile = () => {
     const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
@@ -526,14 +526,27 @@
     moveSlide(soonInfo.currentIdx + 1);
   });
 
+  const is_chrome = navigator.userAgent.indexOf('Chrome') > 0;
+  const is_safari = navigator.userAgent.indexOf("Safari") > 0;
+  function isSafariBrowser() {
+    if (is_safari) {
+      if (is_chrome)  // Chrome seems to have both Chrome and Safari userAgents
+        return false;
+      else
+        return true;
+    }
+    return false;
+  }
+  const is_agent = isSafariBrowser();
   if (!isMobileState) {
     //pc  드래그 
     $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
     $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
     $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
     $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
+
   } else {
-    if (agent.indexOf("safari") != -1) {
+    if (is_agent) {
       //pc  드래그 
       $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
       $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
