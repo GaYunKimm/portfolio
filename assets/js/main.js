@@ -547,6 +547,7 @@
 
   } else {
     if (is_agent) {
+      document.querySelector(".logo").innerText = "ee"
       //pc  드래그 
       $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
       $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
