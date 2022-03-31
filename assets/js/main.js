@@ -87,7 +87,18 @@
     return elem;
   }
   // 브라우저 체크
-  let agent = window.navigator.userAgent;
+  const is_chrome = navigator.userAgent.indexOf('Chrome') > 0;
+  const is_safari = navigator.userAgent.indexOf("Safari") > 0;
+  const isSafariBrowser = () => {
+    if (is_safari) {
+      if (is_chrome)  // Chrome seems to have both Chrome and Safari userAgents
+        return false;
+      else
+        return true;
+    }
+    return false;
+  }
+  const is_agent = isSafariBrowser();
   //Func 모바일체크
   const isMobile = () => {
     const mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
@@ -526,18 +537,7 @@
     moveSlide(soonInfo.currentIdx + 1);
   });
 
-  const is_chrome = navigator.userAgent.indexOf('Chrome') > 0;
-  const is_safari = navigator.userAgent.indexOf("Safari") > 0;
-  function isSafariBrowser() {
-    if (is_safari) {
-      if (is_chrome)  // Chrome seems to have both Chrome and Safari userAgents
-        return false;
-      else
-        return true;
-    }
-    return false;
-  }
-  const is_agent = isSafariBrowser();
+
   if (!isMobileState) {
     //pc  드래그 
     $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
@@ -546,20 +546,15 @@
     $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
 
   } else {
-    if (is_agent) {
-      document.querySelector(".logo").innerText = "ee"
       //pc  드래그 
       $soonSlide.addEventListener("mousedown", (e) => { slideSoon.slideDown(e); });
       $soonSlide.addEventListener("mousemove", (e) => { slideSoon.slideMove(e); });
       $soonSlide.addEventListener("mouseup", (e) => { slideSoon.slideUp(e); });
       $soonSlide.addEventListener("mouseleave", (e) => { slideSoon.slideUp(e); });
-    } else {
       //mo  드래그 
       $soonSlide.addEventListener('touchstart', (e) => slideSoon.slideDown(e, e.targetTouches[0]));
       $soonSlide.addEventListener('touchmove', (e) => slideSoon.slideMove(e, e.targetTouches[0]));
       $soonSlide.addEventListener('touchend', (e) => slideSoon.slideUp(e));
-    }
-
   }
 
 
