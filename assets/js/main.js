@@ -322,6 +322,8 @@
     soonInfo.currentIdx = idx;
     $soonSlide.classList.remove("animate");
     $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
+    slideSoon.tPosX.current = slidePos
+    slideSoon.tPosX.end = slidePos;
     activeSlideEffect(idx);
 
     setTimeout(() => {
@@ -333,11 +335,11 @@
   const moveSlide = (idx) => {
     clickAble = true;
     if (!clickAble) return;
-
+    let xpostion = -idx * (soonInfo.width + soonInfo.margin);
     soonInfo.currentIdx = idx;
-    slideSoon.tPosX.current = -idx * (soonInfo.width + soonInfo.margin);
-    slideSoon.tPosX.end = -idx * (soonInfo.width + soonInfo.margin);
-    $soonSlide.style.transform = `translate3d(${-idx * (soonInfo.width + soonInfo.margin)}px,0,0)`;
+    slideSoon.tPosX.current = xpostion
+    slideSoon.tPosX.end = xpostion;
+    $soonSlide.style.transform = `translate3d(${xpostion}px,0,0)`;
     //next : 마지막슬라이드에서 첫번째슬라이드
     if (soonInfo.currentIdx >= soonInfo.count) {
       //const idxs = idx - soonInfo.currentIdx;
@@ -413,7 +415,7 @@
       touchIdx = soonInfo.currentIdx;
       if (touchIdx === 0 && this.tPosX.firstTouch !== 1) {
         if (this.tPosX.start > this.tPosX.current) {
-          this.tPosX.end = tposEnd ;
+          this.tPosX.end = tposEnd;
         }
         else if (this.tPosX.start < this.tPosX.current) {
           this.tPosX.end = tposEnd + 90;
