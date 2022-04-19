@@ -335,6 +335,8 @@
     if (!clickAble) return;
 
     soonInfo.currentIdx = idx;
+    slideSoon.tPosX.current = -idx * (soonInfo.width + soonInfo.margin);
+    slideSoon.tPosX.end = -idx * (soonInfo.width + soonInfo.margin);
     $soonSlide.style.transform = `translate3d(${-idx * (soonInfo.width + soonInfo.margin)}px,0,0)`;
     //next : 마지막슬라이드에서 첫번째슬라이드
     if (soonInfo.currentIdx >= soonInfo.count) {
@@ -444,7 +446,6 @@
               soonActive = idx + 1; //이전
             }
           }
-
           moveSlide(soonActive);
         }
       });
