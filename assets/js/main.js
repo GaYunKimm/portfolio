@@ -319,17 +319,23 @@
   }
   //Func soon 슬라이드 박스 이동 효과
   const moveSlideEffect = (idx, slidePos, slideTrans) => {
+    let moveflag;
+    if (moveflag) {
+      clearTimeout(moveSlide);
+      moveflag = false;
+    }
     soonInfo.currentIdx = idx;
     $soonSlide.classList.remove("animate");
+    slideSoon.tPosX.end = slidePos + slideTrans;
     $soonSlide.style.transform = `translate3d(${slidePos + slideTrans}px,0,0)`;
-    slideSoon.tPosX.current = slidePos
-    slideSoon.tPosX.end = slidePos;
     activeSlideEffect(idx);
 
-    setTimeout(() => {
+    const moveSlide = setTimeout(() => {
       $soonSlide.classList.add("animate");
+      slideSoon.tPosX.end = slidePos;
       $soonSlide.style.transform = `translate3d(${slidePos}px,0,0)`;
-    }, 50);
+      moveflag = true;
+    }, 80);
   }
   //Func soon 슬라이드 전체박스 이동
   const moveSlide = (idx) => {
@@ -344,13 +350,13 @@
     if (soonInfo.currentIdx >= soonInfo.count) {
       //const idxs = idx - soonInfo.currentIdx;
       const idxs = soonInfo.currentIdx - soonInfo.firstIdx + soonInfo.count
-      let slidePos;
+      // let slidePos;
       /* if (soonInfo.currentIdx === soonInfo.count) {
         slidePos = -$newSlideLi[idxs].offsetLeft / 2  - soonInfo.activeWidth - (soonInfo.margin * 4);
       } else {
         slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
       }   */
-      slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
+      // slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
 
       moveSlideEffect(0, 0, soonInfo.activeWidth);
     }
