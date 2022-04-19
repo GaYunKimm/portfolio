@@ -341,11 +341,11 @@
       //const idxs = idx - soonInfo.currentIdx;
       const idxs = soonInfo.currentIdx - soonInfo.firstIdx + soonInfo.count
       let slidePos;
-      /*  if (soonInfo.currentIdx === soonInfo.count) {
-         slidePos = -$newSlideLi[idxs].offsetLeft / 2  - soonInfo.activeWidth - (soonInfo.margin * 4);
-       } else {
-         slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
-       }  */
+      /* if (soonInfo.currentIdx === soonInfo.count) {
+        slidePos = -$newSlideLi[idxs].offsetLeft / 2  - soonInfo.activeWidth - (soonInfo.margin * 4);
+      } else {
+        slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
+      }   */
       slidePos = $newSlideLi[idxs].offsetLeft / 2 - (window.innerWidth / 2) - soonInfo.activeWidth + (soonInfo.margin);
 
       moveSlideEffect(0, 0, soonInfo.activeWidth);
@@ -356,10 +356,12 @@
        moveSlideEffect(0 - idx, -slidePos, -soonInfo.activeWidth); */
       const slidePos = ($newSlideLi[(soonInfo.count * 2) - 1].offsetLeft / 2) - (soonInfo.activeWidth / 2);
       moveSlideEffect(soonInfo.count - 1, -slidePos, -soonInfo.activeWidth);
+      //console.log(soonInfo.count)
     }
     //기본움직임
     else {
       activeSlideEffect(soonInfo.currentIdx);
+      //console.log(soonInfo.currentIdx)
     }
     setTimeout(() => {
       clickAble = false;
@@ -425,10 +427,10 @@
           -(slideWrapWidth.left) < elem.offsetLeft - (window.outerWidth / 2) + elem.offsetWidth
         ) {
           if (idx > soonInfo.firstIdx) {
-            soonActive = idx - ($newSlideLi.length / 3);
+            soonActive = idx - ($newSlideLi.length / 3) - 1;
           }
           else {
-            soonActive = idx; //이전
+            soonActive = idx + 1; //이전
           }
           moveSlide(soonActive);
         }

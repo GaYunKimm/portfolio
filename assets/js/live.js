@@ -122,6 +122,8 @@
     document.body.classList.contains("video-detail-active") ?
       document.body.classList.remove("video-detail-active") :
       document.body.classList.add("video-detail-active");
+
+
   }
   let likeCount = 0;
 
@@ -141,18 +143,6 @@
       $heartWrap.append(like);
       this.heart = like;
     }
-
-    setPosition() {
-      let speed = 0.5;
-      let mPos = {
-        x: Math.random() * speed,
-        y: Math.random() * speed
-      }
-      this.pos = {
-        x: mPos.x,
-        y: mPos.y,
-      }
-    }
     //위치이동
     moveLike() {
       let speed = 0.03;
@@ -161,10 +151,9 @@
         y: -20,
       }
       let mPos = {
-        x: Math.random() * 60,
+        x: (Math.random() * 60) - 20,
         y: (Math.random() * 100) + 50 >= 100 ? 100 : (Math.random() * 100) + 50
       }
-      console.log(mPos.y)
       //현재위치 += (목표위치 - 현재위치) x speed
       const move = () => {
         this.pos.x += (mPos.x - this.pos.x) * speed;
