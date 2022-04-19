@@ -403,15 +403,21 @@
       slideSoon.tPosX.start = target.clientX;
     },
     slideMove: function (e, targets) {
-      const target = targets ? targets : e
+      const target = targets ? targets : e;
+      let tposEnd = this.tPosX.current + (target.clientX - this.tPosX.start);
       if (!slideSoon.touchable) return;
       if (!this.touchable && !$soonSlide.classList.contains("nonetouch")) return;
       $soonSlide.classList.add("nonetouch");
       touchIdx = soonInfo.currentIdx;
       if (touchIdx === 0 && this.tPosX.firstTouch !== 1) {
-        this.tPosX.end = this.tPosX.current + (target.clientX - this.tPosX.start) - 180;
+        if (this.tPosX.start > this.tPosX.current) {
+          this.tPosX.end = tposEnd ;
+        }
+        else if (this.tPosX.start < this.tPosX.current) {
+          this.tPosX.end = tposEnd + 90;
+        }
       } else {
-        this.tPosX.end = this.tPosX.current + (target.clientX - this.tPosX.start);
+        this.tPosX.end = tposEnd;
       }
       $soonSlide.style.transform = `translate3d(${slideSoon.tPosX.end}px,0,0)`;
     },
@@ -426,12 +432,19 @@
           -(slideWrapWidth.left) > elem.offsetLeft - (window.outerWidth / 2) &&
           -(slideWrapWidth.left) < elem.offsetLeft - (window.outerWidth / 2) + elem.offsetWidth
         ) {
+
           if (idx > soonInfo.firstIdx) {
             soonActive = idx - ($newSlideLi.length / 3) - 1;
           }
           else {
-            soonActive = idx + 1; //이전
+            if (idx === soonInfo.firstIdx) {
+              soonActive = idx - 1; //이전
+
+            } else {
+              soonActive = idx + 1; //이전
+            }
           }
+
           moveSlide(soonActive);
         }
       });
