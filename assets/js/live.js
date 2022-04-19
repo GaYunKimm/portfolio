@@ -14,9 +14,8 @@
   const $progress = document.querySelector(".video-control-progress-bar-inner");
   const $remainingTime = document.querySelector(".video-control-time");
   //좋아요
-  const $heartWrap = document.querySelector(".chat-like-box");
   const $likeBtn = document.querySelector(".chat-like-btn");
-  let $likes = document.querySelectorAll(".chat-like-effect");
+  let $likes;
 
   //Func height 설정
   const setScreenSize = () => {
@@ -124,33 +123,93 @@
       document.body.classList.remove("video-detail-active") :
       document.body.classList.add("video-detail-active");
   }
+  let likeCount = 0;
+
+  class addLike {
+    constructor(e) {
+      //만들기
+      this.makeLike();
+      this.moveLike();
+      setTimeout(this.removeLike, 1000);
+    }
+    //만들기
+    makeLike() {
+      const $heartWrap = document.querySelector(".chat-like-effect");
+      let like = document.createElement("div");
+      like.classList.add("chat-like-effect-heart")
+      like.innerHTML = `<span></span>`;
+      $heartWrap.append(like);
+      this.heart = like;
+    }
+
+    setPosition() {
+      let speed = 0.5;
+      let mPos = {
+        x: Math.random() * speed,
+        y: Math.random() * speed
+      }
+      this.pos = {
+        x: mPos.x,
+        y: mPos.y,
+      }
+    }
+    //위치이동
+    moveLike() {
+      let speed = 0.03;
+      this.pos = {
+        x: 0,
+        y: -20,
+      }
+      let mPos = {
+        x: Math.random() * 60,
+        y: Math.random() * 100
+      }
+      //현재위치 += (목표위치 - 현재위치) x speed
+      const move = () => {
+        this.pos.x += (mPos.x - this.pos.x) * speed;
+        this.pos.y += (mPos.y - this.pos.y) * speed;
+
+        //console.log(x)
+        this.heart.style.left = `${this.pos.x}%`;
+        this.heart.style.bottom = `${this.pos.y}%`;
+        console.log(this.pos.y, this.pos.x)
+        requestAnimationFrame(move);
+      }
+      move();
+    }
+
+    //지우기
+    removeLike = () => {
+      this.heart.remove();
+    }
+  }
+
+
   //Func 좋아요버튼 하트추가
-  const addLike = (e) => {
+  /* const addLike = (e) => {
     let like = document.createElement("div");
     like.classList.add("chat-like-effect")
     like.innerHTML = `<span class="chat-like-effect-heart"><span></span></span>`;
     $heartWrap.append(like);
-  }
-  //Func 좋아요버튼 하트추가 raf
-  const likeInit = (e) => {
-    $likes.removeChild($likes.children[0]);
-    requestAnimationFrame(() => {
-      likeInit();
-      if ($likes.hasChildNodes() && $likes.firstChild) {
-        $likes.removeChild($likes.firstChild);
-      }
-    });
-  }
 
-  //좋아요 첫번째 삭제
-  setInterval(() => {
-    //console.log($likes.length )
-    if ($likes.length > 0) {
-      $likes[0].remove();
-      console.log("e");
-    }
+    $likes = document.querySelectorAll(".chat-like-effect");
 
-  }, 100);
+    //removeLike($likes.length - 1);
+    likeCount = $likes.length-1;
+    setTimeout(() => {
+      removeLike(likeCount)
+    }, 1000);
+  } */
+
+
+  /*  function removeLike(likeCount) {
+     $likes[likeCount].querySelector('.chat-like-effect-heart').addEventListener("animationend", (e) => {
+       $likes[likeCount].remove();
+     });
+   } */
+
+
+
 
   //초기설정
   setScreenSize();
@@ -165,7 +224,7 @@
   //동영상 재생 일시정지
   $btnPlay.addEventListener("click", (e) => { videoPlayToggle(e); });
   //좋아요 클릭
-  $likeBtn.addEventListener("click", () => { addLike() });
+  $likeBtn.addEventListener("click", () => { new addLike });
   //화면 클릭시 상세화면 or 컨트롤 바
   $video.addEventListener("click", (e) => { videoWrapToggle(e) });
 

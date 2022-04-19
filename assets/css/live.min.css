@@ -188,17 +188,9 @@ body { color: #fafafa; background-color: #121212; overflow: hidden; }
 
 .chat-like-btn .icon { color: rgba(255, 255, 255, 0.7); font-size: 30px; }
 
-.chat-like-effect { position: absolute; top: 15px; left: 50%; z-index: 1; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; }
+.chat-like-effect { position: absolute; top: 15px; left: 50%; z-index: 1; width: 60px; height: 140px; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); pointer-events: none; /*  &:nth-child(1n + 1) .chat-like-effect-heart { animation: ani-like-move1 1s linear 1; } &:nth-child(2n + 1) .chat-like-effect-heart { animation: ani-like-move2 1s linear 1; } &:nth-child(3n + 1) .chat-like-effect-heart { animation: ani-like-move3 1s linear 1; } &:nth-child(4n + 1) .chat-like-effect-heart { animation: ani-like-move4 1s linear 1; } */ }
 
-.chat-like-effect:nth-child(1n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
-
-.chat-like-effect:nth-child(2n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move2 1s linear 1; animation: ani-like-move2 1s linear 1; }
-
-.chat-like-effect:nth-child(3n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move3 1s linear 1; animation: ani-like-move3 1s linear 1; }
-
-.chat-like-effect:nth-child(4n + 1) .chat-like-effect-heart { -webkit-animation: ani-like-move4 1s linear 1; animation: ani-like-move4 1s linear 1; }
-
-.chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; -webkit-animation: ani-like-move1 1s linear 1; animation: ani-like-move1 1s linear 1; }
+.chat-like-effect-heart { position: absolute; bottom: -20px; left: 0; }
 
 .chat-like-effect-heart span { display: block; z-index: 0; width: 50px; height: 50px; background: url("../images/effect/like.png") no-repeat; -webkit-animation: ani-like 1s steps(28) 1; animation: ani-like 1s steps(28) 1; background-position: left; background-size: 2900%; background-position: right; }
 
