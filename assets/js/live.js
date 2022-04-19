@@ -162,8 +162,9 @@
       }
       let mPos = {
         x: Math.random() * 60,
-        y: Math.random() * 100
+        y: (Math.random() * 100) + 50 >= 100 ? 100 : (Math.random() * 100) + 50
       }
+      console.log(mPos.y)
       //현재위치 += (목표위치 - 현재위치) x speed
       const move = () => {
         this.pos.x += (mPos.x - this.pos.x) * speed;
@@ -172,7 +173,6 @@
         //console.log(x)
         this.heart.style.left = `${this.pos.x}%`;
         this.heart.style.bottom = `${this.pos.y}%`;
-        console.log(this.pos.y, this.pos.x)
         requestAnimationFrame(move);
       }
       move();
